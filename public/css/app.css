@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+
+input[type="email"]
+{
+    font-size: 24px;
+}
+
+input[type="password"]
+{
+    font-size: 24px;
+}
+
+.sign-form {
+    font-family: 'Open Sans', sans-serif;
+    font-size: 24px;
+    display: block;
+    margin: auto;
+    width: 495px;
+    height: -webkit-fill-available;
+}
+
+.logo-img-big {
+    display: block;
+    width: 464px;
+    height: 177px;
+    background-image: url("../img/logo.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-bottom: 87px;
+}
+
+.sign-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 495px;
+    height: 62px;
+    border-radius: 5px;
+    margin-bottom: 37px;
+    background-color: rgba(244, 149, 44, 1);
+}
+
+.sign-btn a {
+    color: white;
+    text-decoration: none;
+}
+
+.sign-input-login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 495px;
+    height: 62px;
+    border-radius: 5px;
+    margin-bottom: 37px;
+    padding-left: 20px;
+    border: solid rgba(196, 196, 196, 1) 1px;
+}
+
+.sign-input-password {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 495px;
+    height: 62px;
+    border-radius: 5px;
+    margin-bottom: 87px;
+    padding-left: 20px;
+    border: solid rgba(196, 196, 196, 1) 1px;
+}
