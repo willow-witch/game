@@ -1,11 +1,9 @@
 <html>
 <head>
     <link rel="stylesheet" href="/css/reset.css">
-    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/css/signpage.css">
 </head>
 <body>
-
-
 
 <form class="sign-form">
     <div class="logo-img-big">
@@ -27,7 +25,6 @@
         </a>
     </div>
 </form>
-
 
 </body>
 </html>

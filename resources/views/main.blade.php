@@ -1,5 +1,7 @@
-<html>
-<body>
+@extends('layout_main')
+
+@section('content')
+
 <h1>Profile</h1>
 
 @yield('profile')
@@ -13,5 +15,4 @@
 
 <a href="logout">Log out</a>
 
-</body>
-</html>
+@endsection
