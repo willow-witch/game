@@ -1,5 +1,6 @@
 <html>
 <link rel="stylesheet" href="/css/reset.css">
+<link rel="stylesheet" href="/css/main_layout.css">
 <link rel="stylesheet" href="/css/main.css">
 <body>
 
@@ -13,9 +14,10 @@
             User's name
         </div>
 
-        <div class="log-out">
-
-        </div>
+        <a href="logout">
+            <div class="log-out">
+            </div>
+        </a>
     </div>
 
 </div>

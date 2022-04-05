@@ -1,80 +1,61 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
 
-.header-background {
+.wrapper {
     font-family: 'Open Sans', sans-serif;
     font-style: normal;
-    font-size: 20px;
-    display: flex;
-    justify-content: space-between;
-    height: 85px;
-    background-color: rgba(31, 69, 106, 1);
-    margin-bottom: 40px;
+    margin: 40px;
 }
 
-.logo-img-small {
+.content {
+    display: flex;
+    justify-content: space-around;
+}
+
+.page-name {
     display: block;
-    width: 357px;
-    height: 75px;
-    background-image: url("../img/logos/logo_small.png");
-    background-size: contain;
-    background-repeat: no-repeat;
+    width: available;
+    font-size: 20px;
+    margin-bottom: 35px;
+}
+
+.user-profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: indianred;
+    width: -webkit-fill-available;
+    height: -webkit-fill-available;
+    margin-right: 20px;
+}
+
+.user-profile-title {
+    font-size: 18px;
+}
+
+.user-profile-profile {
+    font-size: 16px;
+    display: flex;
+    background-color: #2d3748;
+}
+
+.user-games {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: yellowgreen;
+    width: -webkit-fill-available;
+    height: -webkit-fill-available;
     margin-left: 20px;
 }
 
-.user {
+.user-games-title {
+    font-size: 18px;
+}
+
+.user-games-games {
+    font-size: 16px;
     display: flex;
-    align-items: center;
-    margin-right: 30px;
+    background-color: #2d3748;
 }
-
-.user-name {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 50px;
-    width: fit-content;
-    background-color: rgba(246, 165, 0, 1);
-    border-radius: 15px;
-    margin-right: 2px;
-    padding: 0 15px 0 15px;
-}
-
-.log-out {
-    display: block;
-    height: 50px;
-    width: 45px;
-    background-color: rgba(246, 165, 0, 1);
-    border-radius: 15px;
-    background-image: url("../img/logos/logout.png");
-    background-size: 30px 30px;
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
-.footer {
-    font-family: 'Open Sans', sans-serif;
-    font-style: normal;
-    font-size: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    height: 85px;
-    background-color: rgba(31, 69, 106, 1);
-    margin-top: 40px;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

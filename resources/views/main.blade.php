@@ -2,17 +2,39 @@
 
 @section('content')
 
-<h1>Profile</h1>
+<div class="wrapper">
+    <div class="page-name">
+        >> Личный кабинет
+    </div>
 
-@yield('profile')
+    <div class="content">
 
-<h1>Games</h1>
+        <div class="user-profile">
+            <div class="user-profile-title">
+                Profile
+            </div>
 
-@yield('games')
+            <div class="user-profile-profile">
+                @yield('profile')
+            </div>
+        </div>
 
-<h1>Join | Create</h1>
-@yield('create')
+        <div class="user-games">
+            <div class="user-games-title">
+                Games
+            </div>
+            <div class="user-games-games">
+                @yield('games')
+            </div>
 
-<a href="logout">Log out</a>
+            <div class="user-games-create">
+                @yield('create')
+            </div>
+        </div>
+
+
+
+    </div>
+</div>
 
 @endsection
