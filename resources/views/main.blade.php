@@ -9,25 +9,26 @@
 
     <div class="content">
 
-        <div class="user-profile">
-            <div class="user-profile-title">
+        <div class="user-wrapper">
+            <div class="user-wrapper-title">
                 Profile
             </div>
 
-            <div class="user-profile-profile">
-                @yield('profile')
-            </div>
+            @yield('profile')
+
+            <div class="user-profile-btn"> Statistics</div>
+            <div class="user-profile-btn"> Edit</div>
+
         </div>
 
-        <div class="user-games">
-            <div class="user-games-title">
+        <div class="user-wrapper">
+            <div class="user-wrapper-title">
                 Games
             </div>
-            <div class="user-games-games">
-                @yield('games')
-            </div>
 
-            <div class="user-games-create">
+            @yield('games')
+
+            <div class="user-games-btn">
                 @yield('create')
             </div>
         </div>

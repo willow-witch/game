@@ -1,0 +1,60 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+
+.stage-wrapper {
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+}
+
+.stage-header {
+    display: flex;
+    justify-content: space-between;
+    height: 90px;
+    background-color: rgba(201, 207, 212, 0.41);
+    margin-bottom: 40px;
+    padding: 0 110px 0 110px;
+}
+.stage-header-stage {
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+    margin-top: 7px;
+}
+
+.stage-header-stage-number-circle{
+    display: flex;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: white;
+    border-radius: 50%;
+    align-items: center;
+    font-size: 14px;
+    margin: 5px auto 0px auto;
+}
+
+.stage-header-stage-name {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.stage-background {
+    margin: 40px 60px 40px 60px ;
+    display: flex;
+    background-color: white;
+    width: -webkit-fill-available;
+    height: -webkit-fill-available;
+    border-radius: 10px;
+    box-shadow: 0px 10px 10px 5px rgba(0, 0, 0, 0.08);
+    padding: 40px 60px 40px 60px;
+}
+
+.stage-criteria {
+    margin: 50px 60px 40px 60px ;
+    display: flex;
+    background-color: white;
+    width: -webkit-fill-available;
+    height: -webkit-fill-available;
+    border-radius: 10px;
+    box-shadow: 0px 10px 10px 5px rgba(0, 0, 0, 0.08);
+    padding: 40px 60px 40px 60px;
+}

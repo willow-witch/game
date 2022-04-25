@@ -1,7 +1,10 @@
 <html>
-<link rel="stylesheet" href="/css/reset.css">
-<link rel="stylesheet" href="/css/main_layout.css">
-<link rel="stylesheet" href="/css/main.css">
+<head>
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/main_layout.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/stage_main.css">
+</head>
 <body>
 
 <div class="header-background">
@@ -14,7 +17,7 @@
             User's name
         </div>
 
-        <a href="logout">
+        <a href="/logout">
             <div class="log-out">
             </div>
         </a>

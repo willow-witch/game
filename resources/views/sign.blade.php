@@ -14,13 +14,13 @@
     <input type="password" class="sign-input-password" placeholder="Пароль" required>
 
     <div class="sign-btn">
-        <a href="student">
+        <a href="student/profile">
             student
         </a>
     </div>
 
     <div class="sign-btn">
-        <a href="teacher">
+        <a href="teacher/profile">
             teacher
         </a>
     </div>
