@@ -4,6 +4,7 @@
     <link rel="stylesheet" href="/css/main_layout.css">
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/stage_main.css">
+    <link rel="stylesheet" href="/css/stage1_student_questions.css">
 </head>
 <body>
 
@@ -34,3 +35,4 @@
 
 </body>
 </html>
+

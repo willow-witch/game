@@ -52,7 +52,7 @@
 @section('profile')
 
     <div class="user-profile-image">
-        <img src="public/img/profilepics/king.png"/>
+        <img src="/img/profilepics/king.png"/>
     </div>
 
     @foreach($user_information as $item)

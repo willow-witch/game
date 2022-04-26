@@ -63,15 +63,15 @@ Route::prefix('teacher')->group(function () {
     {
         switch ($stage) {
             case 1:
-                return View::make('stages.stage1.student_stage1');
+                return View::make('stages.stage1.teacher_stage1');
             case 2:
-                return View::make('stages.stage2.student_stage2');
+                return View::make('stages.stage2.teacher_stage2');
             case 3:
-                return View::make('stages.stage3.student_stage3');
+                return View::make('stages.stage3.teacher_stage3');
             case 4:
-                return View::make('stages.stage4.student_stage4');
+                return View::make('stages.stage4.teacher_stage4');
             case 5:
-                return View::make('stages.stage5.student_stage5');
+                return View::make('stages.stage5.teacher_stage5');
         }
     });
 
@@ -80,11 +80,6 @@ Route::prefix('teacher')->group(function () {
         return View::make('create_game');
     });
 });
-
-
-
-
-
 
 //Route::get('users', 'UserController@getIndex');
 

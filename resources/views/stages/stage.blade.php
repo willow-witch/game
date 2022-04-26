@@ -32,12 +32,7 @@
 
     </div>
 
-   <div class="stage-background"
-        @yield('stage_content')
-   </div>
+    @yield('stage_content')
 
-    <div class="stage-criteria">
-        @yield('stage_criteria')
-    </div>
 
-@endsection
+@stop

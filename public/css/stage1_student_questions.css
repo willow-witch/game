@@ -1,0 +1,63 @@
+input[type="text"]
+{
+    font-size: 17px;
+}
+
+.stage-name {
+    display: flex;
+    flex-direction: row;
+    font-size: 20px;
+    width: -webkit-fill-available;
+    height: 32px;
+    margin-bottom: 50px;
+    background-color: cornflowerblue;
+}
+
+.questions-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 17px;
+}
+
+.left-column {
+    display: flex;
+    flex-direction: column;
+    margin-right: 50px;
+}
+
+.buyer-pic img {
+    display: block;
+    width: 229px;
+    height: 218px;
+    margin-bottom: 50px;
+}
+
+.add-pic {
+    display: flex;
+    height: 49px;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(9, 113, 172, 1);
+    border-radius: 22px;
+    color: white;
+    margin-bottom: 50px;
+}
+
+.questions {
+    display: flex;
+    flex-direction: column;
+    width: -webkit-fill-available;
+    background-color: #0971ac;
+}
+
+.characteristics {
+    display: flex;
+    flex-direction: column;
+    width: -webkit-fill-available;
+    height: 40px;
+    border: solid rgba(196, 196, 196, 0.5) 1px;
+    border-radius: 5px;
+    margin-bottom: 25px;
+}
+
