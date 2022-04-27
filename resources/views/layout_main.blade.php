@@ -5,9 +5,9 @@
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/stage_main.css">
     <link rel="stylesheet" href="/css/stage1_student_questions.css">
+    <link rel="stylesheet" href="/css/stage1_teacher_answers.css">
 </head>
 <body>
-
 <div class="header-background">
 
     <div class="logo-img-small">

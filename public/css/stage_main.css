@@ -10,8 +10,9 @@
     justify-content: space-between;
     height: 90px;
     background-color: rgba(201, 207, 212, 0.41);
-    margin-bottom: 40px;
+    margin-bottom: 50px;
     padding: 0 110px 0 110px;
+    box-shadow: 0px 3px 5px 3px rgba(0, 0, 0, 0.15);
 }
 .stage-header-stage {
     display: flex;
@@ -45,7 +46,7 @@
     width: -webkit-fill-available;
     height: -webkit-fill-available;
     border-radius: 10px;
-    box-shadow: 0px 10px 10px 5px rgba(0, 0, 0, 0.08);
+    box-shadow: 0px 5px 25px 8px rgba(0, 0, 0, 0.08);
     padding: 40px 60px 40px 60px;
 }
 
@@ -56,6 +57,6 @@
     width: -webkit-fill-available;
     height: -webkit-fill-available;
     border-radius: 10px;
-    box-shadow: 0px 10px 10px 5px rgba(0, 0, 0, 0.08);
+    box-shadow: 0px 5px 25px 8px rgba(0, 0, 0, 0.08);
     padding: 40px 60px 40px 60px;
 }

@@ -1,5 +1,3 @@
-@extends('stages.stage')
-
 <?php
 
 $criteria = [
@@ -19,13 +17,8 @@ $criteria = [
 
 ?>
 
-@section('stage_content')
+@section('student_stage1_criteria')
 
-    <div class="stage-background">
-        @yield('student_stage1_questions')
-    </div>
-
-    <div class="stage-criteria">
         @foreach($criteria as $score)
             <h1>
                 {{$score["criteria"]}}
@@ -34,7 +27,6 @@ $criteria = [
                 {{$score["score"]}}
             </h1>
         @endforeach
-    </div>
 
 @endsection
 

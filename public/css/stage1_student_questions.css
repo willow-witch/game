@@ -1,6 +1,15 @@
 input[type="text"]
 {
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
     font-size: 17px;
+    padding-left: 15px;
+}
+
+textarea
+{
+    font-size: 17px;
+    padding-left: 15px;
 }
 
 .stage-name {
@@ -9,8 +18,7 @@ input[type="text"]
     font-size: 20px;
     width: -webkit-fill-available;
     height: 32px;
-    margin-bottom: 50px;
-    background-color: cornflowerblue;
+    margin-bottom: 40px;
 }
 
 .questions-wrapper {
@@ -38,8 +46,8 @@ input[type="text"]
     height: 49px;
     align-items: center;
     justify-content: center;
-    background-color: #1a202c;
-    border-radius: 22px;
+    background-color: #0971ac;
+    border-radius: 25px;
     color: white;
     margin-bottom: 50px;
 }
@@ -48,7 +56,7 @@ input[type="text"]
     display: flex;
     flex-direction: column;
     width: -webkit-fill-available;
-    background-color: #0971ac;
+    padding-left: 10px;
 }
 
 .characteristics {
@@ -61,3 +69,57 @@ input[type="text"]
     margin-bottom: 25px;
 }
 
+.question {
+    display: flex;
+    flex-direction: column;
+    width: -webkit-fill-available;
+    margin-bottom: 20px;
+}
+
+.question-title {
+    display: flex;
+    flex-direction: row;
+    width: -webkit-fill-available;
+    margin-bottom: 25px;
+}
+
+.question-free-answers {
+    display: flex;
+    flex-direction: row;
+    height: 40px;
+    border: solid rgba(196, 196, 196, 0.5) 1px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+.question-free-answers {
+    padding-left: 10px;
+}
+
+.question-test-answers {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.question-test-answer span{
+    display: flex;
+    width: fit-content;
+    align-items: center;
+    justify-content: center;
+    background-color: #0971ac;
+    border-radius: 25px;
+    color: white;
+    padding: 12px 25px 12px 25px;
+    margin: 0 15px 15px 0;
+    user-select: none;
+    position: relative;
+}
+
+.question-test-answer input[type=checkbox] {
+    display: none;
+}
+
+.question-test-answer input[type=checkbox]:checked + span {
+    display: flex;
+    background: #1F456A;
+}
