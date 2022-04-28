@@ -1,13 +1,9 @@
-<?php
-
-?>
-
 
 @section('teacher_stage1_answers')
 
         <div class="stage-background">
             <div class="team-name">
-                {{$team_name}}
+                Ответы - {{$team_name}}
             </div>
 
             <div class="questions-wrapper">
