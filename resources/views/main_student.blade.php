@@ -83,7 +83,7 @@
 
                     <li class="user-games-games-progress-stage">
                         <a href="stage/{{$i}}">
-                            {{$i}}
+                            {{$stages[$i-1]}}
                         </a>
                     </li>
                     @endfor

@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="/css/stage_main.css">
     <link rel="stylesheet" href="/css/stage1_student_questions.css">
     <link rel="stylesheet" href="/css/stage1_teacher_answers.css">
+    <link rel="stylesheet" href="/css/stage1_student_criteria.css">
+    <link rel="stylesheet" href="/css/stage1_teacher_evaluation.css">
 </head>
 <body>
 <div class="header-background">

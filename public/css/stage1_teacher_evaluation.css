@@ -1,0 +1,23 @@
+.point-name {
+    display: flex;
+    flex-direction: row;
+    font-size: 20px;
+    width: -webkit-fill-available;
+    height: 32px;
+    margin-bottom: 40px;
+}
+
+.question {
+    display: flex;
+    flex-direction: column;
+    width: -webkit-fill-available;
+    margin-bottom: 20px;
+}
+
+.question-title {
+    display: flex;
+    flex-direction: row;
+    width: -webkit-fill-available;
+    margin-bottom: 25px;
+}
+

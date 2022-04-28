@@ -92,8 +92,17 @@
 
 .user-stages-wrapper {
     display: flex;
+    width: 256px;
     align-items: center;
     flex-direction: column;
+}
+
+.teacher-stages-wrapper {
+    display: flex;
+    width: auto;
+    align-items: center;
+    flex-direction: column;
+    background-color: #1f456a;
 }
 
 .user-games-games {
@@ -111,16 +120,47 @@
 }
 
 .user-games-games-name {
+    display: flex;
+    flex-direction: row;
+}
 
+.teacher-games-games-name {
+    display: flex;
+    flex-direction: row;
 }
 
 .user-games-games-progress-list {
     position: relative;
-    display: block;
+    display: flex;
+}
 
+.teacher-games-games-progress-list {
+    position: relative;
+    display: flex;
 }
 
 .user-games-games-progress {
+    display: none;
+    z-index: 1;
+    position: absolute;
+    margin-top: 35px;
+}
+
+.teacher-games-games-progress {
+    display: none;
+    z-index: 1;
+    position: absolute;
+    margin-top: 35px;
+}
+
+.user-games-games-progress ul{
+    display: none;
+    z-index: 1;
+    position: absolute;
+    margin-top: 35px;
+}
+
+.teacher-games-games-progress ul{
     display: none;
     z-index: 1;
     position: absolute;
@@ -131,12 +171,28 @@
     text-decoration: none;
 }
 
+.teacher-games-games-progress li a {
+    text-decoration: none;
+}
+
 .user-games-games-progress-list:focus ~ .user-games-games-progress,
 .user-games-games-progress-list:active ~ .user-games-games-progress,
 .user-games-games-progress:hover {
     display:block;
     flex-direction: column;
     width: 256px;
+    background: #F6A500;
+    border: 1px solid #5A5656;
+    box-sizing: border-box;
+    border-radius: 0 0 15px 15px;
+}
+
+.teacher-games-games-progress-list:focus ~ .teacher-games-games-progress,
+.teacher-games-games-progress-list:active ~ .teacher-games-games-progress,
+.teacher-games-games-progress:hover {
+    display:block;
+    flex-direction: column;
+    width: fit-content;
     background: #F6A500;
     border: 1px solid #5A5656;
     box-sizing: border-box;
@@ -160,8 +216,24 @@
     border-top: none;
 }
 
-.user-games-games-team {
-
+.teacher-games-games-progress-stage-team {
+    float:none;
+    position: relative;
+    text-align: center;
+    padding: 15px 0 15px 0;
+    min-width:170px;
+    border-top: 1px solid #5A5656;
 }
+
+.teacher-games-games-progress-stage-team li a {
+    text-decoration: none;
+}
+
+.teacher-games-games-progress-stage-team:first-child {
+    border-top: none;
+}
+
+
+
 
 

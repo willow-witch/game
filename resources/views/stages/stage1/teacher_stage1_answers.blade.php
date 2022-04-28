@@ -1,169 +1,13 @@
 <?php
 
-$teams_results = [
-    [
-        "team_name" => "team1",
-        "result" => [
-            [
-                "question" => "City",
-                "type" => "free",
-                "answers" => "City"
-            ],
-            [
-                "question" => "Hobbies",
-                "type" => "test",
-                "answers" => [
-                    "Skating",
-                    "Swimming",
-                    "Sketching",
-                    "Writing",
-                    "Gaming",
-                    "Swimming",
-                    "Sketching",
-                    "Writing",
-                    "Gaming"
-                ]
-            ],
-            [
-                "question" => "City",
-                "type" => "free",
-                "answers" => "City"
-            ],
-            [
-                "question" => "Hobbies",
-                "type" => "test",
-                "answers" => [
-                    "Skating",
-                    "Swimming",
-                    "Sketching",
-                    "Writing",
-                    "Gaming"
-                ]
-            ]
-        ],
-        "criteria" => [
-            [
-                "criteria" => "criteria1",
-                "score" => "score1"
-            ],
-            [
-                "criteria" => "criteria2",
-                "score" => "score2"
-            ]
-        ]
-    ],
-    [
-        "team_name" => "team2",
-        "result" => [
-            [
-                "question" => "City",
-                "type" => "free",
-                "answers" => "City"
-            ],
-            [
-                "question" => "Hobbies",
-                "type" => "test",
-                "answers" => [
-                    "Skating",
-                    "Swimming",
-                    "Sketching",
-                    "Writing",
-                    "Gaming",
-                    "Swimming",
-                    "Sketching",
-                    "Writing",
-                    "Gaming"
-                ]
-            ],
-            [
-                "question" => "City",
-                "type" => "free",
-                "answers" => "City"
-            ],
-            [
-                "question" => "Hobbies",
-                "type" => "test",
-                "answers" => [
-                    "Skating",
-                    "Swimming",
-                    "Sketching",
-                    "Writing",
-                    "Gaming"
-                ]
-            ]
-        ],
-        "criteria" => [
-            [
-                "criteria" => "criteria1",
-                "score" => "score1"
-            ],
-            [
-                "criteria" => "criteria2",
-                "score" => "score2"
-            ]
-        ]
-    ],
-    [
-        "team_name" => "team3",
-        "result" => [
-            [
-                "question" => "City",
-                "type" => "free",
-                "answers" => "City"
-            ],
-            [
-                "question" => "Hobbies",
-                "type" => "test",
-                "answers" => [
-                    "Skating",
-                    "Swimming",
-                    "Sketching",
-                    "Writing",
-                    "Gaming",
-                    "Swimming",
-                    "Sketching",
-                    "Writing",
-                    "Gaming"
-                ]
-            ],
-            [
-                "question" => "City",
-                "type" => "free",
-                "answers" => "City"
-            ],
-            [
-                "question" => "Hobbies",
-                "type" => "test",
-                "answers" => [
-                    "Skating",
-                    "Swimming",
-                    "Sketching",
-                    "Writing",
-                    "Gaming"
-                ]
-            ]
-        ],
-        "criteria" => [
-            [
-                "criteria" => "criteria1",
-                "score" => "score1"
-            ],
-            [
-                "criteria" => "criteria2",
-                "score" => "score2"
-            ]
-        ]
-    ],
-];
-
 ?>
+
 
 @section('teacher_stage1_answers')
 
-    @foreach($teams_results as $result)
         <div class="stage-background">
             <div class="team-name">
-                {{$result["team_name"]}}
+                {{$team_name}}
             </div>
 
             <div class="questions-wrapper">
@@ -201,7 +45,7 @@ $teams_results = [
                 </div>
 
                 <div class="questions">
-                    @foreach($result["result"] as $question)
+                    @foreach($answers as $question)
                     <div class="question">
                         <div class="question-title">
                             {{$question["question"]}}
@@ -229,6 +73,5 @@ $teams_results = [
                 </div>
             </div>
         </div>
-    @endforeach
 
 @endsection

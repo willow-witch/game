@@ -22,10 +22,20 @@ $teams_results = [
         "criteria" => [
             [
                 "criteria" => "criteria1",
+                "type" => "free",
+                "max_point" => "10",
                 "score" => "score1"
             ],
             [
                 "criteria" => "criteria2",
+                "type" => "radio",
+                "max_point" => "10",
+                "score" => "score2"
+            ],
+            [
+                "criteria" => "criteria2",
+                "type" => "range",
+                "max_point" => "100",
                 "score" => "score2"
             ]
         ]
@@ -51,10 +61,20 @@ $teams_results = [
         "criteria" => [
             [
                 "criteria" => "criteria1",
+                "type" => "free",
+                "max_point" => "10",
                 "score" => "score1"
             ],
             [
                 "criteria" => "criteria2",
+                "type" => "radio",
+                "max_point" => "10",
+                "score" => "score2"
+            ],
+            [
+                "criteria" => "criteria2",
+                "type" => "range",
+                "max_point" => "100",
                 "score" => "score2"
             ]
         ]
@@ -80,10 +100,20 @@ $teams_results = [
         "criteria" => [
             [
                 "criteria" => "criteria1",
+                "type" => "free",
+                "max_point" => "10",
                 "score" => "score1"
             ],
             [
                 "criteria" => "criteria2",
+                "type" => "radio",
+                "max_point" => "10",
+                "score" => "score2"
+            ],
+            [
+                "criteria" => "criteria2",
+                "type" => "range",
+                "max_point" => "100",
                 "score" => "score2"
             ]
         ]
@@ -96,6 +126,11 @@ $teams_results = [
 
     @foreach($teams_results as $result)
 
+        <div class="stage-criteria">
+        <div class="point-name">
+            {{$result["team_name"]}}
+        </div>
+
             @foreach($result["criteria"] as $criteria)
                 <h1>
                     {{$criteria["criteria"]}}
@@ -104,6 +139,8 @@ $teams_results = [
                     {{$criteria["score"]}}
                 </h1>
             @endforeach
+        </div>
 
     @endforeach
+
 @endsection

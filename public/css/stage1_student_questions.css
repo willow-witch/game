@@ -123,3 +123,19 @@ textarea
     display: flex;
     background: #1F456A;
 }
+
+.submit-button {
+    display: flex;
+    width: fit-content;
+    align-items: center;
+    justify-content: center;
+    background-color: #1F456A;
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-size: 17px;
+    border-radius: 25px;
+    color: white;
+    border: none;
+    padding: 12px 25px 12px 25px;
+    margin: 15px 15px 15px auto;
+}

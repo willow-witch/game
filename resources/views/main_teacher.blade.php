@@ -17,13 +17,47 @@
     ];
 
     $stages = [
-        "Таргетинг",
-        "Позиционирование",
-        "Brand Equity",
-        "Brand Communication",
-        "Brand Loyalty"
+        [
+            "stage_name" => "Таргетинг",
+            "teams" => [
+                "team1",
+                "team2",
+                "team3"
+            ]
+        ],
+        [
+            "stage_name" => "Позиционирование",
+            "teams" => [
+                "team1",
+                "team2",
+                "team3"
+            ]
+        ],
+        [
+            "stage_name" => "Brand Equity",
+            "teams" => [
+                "team1",
+                "team2",
+                "team3"
+            ]
+        ],
+        [
+            "stage_name" => "Brand Communication",
+            "teams" => [
+                "team1",
+                "team2",
+                "team3"
+            ]
+        ],
+        [
+            "stage_name" => "Brand Loyalty",
+            "teams" => [
+                "team1",
+                "team2",
+                "team3"
+            ]
+        ]
     ];
-    $stages_count = count($stages);
 
     $user_information = [
         [
@@ -65,35 +99,40 @@
 
     @foreach($games as $game)
     <div class="user-games-games">
-        <div class="user-games-games-name">
+        <div class="teacher-games-games-name">
             {{$game["game_name"]}}
         </div>
 
-        <div class="user-games-games-progress-list" href="javascript:void(0);" tabindex="1">
-            {{$game["status"]}}
-        </div>
+        <?php
+        $stages_count = count($stages);
+        ?>
 
+        @for($i=0; $i < $stages_count; $i++)
+            <div class="teacher-stages-wrapper">
+                <div class="teacher-games-games-progress-list" href="javascript:void(0);" tabindex="1">
+                     {{$stages[$i]["stage_name"]}}
+                </div>
 
-        <div class="user-stages-wrapper">
-            <div class="user-games-games-progress-list" href="javascript:void(0);" tabindex="1">
-                stages
+                <?php
+                $teams_count = count($stages[$i]["teams"]);
+                ?>
+
+                <ul class="teacher-games-games-progress">
+
+                   @for($j=0; $j < $teams_count; $j++)
+                    <li class="teacher-games-games-progress-stage-team">
+                       <a href="stage/{{$i+1}}/team/{{$j+1}}">
+                           {{$stages[$i]["teams"][$j]}}
+                       </a>
+                    </li>
+                   @endfor
+
+                </ul>
             </div>
-
-            <ul class="user-games-games-progress">
-
-                @for($i=1; $i<=$stages_count; $i++)
-                <li class="user-games-games-progress-stage">
-                    <a href="stage/{{$i}}">
-                        stage {{$i}} - {{$stages[$i-1]}}
-                    </a>
-                </li>
-                @endfor
-
-
-            </ul>
-        </div>
+        @endfor
 
     </div>
+
     @endforeach
 
 @endsection

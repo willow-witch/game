@@ -59,19 +59,19 @@ Route::prefix('teacher')->group(function () {
         return View::make('main_teacher');
     });
 
-    Route::get('/stage/{stage}', function($stage)
+    Route::get('/stage/{stage}/team/{team}', function($stage, $team)
     {
         switch ($stage) {
             case 1:
-                return View::make('stages.stage1.teacher_stage1');
+                return View::make('stages.stage1.teacher_stage1', ['team' => $team]);
             case 2:
-                return View::make('stages.stage2.teacher_stage2');
+                return View::make('stages.stage2.teacher_stage2', ['team' => $team]);
             case 3:
-                return View::make('stages.stage3.teacher_stage3');
+                return View::make('stages.stage3.teacher_stage3', ['team' => $team]);
             case 4:
-                return View::make('stages.stage4.teacher_stage4');
+                return View::make('stages.stage4.teacher_stage4', ['team' => $team]);
             case 5:
-                return View::make('stages.stage5.teacher_stage5');
+                return View::make('stages.stage5.teacher_stage5', ['team' => $team]);
         }
     });
 
