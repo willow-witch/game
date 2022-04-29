@@ -1,17 +1,44 @@
 <?php
 
 $criteria = [
-    [
-        "criteria" => "criteria1",
-        "score" => "score1"
+    "teachers" => [
+        "teacher1",
+        "teacher2",
+        "teacher3"
     ],
-    [
-        "criteria" => "criteria2",
-        "score" => "score2"
-    ],
-    [
-        "criteria" => "criteria3",
-        "score" => "score3"
+    "criteria" => [
+        [
+            "criteria_name" => "criteria1",
+            "points" => [
+                "c1p1",
+                "c1p2",
+                "c1p3"
+            ]
+        ],
+        [
+            "criteria_name" => "criteria2",
+            "points" => [
+                "c2p1",
+                "c1p2",
+                "c2p3"
+            ]
+        ],
+        [
+            "criteria_name" => "criteria3",
+            "points" => [
+                "c3p1",
+                "c3p2",
+                "c3p3"
+            ]
+        ],
+        [
+            "criteria_name" => "criteria4",
+            "points" => [
+                "c1p1",
+                "c1p2",
+                "c1p3"
+            ]
+        ]
     ]
 ];
 
@@ -19,14 +46,45 @@ $criteria = [
 
 @section('student_stage1_criteria')
 
-        @foreach($criteria as $score)
-            <h1>
-                {{$score["criteria"]}}
-            </h1>
-            <h1>
-                {{$score["score"]}}
-            </h1>
+    <div class="stage-name">
+        Оценка
+    </div>
+
+    <table class="table-wrapper">
+
+        <thead class="table-head">
+            <td>
+                Критерии / Преподаватели
+             </td>
+            @foreach($criteria["teachers"] as $teacher)
+                <td>
+                    {{$teacher}}
+                </td>
+            @endforeach
+        </thead>
+
+        <tbody class="table-body">
+        @foreach($criteria["criteria"] as $item)
+            <tr>
+
+            <td>
+                {{$item["criteria_name"]}}
+            </td>
+
+            @foreach($item["points"] as $point)
+                <td>
+                    {{$point}}
+                </td>
+            @endforeach
+
+            </tr>
         @endforeach
+
+        </tbody>
+    </table>
+
+
+
 
 @endsection
 

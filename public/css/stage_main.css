@@ -53,6 +53,7 @@
 .stage-criteria {
     margin: 50px 60px 40px 60px ;
     display: flex;
+    flex-direction: column;
     background-color: white;
     width: -webkit-fill-available;
     height: -webkit-fill-available;

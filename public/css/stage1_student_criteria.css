@@ -1,0 +1,43 @@
+.table-wrapper {
+    width: 100%;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    background-color: rgb(240, 241, 242);
+    border: 15px solid rgb(240, 241, 242);
+    border-top: 5px solid rgb(240, 241, 242);
+    border-collapse: inherit;
+}
+
+.table-head {
+    padding: 5px;
+    background: rgb(240, 241, 242);
+    border: none;
+    border-bottom: 5px solid rgb(240, 241, 242);
+    text-align: center;
+}
+
+.table-head td {
+    padding: 15px;
+    border: none;
+    border-bottom: 15px solid rgb(240, 241, 242);
+}
+
+.table-head td:first-child {
+    text-align: left;
+}
+
+.table-body tr {
+    background-color: white;
+    border-radius: inherit;
+}
+
+.table-body tr td {
+    padding: 15px;
+    border: none;
+    border-bottom: 15px solid rgb(240, 241, 242);
+    text-align: center;
+}
+
+.table-body tr td:first-child {
+    text-align: left;
+}
