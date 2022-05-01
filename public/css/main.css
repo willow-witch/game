@@ -3,7 +3,7 @@
 .wrapper {
     font-family: 'Open Sans', sans-serif;
     font-style: normal;
-    margin: 60px 20px 60px 60px ;
+    margin: 40px 20px 60px 60px ;
 }
 
 .content {
@@ -27,7 +27,7 @@
     height: -webkit-fill-available;
     margin-right: 60px;
     border-radius: 10px;
-    box-shadow: 0px 10px 10px 5px rgba(0, 0, 0, 0.08);
+    box-shadow: 0px 5px 25px 8px rgba(0, 0, 0, 0.08);
     padding: 26px 26px 0 26px;
 }
 
@@ -37,7 +37,7 @@
 
 .user-wrapper-title {
     font-size: 18px;
-    margin-bottom: 19px;
+    margin-bottom: 38px;
 }
 
 .user-profile-image {
@@ -59,6 +59,9 @@
 .user-profile-profile {
     font-size: 16px;
     display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 8px 0 8px;
     margin-bottom: 25px;
 }
 
@@ -77,7 +80,7 @@
     height: 57px;
     align-items: center;
     justify-content: center;
-    background: rgba(246, 165, 0, 1);
+    background: #0971AC;
     border-radius: 15px;
     color: white;
     margin-bottom: 25px;
@@ -231,6 +234,28 @@
 
 .teacher-games-games-progress-stage-team:first-child {
     border-top: none;
+}
+
+.admin-edit-stage-wrapper {
+    display: flex;
+    flex-direction: row;
+}
+
+.admin-edit-stage-wrapper-btn {
+    display: flex;
+    width: -webkit-fill-available;
+    height: 30px;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(246, 165, 0, 1);
+    border-radius: 15px;
+    color: white;
+    padding: 12px 25px 12px 25px;
+    margin: 0 15px 15px 0;
+}
+
+.admin-edit-stage-wrapper-btn:last-child {
+    margin-right: 0;
 }
 
 

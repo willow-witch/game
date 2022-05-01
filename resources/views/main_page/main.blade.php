@@ -11,29 +11,21 @@
 
         <div class="user-wrapper">
             <div class="user-wrapper-title">
-                Profile
+                Профиль
             </div>
 
             @yield('profile')
 
-            <div class="user-profile-btn"> Statistics</div>
-            <div class="user-profile-btn"> Edit</div>
-
         </div>
 
         <div class="user-wrapper">
-            <div class="user-wrapper-title">
-                Games
-            </div>
 
             @yield('games')
 
-            <div class="user-games-btn">
-                @yield('create')
-            </div>
+
+            @yield('create')
+
         </div>
-
-
 
     </div>
 </div>

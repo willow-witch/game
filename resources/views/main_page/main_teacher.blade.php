@@ -1,4 +1,4 @@
-@extends('main')
+@extends('main_page.main')
 
 <?php
     $games = [
@@ -91,11 +91,21 @@
 
     @foreach($user_information as $item)
     <div class="user-profile-profile">
-        {{$item["key"]}} - {{$item["value"]}}
+        <div>
+            {{$item["key"]}}
+        </div>
+        <div>
+            {{$item["value"]}}
+        </div>
     </div>
     @endforeach
+    <div class="user-profile-btn"> Edit</div>
 @endsection
 @section('games')
+
+    <div class="user-wrapper-title">
+        Игры
+    </div>
 
     @foreach($games as $game)
     <div class="user-games-games">
@@ -137,5 +147,7 @@
 
 @endsection
 @section('create')
-    <a href="create_game">create game</a>
+    <div class="user-games-btn">
+        <a href="create_game">Создать игру</a>
+    </div>
 @stop

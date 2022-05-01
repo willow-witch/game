@@ -29,7 +29,7 @@ Route::get('/logout', function()
 
 Route::prefix('student')->group(function () {
     Route::get('/profile', function () {
-        return View::make('main_student');
+        return View::make('main_page.main_student');
     });
 
     Route::get('/stage/{stage}', function($stage)
@@ -56,7 +56,7 @@ Route::prefix('student')->group(function () {
 
 Route::prefix('teacher')->group(function () {
     Route::get('/profile', function () {
-        return View::make('main_teacher');
+        return View::make('main_page.main_teacher');
     });
 
     Route::get('/stage/{stage}/team/{team}', function($stage, $team)
@@ -79,6 +79,18 @@ Route::prefix('teacher')->group(function () {
     {
         return View::make('create_game');
     });
+});
+
+Route::prefix('admin')->group(function () {
+    Route::get('/profile', function () {
+        return View::make('main_page.main_admin');
+    });
+
+    Route::get('create_user', function()
+    {
+        return View::make('admin_authority.create_user');
+    });
+
 });
 
 //Route::get('users', 'UserController@getIndex');
