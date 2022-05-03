@@ -1,30 +1,5 @@
 @extends('main_page.main')
 
-<?php
-    $user_information = [
-        [
-            "key" => "Фамилия",
-            "value" => "Иванова"
-        ],
-        [
-            "key" =>  "Имя",
-            "value" => "Валерия"
-        ],
-        [
-            "key" => "Отчество",
-            "value" => "Андреевна"
-        ],
-        [
-            "key" =>"Курс, Специальность",
-            "value" => "4 курс, МОиАИС"
-        ],
-        [
-            "key" => "e-mail",
-            "value" => "abc@gmsil.com"
-        ]
-    ];
-?>
-
 @section('profile')
 
     <div class="user-profile-image">
@@ -45,32 +20,6 @@
     <div class="user-profile-btn"> Edit</div>
 @endsection
 @section('games')
-
-    <?php
-    $stages = [
-        "Таргетинг",
-        "Позиционирование",
-        "Brand Equity",
-        "Brand Communication",
-        "Brand Loyalty"
-    ];
-    $stages_count = count($stages);
-
-    $games = [
-        [
-            "game_name" => "game1",
-            "team_name" => "team1"
-        ],
-        [
-            "game_name" => "game3",
-            "team_name" => "team5"
-        ],
-        [
-            "game_name" => "game7",
-            "team_name" => "team2"
-        ]
-    ]
-    ?>
 
     <div class="user-wrapper-title">
         Игры

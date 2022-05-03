@@ -1,25 +1,5 @@
 @extends('main_page.main')
 
-<?php
-$user_information = [
-    [
-        "key" => "Фамилия",
-        "value" => "Иванова"
-    ],
-    [
-        "key" =>  "Имя",
-        "value" => "Валерия"
-    ],
-    [
-        "key" =>"Роль",
-        "value" => "Администратор"
-    ],
-    [
-        "key" => "e-mail",
-        "value" => "abc@gmsil.com"
-    ]
-];
-?>
 
 @section('profile')
 
@@ -41,46 +21,24 @@ $user_information = [
 @endsection
 @section('games')
 
-    <?php
-    $stages = [
-        "Таргетинг",
-        "Позиционирование",
-        "Brand Equity",
-        "Brand Communication",
-        "Brand Loyalty"
-    ];
-    $stages_count = count($stages);
-
-    $games = [
-        [
-            "game_name" => "game1",
-            "team_name" => "team1"
-        ],
-        [
-            "game_name" => "game3",
-            "team_name" => "team5"
-        ],
-        [
-            "game_name" => "game7",
-            "team_name" => "team2"
-        ]
-    ]
-    ?>
-
     <div class="user-wrapper-title">
         Редактировать
     </div>
 
-    @foreach($stages as $stage)
+    @for($i=1; $i <= $stages_count; $i++)
         <div class="admin-edit-stage-wrapper">
             <div class="admin-edit-stage-wrapper-btn">
-                {{$stage}} - Вопросы
+                <a href="edit/stage/{{$i}}/questions">
+                    {{$stages[$i-1]}} - Вопросы
+                </a>
             </div>
             <div class="admin-edit-stage-wrapper-btn">
-                {{$stage}} - Критерии
+                <a href="edit/stage/{{$i}}/criteria">
+                    {{$stages[$i-1]}} - Критерии
+                </a>
             </div>
         </div>
-    @endforeach
+    @endfor
 
 @endsection
 @section('create')
