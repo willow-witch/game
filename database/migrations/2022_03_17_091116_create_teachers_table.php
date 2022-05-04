@@ -17,10 +17,8 @@ return new class extends Migration
             $table->bigInteger("id")->unsigned()->nullable(false);
             $table->string("first_name", 20);
             $table->string("last_name", 20);
-            $table->bigInteger("school_id")->unsigned();
             $table->string("photo", 50);
 
-            $table->foreign('school_id')->references('id')->on('schools')->onUpdate('cascade')->onDelete('cascade');
             $table->foreign('id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
         });
     }

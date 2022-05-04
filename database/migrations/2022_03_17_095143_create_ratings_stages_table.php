@@ -18,7 +18,7 @@ return new class extends Migration
             $table->bigInteger("group_id")->unsigned()->nullable(false);
             $table->bigInteger("stage_id")->unsigned()->nullable(false);
             $table->double("rating", 10, 2);
-            $table->timestamp("date");
+            $table->timestamp("evaluation_date");
 
             $table->foreign('group_id')->references('id')->on('groups')->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('stage_id')->references('id')->on('stages')->onUpdate('cascade')->onDelete('restrict');

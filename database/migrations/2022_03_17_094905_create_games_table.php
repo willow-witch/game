@@ -14,17 +14,11 @@ return new class extends Migration
     public function up()
     {
         Schema::create('games', function (Blueprint $table) {
-            $table->bigInteger("game_id")->unsigned()->nullable(false);
-            $table->bigInteger("group_id")->unsigned()->nullable(false);
-            $table->timestamp("start_date");
-            $table->timestamp("end_date");
-            $table->tinyInteger("participants_max_number");
+            $table->id();
+            $table->timestamp("start_date")->useCurrent();
+            $table->timestamp("end_date")->useCurrent();
             $table->string("password");
             $table->tinyInteger("teams_amount");
-
-            $table->foreign('group_id')->references('id')->on('groups')->onUpdate('cascade')->onDelete('restrict');
-
-            $table->primary(array('game_id', 'group_id'));
         });
     }
 

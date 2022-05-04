@@ -18,10 +18,7 @@ return new class extends Migration
             $table->string("name", 50);
             $table->timestamp("start_date");
             $table->timestamp("end_date");
-            $table->bigInteger("teacher_id")->unsigned();
             $table->tinyInteger("participants_number");
-
-            $table->foreign('teacher_id')->references('id')->on('teachers')->onUpdate('cascade')->onDelete('restrict');
         });
     }
 
