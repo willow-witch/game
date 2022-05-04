@@ -23,11 +23,8 @@ return new class extends Migration
 
             $table->foreign('group_id')->references('id')->on('groups')->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('game_id')->references('id')->on('games')->onUpdate('cascade')->onDelete('restrict');
-            $table->foreign('question_id')->references('id')->on('questions')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('answer_id')->references('id')->on('answers')->onUpdate('cascade')->onDelete('cascade');
-
-            $table->primary(array('game_id', 'group_id', 'question_id', 'answer_id', 'answer_date', 'active'));
-
+            $table->foreign('question_id')->references('id')->on('stage1_questions')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('answer_id')->references('id')->on('stage1_answers')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 

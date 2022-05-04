@@ -17,8 +17,8 @@ return new class extends Migration
             $table->bigInteger("question_id")->unsigned()->nullable(false);
             $table->bigInteger("answer_id")->unsigned()->nullable(false);
 
-            $table->foreign('question_id')->references('id')->on('questions')->onUpdate('cascade')->onDelete('cascade');
-            $table->foreign('answer_id')->references('id')->on('answers')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('question_id')->references('id')->on('stage1_questions')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('answer_id')->references('id')->on('stage1_answers')->onUpdate('cascade')->onDelete('cascade');
 
             $table->primary(array('question_id', 'answer_id'));
         });

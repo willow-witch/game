@@ -21,7 +21,7 @@ return new class extends Migration
             $table->boolean("active");
 
             $table->foreign('teacher_id')->references('id')->on('teachers')->onUpdate('cascade')->onDelete('restrict');
-            $table->foreign('criteria_id')->references('id')->on('criteria')->onUpdate('cascade')->onDelete('restrict');
+            $table->foreign('criteria_id')->references('id')->on('stage1_criteria')->onUpdate('cascade')->onDelete('restrict');
         });
     }
 
