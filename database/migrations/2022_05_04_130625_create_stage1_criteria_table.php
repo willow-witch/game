@@ -13,12 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('games', function (Blueprint $table) {
+        Schema::create('stage1_criteria', function (Blueprint $table) {
             $table->id();
-            $table->timestamp("start_date");
-            $table->timestamp("end_date");
-            $table->string("password");
-            $table->tinyInteger("teams_amount");
+            $table->string("criteria", 50);
+            $table->tinyInteger("max_point");
+            $table->boolean("active");
         });
     }
 
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('games');
+        Schema::dropIfExists('stage1_criteria');
     }
 };

@@ -13,16 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('judges', function (Blueprint $table) {
-            $table->bigInteger("game_id")->unsigned()->nullable(false);
+        Schema::create('stage1_teachers_evaluation', function (Blueprint $table) {
             $table->bigInteger("teacher_id")->unsigned()->nullable(false);
-            $table->bigInteger("stage_id")->unsigned()->nullable(false);
+            $table->bigInteger("criteria_id")->unsigned()->nullable(false);
+            $table->tinyInteger("score");
+            $table->timestamp("evaluation_date")->useCurrentOnUpdate();
+            $table->boolean("active");
 
-            $table->foreign('game_id')->references('id')->on('games')->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('teacher_id')->references('id')->on('teachers')->onUpdate('cascade')->onDelete('restrict');
-            $table->foreign('stage_id')->references('id')->on('stages')->onUpdate('cascade')->onDelete('restrict');
-
-            $table->primary(array('game_id', 'teacher_id', 'stage_id'));
+            $table->foreign('criteria_id')->references('id')->on('criteria')->onUpdate('cascade')->onDelete('restrict');
         });
     }
 
@@ -33,6 +32,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('games_students');
+        Schema::dropIfExists('stage1_teachers_evaluation');
     }
 };

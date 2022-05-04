@@ -14,8 +14,13 @@ return new class extends Migration
     public function up()
     {
         Schema::create('games_students', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->bigInteger("game_id")->unsigned()->nullable(false);
+            $table->bigInteger("student_id")->unsigned()->nullable(false);
+
+            $table->foreign('game_id')->references('id')->on('games')->onUpdate('cascade')->onDelete('restrict');
+            $table->foreign('student_id')->references('id')->on('students')->onUpdate('cascade')->onDelete('restrict');
+
+            $table->primary(array('game_id', 'student_id'));
         });
     }
 

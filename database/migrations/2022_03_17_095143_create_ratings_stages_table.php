@@ -18,10 +18,11 @@ return new class extends Migration
             $table->bigInteger("group_id")->unsigned()->nullable(false);
             $table->bigInteger("stage_id")->unsigned()->nullable(false);
             $table->double("rating", 10, 2);
-            $table->timestamp("evaluation_date");
+            $table->timestamp("evaluation_date")->useCurrentOnUpdate();
 
             $table->foreign('group_id')->references('id')->on('groups')->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('stage_id')->references('id')->on('stages')->onUpdate('cascade')->onDelete('restrict');
+            $table->foreign('game_id')->references('id')->on('games')->onUpdate('cascade')->onDelete('restrict');
 
             $table->primary(array('game_id', 'group_id', 'stage_id'));
         });

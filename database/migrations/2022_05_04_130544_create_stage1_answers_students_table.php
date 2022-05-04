@@ -13,20 +13,21 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('students_rating', function (Blueprint $table) {
+        Schema::create('stage1_answers_students', function (Blueprint $table) {
+            $table->bigInteger("question_id")->unsigned()->nullable(false);
+            $table->bigInteger("answer_id")->unsigned()->nullable(false);
             $table->bigInteger("game_id")->unsigned()->nullable(false);
             $table->bigInteger("group_id")->unsigned()->nullable(false);
-            $table->bigInteger("student_id")->unsigned()->nullable(false);
-            $table->bigInteger("stage_id")->unsigned()->nullable(false);
-            $table->double("rating", 10, 2);
-            $table->timestamp("date")->useCurrentOnUpdate();
+            $table->timestamp("answer_date");
+            $table->boolean("active");
 
             $table->foreign('group_id')->references('id')->on('groups')->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('game_id')->references('id')->on('games')->onUpdate('cascade')->onDelete('restrict');
-            $table->foreign('stage_id')->references('id')->on('stages')->onUpdate('cascade')->onDelete('restrict');
-            $table->foreign('student_id')->references('id')->on('students')->onUpdate('cascade')->onDelete('restrict');
+            $table->foreign('question_id')->references('id')->on('questions')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('answer_id')->references('id')->on('answers')->onUpdate('cascade')->onDelete('cascade');
 
-            $table->primary(array('game_id', 'group_id', 'student_id', 'stage_id'));
+            $table->primary(array('game_id', 'group_id', 'question_id', 'answer_id', 'answer_date', 'active'));
+
         });
     }
 
@@ -37,6 +38,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('students_rating');
+        Schema::dropIfExists('stage1_answers_students');
     }
 };

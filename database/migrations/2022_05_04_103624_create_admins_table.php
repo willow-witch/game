@@ -14,8 +14,12 @@ return new class extends Migration
     public function up()
     {
         Schema::create('admins', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
+            $table->bigInteger("id")->unsigned()->nullable(false);
+            $table->string("first_name", 20);
+            $table->string("last_name", 20);
+            $table->string("photo", 50);
+
+            $table->foreign('id')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
@@ -26,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('admins');
+        Schema::dropIfExists('games_students');
     }
 };
