@@ -3,55 +3,42 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Services;
+use App\Services\StudentService;
+use App\Services\StageService;
+use App\Services\GameService;
+use App\Services\QuestionService;
+use App\Services\CriteriaService;
+use App\Http\Requests\StudentProfileRequest;
 
 class StudentController extends Controller
 {
+    protected StudentService $studentService;
+    protected StageService $stageService;
+    protected GameService $gameService;
+    protected QuestionService $questionService;
+    protected CriteriaService $criteriaService;
+
+    public function __construct(StudentService $studentService,
+                                StageService $stageService,
+                                GameService $gameService,
+                                QuestionService $questionService,
+                                CriteriaService $criteriaService
+                                )
+    {
+        $this->studentService = $studentService;
+        $this->stageService = $stageService;
+        $this->gameService = $gameService;
+        $this->questionService = $questionService;
+        $this->criteriaService = $criteriaService;
+    }
+
     public function showMainPage()
     {
-        $userInformation = [
-            [
-                "key" => "Фамилия",
-                "value" => "Иванова"
-            ],
-            [
-                "key" =>  "Имя",
-                "value" => "Валерия"
-            ],
-            [
-                "key" => "Отчество",
-                "value" => "Андреевна"
-            ],
-            [
-                "key" =>"Курс, Специальность",
-                "value" => "4 курс, МОиАИС"
-            ],
-            [
-                "key" => "e-mail",
-                "value" => "abc@gmsil.com"
-            ]
-        ];
-        $stages = [
-            "Таргетинг",
-            "Позиционирование",
-            "Brand Equity",
-            "Brand Communication",
-            "Brand Loyalty"
-        ];
-        $stagesCount = count($stages);
-        $games = [
-            [
-                "game_name" => "game1",
-                "team_name" => "team1"
-            ],
-            [
-                "game_name" => "game3",
-                "team_name" => "team5"
-            ],
-            [
-                "game_name" => "game7",
-                "team_name" => "team2"
-            ]
-        ];
+        $userInformation = $this->studentService->getUserInformation();
+        $stages = $this->stageService->getAllStages();
+        $stagesCount = $this->stageService->getStagesCount();
+        $games = $this->gameService->getGames();
 
         return view('main_page.main_student', [
             'games' => $games,
@@ -68,85 +55,8 @@ class StudentController extends Controller
 
     public function showStagePage($stage) {
 
-        $criteria = [
-            "teachers" => [
-                "teacher1",
-                "teacher2",
-                "teacher3"
-            ],
-            "criteria" => [
-                [
-                    "criteria_name" => "criteria1",
-                    "points" => [
-                        "c1p1",
-                        "c1p2",
-                        "c1p3"
-                    ]
-                ],
-                [
-                    "criteria_name" => "criteria2",
-                    "points" => [
-                        "c2p1",
-                        "c1p2",
-                        "c2p3"
-                    ]
-                ],
-                [
-                    "criteria_name" => "criteria3",
-                    "points" => [
-                        "c3p1",
-                        "c3p2",
-                        "c3p3"
-                    ]
-                ],
-                [
-                    "criteria_name" => "criteria4",
-                    "points" => [
-                        "c1p1",
-                        "c1p2",
-                        "c1p3"
-                    ]
-                ]
-            ]
-        ];
-        $questions = [
-            [
-                "question" => "City",
-                "type" => "free",
-                "answers" => "City"
-            ],
-            [
-                "question" => "Hobbies",
-                "type" => "test",
-                "answers" => [
-                    "Skating",
-                    "Swimming",
-                    "Sketching",
-                    "Writing",
-                    "Gaming",
-                    "Swimming",
-                    "Sketching",
-                    "Writing",
-                    "Gaming"
-                ]
-            ],
-            [
-                "question" => "City",
-                "type" => "free",
-                "answers" => "City"
-            ],
-            [
-                "question" => "Hobbies",
-                "type" => "test",
-                "answers" => [
-                    "Skating",
-                    "Swimming",
-                    "Sketching",
-                    "Writing",
-                    "Gaming"
-                ]
-            ]
-        ];
+        $criteria = $this->criteriaService->getCriteriaForStudent();
+        $questions = $this->questionService->getQuestionsForStudent();
 
         switch ($stage) {
             case 1:

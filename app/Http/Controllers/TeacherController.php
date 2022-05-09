@@ -3,91 +3,45 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Services\TeacherService;
+use App\Services\CriteriaService;
+use App\Services\GameService;
+use App\Services\QuestionService;
+use App\Services\TeamService;
+use App\Services\StageService;
 
 class TeacherController extends Controller
 {
+    protected TeacherService $teacherService;
+    protected StageService $stageService;
+    protected GameService $gameService;
+    protected QuestionService $questionService;
+    protected CriteriaService $criteriaService;
+    protected TeamService $teamService;
+
+    public function __construct(TeacherService $teacherService,
+                                StageService $stageService,
+                                GameService $gameService,
+                                QuestionService $questionService,
+                                CriteriaService $criteriaService,
+                                TeamService $teamService
+    )
+    {
+        $this->teacherService = $teacherService;
+        $this->stageService = $stageService;
+        $this->gameService = $gameService;
+        $this->questionService = $questionService;
+        $this->criteriaService = $criteriaService;
+        $this->teamService = $teamService;
+    }
+
     public function showMainPage()
     {
-        $games = [
-            [
-                "game_name" => "game1",
-                "status" => "не завершено"
-            ],
-            [
-                "game_name" => "game2",
-                "status" => "не завершено"
-            ],
-            [
-                "game_name" => "game3",
-                "status" => "не завершено"
-            ]
-        ];
+        $games = $this->gameService->getGames();
 
-        $stages = [
-            [
-                "stage_name" => "Таргетинг",
-                "teams" => [
-                    "team1",
-                    "team2",
-                    "team3"
-                ]
-            ],
-            [
-                "stage_name" => "Позиционирование",
-                "teams" => [
-                    "team1",
-                    "team2",
-                    "team3"
-                ]
-            ],
-            [
-                "stage_name" => "Brand Equity",
-                "teams" => [
-                    "team1",
-                    "team2",
-                    "team3"
-                ]
-            ],
-            [
-                "stage_name" => "Brand Communication",
-                "teams" => [
-                    "team1",
-                    "team2",
-                    "team3"
-                ]
-            ],
-            [
-                "stage_name" => "Brand Loyalty",
-                "teams" => [
-                    "team1",
-                    "team2",
-                    "team3"
-                ]
-            ]
-        ];
+        $stages = $this->stageService->getTeamsForStages();
 
-        $userInformation = [
-            [
-                "key" => "Фамилия",
-                "value" => "Зонин"
-            ],
-            [
-                "key" =>  "Имя",
-                "value" => "Никита"
-            ],
-            [
-                "key" => "Отчество",
-                "value" => "Андреевич"
-            ],
-            [
-                "key" =>"Должность",
-                "value" => "Преподаватель"
-            ],
-            [
-                "key" => "e-mail",
-                "value" => "abc@gmsil.com"
-            ]
-        ];
+        $userInformation = $this->teacherService->getUserInformation();
 
         return view('main_page.main_teacher',
                     [
@@ -105,67 +59,11 @@ class TeacherController extends Controller
 
     public function showStagePage($stage, $team) {
 
-        $teamName = "team1";
+        $teamName = $this->teamService->getTeamName();
 
-        $answers = [
-            [
-                "question" => "City",
-                "type" => "free",
-                "answers" => "City"
-            ],
-            [
-                "question" => "Hobbies",
-                "type" => "test",
-                "answers" => [
-                    "Skating",
-                    "Swimming",
-                    "Sketching",
-                    "Writing",
-                    "Gaming",
-                    "Swimming",
-                    "Sketching",
-                    "Writing",
-                    "Gaming"
-                ]
-            ],
-            [
-                "question" => "City",
-                "type" => "free",
-                "answers" => "City"
-            ],
-            [
-                "question" => "Hobbies",
-                "type" => "test",
-                "answers" => [
-                    "Skating",
-                    "Swimming",
-                    "Sketching",
-                    "Writing",
-                    "Gaming"
-                ]
-            ]
-        ];
+        $answers = $this->teamService->getAnswersForStage($stage);
 
-        $criteria = [
-            [
-                "criteria_name" => "criteria1",
-                "type" => "free",
-                "max_point" => "10",
-                "score" => "score1"
-            ],
-            [
-                "criteria_name" => "criteria2",
-                "type" => "radio",
-                "max_point" => "10",
-                "score" => "score2"
-            ],
-            [
-                "criteria_name" => "criteria2",
-                "type" => "range",
-                "max_point" => "100",
-                "score" => "score2"
-            ]
-        ];
+        $criteria = $this->criteriaService->getCriteriaForTeacher();
 
         switch ($stage) {
             case 1:
