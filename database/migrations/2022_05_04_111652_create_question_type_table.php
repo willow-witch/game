@@ -13,13 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('stage1_questions', function (Blueprint $table) {
+        Schema::create('question_type', function (Blueprint $table) {
             $table->id();
-            $table->string("question", 60);
-            $table->bigInteger("type")->unsigned()->nullable(false);
-            $table->boolean("active");
-
-            $table->foreign('type')->references('id')->on('question_type')->onUpdate('cascade')->onDelete('cascade');
+            $table->timestamps();
         });
     }
 
@@ -30,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('stage1_questions');
+        Schema::dropIfExists('question_type');
     }
 };
