@@ -1,4 +1,3 @@
-
 @section('student_stage1_questions')
     <div class="stage-name">
         Портрет покупателя

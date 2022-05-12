@@ -28,19 +28,11 @@ class QuestionService
                 ]
             ],
             [
-                "question" => "City",
-                "type" => "free",
-                "answers" => "City"
-            ],
-            [
-                "question" => "Hobbies",
-                "type" => "test",
+                "question" => "Personality",
+                "type" => "scale",
                 "answers" => [
-                    "Skating",
-                    "Swimming",
-                    "Sketching",
-                    "Writing",
-                    "Gaming"
+                    "left" => "Introvert",
+                    "right" => "Extravert"
                 ]
             ]
         ];
