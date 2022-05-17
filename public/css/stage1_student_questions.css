@@ -79,8 +79,8 @@ textarea
 .question-title {
     display: flex;
     flex-direction: row;
-    width: -webkit-fill-available;
-    margin-bottom: 25px;
+    width: fit-content;
+    margin: 0 100px 25px 0;
 }
 
 .question-free-answers {
@@ -124,6 +124,15 @@ textarea
     background: #1F456A;
 }
 
+.question-test-answer input[type=radio] {
+    display: none;
+}
+
+.question-test-answer input[type=radio]:checked + span {
+    display: flex;
+    background: #1F456A;
+}
+
 .submit-button {
     display: flex;
     width: fit-content;
@@ -139,3 +148,5 @@ textarea
     padding: 12px 25px 12px 25px;
     margin: 15px 15px 15px auto;
 }
+
+

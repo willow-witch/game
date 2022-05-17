@@ -9,6 +9,7 @@ use App\Services\GameService;
 use App\Services\QuestionService;
 use App\Services\StageService;
 use App\Services\StudentService;
+use App\Services\UserService;
 
 class AdminController extends Controller
 {
@@ -17,12 +18,14 @@ class AdminController extends Controller
     protected GameService $gameService;
     protected QuestionService $questionService;
     protected CriteriaService $criteriaService;
+    protected UserService $userService;
 
     public function __construct(AdminService $adminService,
                                 StageService $stageService,
                                 GameService $gameService,
                                 QuestionService $questionService,
-                                CriteriaService $criteriaService
+                                CriteriaService $criteriaService,
+                                UserService $userService
     )
     {
         $this->adminService = $adminService;
@@ -30,6 +33,15 @@ class AdminController extends Controller
         $this->gameService = $gameService;
         $this->questionService = $questionService;
         $this->criteriaService = $criteriaService;
+        $this->userService = $userService;
+
+        view()->composer('layout_main', function ($view) {
+            $view->with('user_name', $this->userService->getUserName());
+        });
+
+        view()->composer('stages.stage', function ($view) {
+            $view->with('stages', $this->stageService->getAllStages());
+        });
     }
 
     public function showMainPage()

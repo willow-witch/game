@@ -6,6 +6,7 @@ class QuestionService
 {
     public function getQuestionsForStudent(): array
     {
+        //TODO: отсортировать по темам
         return [
             [
                 "question" => "City",
@@ -14,7 +15,7 @@ class QuestionService
             ],
             [
                 "question" => "Hobbies",
-                "type" => "test",
+                "type" => "test-multiple-options",
                 "answers" => [
                     "Skating",
                     "Swimming",
@@ -29,10 +30,10 @@ class QuestionService
             ],
             [
                 "question" => "Personality",
-                "type" => "scale",
+                "type" => "test-only-option",
                 "answers" => [
-                    "left" => "Introvert",
-                    "right" => "Extravert"
+                    "Introvert",
+                    "Extravert"
                 ]
             ]
         ];

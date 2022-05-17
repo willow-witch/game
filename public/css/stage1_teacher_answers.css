@@ -21,6 +21,7 @@
     font-size: 17px;
     padding-left: 15px;
     color: rgba(80, 80, 80, 1);
+    margin-bottom: 5px;
 }
 
 .teacher-question-test-answers {
@@ -40,4 +41,10 @@
     color: white;
     padding: 12px 25px 12px 25px;
     margin: 0 15px 15px 0;
+}
+
+.question-title-only-option {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
 }

@@ -27,24 +27,39 @@
                             {{$question["question"]}}
                         </div>
 
-                        @if($question["type"] === "free")
-                            <textarea class="question-free-answers" wrap="soft" placeholder="{{$question["answers"]}}" required></textarea>
+                        @switch($question["type"])
 
-                        @elseif($question["type"] === "test")
+                            @case("free")
+                            <textarea class="question-free-answers" wrap="soft" placeholder="{{$question["answers"]}}" required></textarea>
+                            @break
+
+                            @case("test-multiple-options")
                             <div class="question-test-answers">
-                                <?php
-                                $count_answers = count($question["answers"]);
-                                ?>
-                                @for($i = 0; $i < $count_answers; $i++)
+                                @foreach($question["answers"] as $answer)
                                     <label class="question-test-answer">
                                         <input type="checkbox" >
                                         <span>
-                                        {{$question["answers"][$i]}}
-                                    </span>
+                                            {{$answer}}
+                                        </span>
                                     </label>
-                                @endfor
+                                @endforeach
                             </div>
-                        @endif
+                            @break
+
+                            @case("test-only-option")
+                            <div class="question-test-answers">
+                                @foreach($question["answers"] as $answer)
+                                    <label class="question-test-answer">
+                                        <input type="radio" name="{{$question["question"]}}">
+                                        <span>
+                                            {{$answer}}
+                                        </span>
+                                    </label>
+                                @endforeach
+                            </div>
+                            @break
+
+                        @endswitch
                     </div>
                 @endforeach
             </div>

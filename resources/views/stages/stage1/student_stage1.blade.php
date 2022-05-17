@@ -3,6 +3,7 @@
 @include('stages.stage1.student_stage1_questions', ['questions' => $questions])
 @include('stages.stage1.student_stage1_criteria', ['criteria' => $criteria])
 
+
 @section('stage_content')
 
     <div class="stage-background">

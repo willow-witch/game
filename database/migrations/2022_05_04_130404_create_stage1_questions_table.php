@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string("question", 60);
             $table->bigInteger("type")->unsigned()->nullable(false);
+            $table->string("topic", 50);
             $table->boolean("active");
 
             $table->foreign('type')->references('id')->on('question_type')->onUpdate('cascade')->onDelete('cascade');

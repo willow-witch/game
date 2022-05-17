@@ -15,11 +15,13 @@ class TeamService
             [
                 "question" => "City",
                 "type" => "free",
-                "answers" => "City"
+                "answers" => [
+                    "City"
+                ]
             ],
             [
                 "question" => "Hobbies",
-                "type" => "test",
+                "type" => "test-multiple-options",
                 "answers" => [
                     "Skating",
                     "Swimming",
@@ -33,19 +35,24 @@ class TeamService
                 ]
             ],
             [
-                "question" => "City",
-                "type" => "free",
-                "answers" => "City"
+                "question" => "Personality",
+                "type" => "test-only-option",
+                "answers" => [
+                    "Introvert"
+                ]
             ],
             [
-                "question" => "Hobbies",
-                "type" => "test",
+                "question" => "Personality",
+                "type" => "test-only-option",
                 "answers" => [
-                    "Skating",
-                    "Swimming",
-                    "Sketching",
-                    "Writing",
-                    "Gaming"
+                    "Introvert"
+                ]
+            ],
+            [
+                "question" => "Personality",
+                "type" => "test-only-option",
+                "answers" => [
+                    "Introvert"
                 ]
             ]
         ];

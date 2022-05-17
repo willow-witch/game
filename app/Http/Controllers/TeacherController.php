@@ -9,6 +9,7 @@ use App\Services\GameService;
 use App\Services\QuestionService;
 use App\Services\TeamService;
 use App\Services\StageService;
+use App\Services\UserService;
 
 class TeacherController extends Controller
 {
@@ -18,13 +19,15 @@ class TeacherController extends Controller
     protected QuestionService $questionService;
     protected CriteriaService $criteriaService;
     protected TeamService $teamService;
+    protected UserService $userService;
 
     public function __construct(TeacherService $teacherService,
                                 StageService $stageService,
                                 GameService $gameService,
                                 QuestionService $questionService,
                                 CriteriaService $criteriaService,
-                                TeamService $teamService
+                                TeamService $teamService,
+                                UserService $userService
     )
     {
         $this->teacherService = $teacherService;
@@ -33,6 +36,15 @@ class TeacherController extends Controller
         $this->questionService = $questionService;
         $this->criteriaService = $criteriaService;
         $this->teamService = $teamService;
+        $this->userService = $userService;
+
+        view()->composer('layout_main', function ($view) {
+            $view->with('user_name', $this->userService->getUserName());
+        });
+
+        view()->composer('stages.stage', function ($view) {
+            $view->with('stages', $this->stageService->getAllStages());
+        });
     }
 
     public function showMainPage()
@@ -72,17 +84,30 @@ class TeacherController extends Controller
                         'team' => $team,
                         "team_name" => $teamName,
                         'answers' => $answers,
-                        'criteria' => $criteria
+                        'criteria' => $criteria,
+                        'stage_id' => 1
                     ]
                 );
             case 2:
-                return view('stages.stage2.teacher_stage2', ['team' => $team]);
+                return view('stages.stage2.teacher_stage2', [
+                    'team' => $team,
+                    'stage_id' => 2
+                ]);
             case 3:
-                return view('stages.stage3.teacher_stage3', ['team' => $team]);
+                return view('stages.stage3.teacher_stage3', [
+                    'team' => $team,
+                    'stage_id' => 3
+                ]);
             case 4:
-                return view('stages.stage4.teacher_stage4', ['team' => $team]);
+                return view('stages.stage4.teacher_stage4', [
+                    'team' => $team,
+                    'stage_id' => 4
+                ]);
             case 5:
-                return view('stages.stage5.teacher_stage5', ['team' => $team]);
+                return view('stages.stage5.teacher_stage5', [
+                    'team' => $team,
+                    'stage_id' => 5
+                ]);
         }
     }
 }

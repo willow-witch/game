@@ -5,7 +5,7 @@ namespace App\Services;
 class StageService
 {
     protected array $stages = [
-        "Таргетинг",
+        "Targeting",
         "Позиционирование",
         "Brand Equity",
         "Brand Communication",

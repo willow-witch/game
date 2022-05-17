@@ -43,27 +43,49 @@
                 <div class="questions">
                     @foreach($answers as $question)
                     <div class="question">
-                        <div class="question-title">
-                            {{$question["question"]}}
-                        </div>
 
-                        @if($question["type"] === "free")
-                            <div class="teacher-question-free-answers">
-                                {{$question["answers"]}}
-                            </div>
+                        @switch($question["type"])
 
-                        @elseif($question["type"] === "test")
-                            <div class="teacher-question-test-answers">
-                                <?php
-                                $count_answers = count($question["answers"]);
-                                ?>
-                                @for($i = 0; $i < $count_answers; $i++)
-                                    <div class="teacher-question-test-answer">
-                                            {{$question["answers"][$i]}}
+                            @case("free")
+                                <div class="question-title">
+                                    {{$question["question"]}}
+                                </div>
+                                <div class="teacher-question-free-answers">
+                                    @foreach($question["answers"] as $answer)
+                                        {{$answer}}
+                                    @endforeach
+                                </div>
+                            @break
+
+                            @case("test-multiple-options")
+                                <div class="question-title">
+                                    {{$question["question"]}}
+                                </div>
+                                <div class="teacher-question-test-answers">
+                                    @foreach($question["answers"] as $answer)
+                                        <div class="teacher-question-test-answer">
+                                            {{$answer}}
+                                        </div>
+                                    @endforeach
+                                </div>
+                            @break
+
+                            @case("test-only-option")
+                                <div class="question-title-only-option">
+                                    <div class="question-title">
+                                        {{$question["question"]}}
                                     </div>
-                                @endfor
-                            </div>
-                        @endif
+                                    <div class="teacher-question-test-answers">
+                                        @foreach($question["answers"] as $answer)
+                                            <div class="teacher-question-free-answers">
+                                                {{$answer}}
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            @break
+
+                        @endswitch
                     </div>
                 @endforeach
                 </div>

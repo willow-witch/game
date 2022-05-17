@@ -31,6 +31,20 @@
     align-items: center;
     font-size: 14px;
     margin: 5px auto 0px auto;
+    box-shadow: 1px 1px 3px 1px rgb(0 0 0 / 15%);
+}
+
+.stage-header-stage-number-circle-active {
+    display: flex;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    align-items: center;
+    font-size: 14px;
+    margin: 5px auto 0px auto;
+    background: rgba(246, 165, 0, 1);
+    box-shadow: 1px 1px 3px 1px rgb(0 0 0 / 15%);
 }
 
 .stage-header-stage-name {

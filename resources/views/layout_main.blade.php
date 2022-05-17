@@ -17,7 +17,7 @@
 
     <div class="user">
         <div class="user-name">
-            User's name
+            {{$user_name}}
         </div>
 
         <a href="/logout">
