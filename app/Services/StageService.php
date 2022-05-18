@@ -2,24 +2,18 @@
 
 namespace App\Services;
 
+use Illuminate\Support\Facades\DB;
+
 class StageService
 {
-    protected array $stages = [
-        "Targeting",
-        "Позиционирование",
-        "Brand Equity",
-        "Brand Communication",
-        "Brand Loyalty"
-    ];
-
-    public function getAllStages(): array
+    public function getAllStages()
     {
-        return $this->stages;
+        return DB::table('stages')->pluck('stage');
     }
 
     public function getStagesCount(): int
     {
-        return count($this->stages);
+        return DB::table('stages')->count();
     }
 
     public function getTeamsForStages()

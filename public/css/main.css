@@ -119,6 +119,7 @@
     border-radius: 15px;
     color: white;
     margin-bottom: 25px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .user-games-games-name {
@@ -173,6 +174,7 @@
 
 .user-games-games-progress li a {
     text-decoration: none;
+    color: white;
 }
 
 .teacher-games-games-progress li a {
@@ -241,6 +243,7 @@
 .admin-edit-stage-wrapper {
     display: flex;
     flex-direction: row;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
 }
 
 .admin-edit-stage-wrapper-btn {
