@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             DefaultSeeder::class,
+            Stage1QuestionsSeeder::class
         ]);
     }
 }

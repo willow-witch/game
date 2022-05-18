@@ -14,9 +14,9 @@
                     Добавить изображение
                 </div>
 
-                <input type="text" class="characteristics" placeholder="Имя" required>
-                <input type="text" class="characteristics" placeholder="Пол" required>
-                <input type="text" class="characteristics" placeholder="Возраст" required>
+{{--                <input type="text" class="characteristics" placeholder="Имя" required>--}}
+{{--                <input type="text" class="characteristics" placeholder="Пол" required>--}}
+{{--                <input type="text" class="characteristics" placeholder="Возраст" required>--}}
 
             </div>
 
@@ -30,7 +30,7 @@
                         @switch($question["type"])
 
                             @case("free")
-                            <textarea class="question-free-answers" wrap="soft" placeholder="{{$question["answers"]}}" required></textarea>
+                            <textarea class="question-free-answers" wrap="soft" placeholder="{{$question["question"]}}" required></textarea>
                             @break
 
                             @case("test-multiple-options")
