@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use App\Services\TeacherService;
 use App\Services\CriteriaService;
 use App\Services\GameService;
@@ -10,6 +11,7 @@ use App\Services\QuestionService;
 use App\Services\TeamService;
 use App\Services\StageService;
 use App\Services\UserService;
+use App\Services\StudentService;
 
 class TeacherController extends Controller
 {
@@ -20,6 +22,7 @@ class TeacherController extends Controller
     protected CriteriaService $criteriaService;
     protected TeamService $teamService;
     protected UserService $userService;
+    protected StudentService $studentService;
 
     public function __construct(TeacherService $teacherService,
                                 StageService $stageService,
@@ -27,7 +30,8 @@ class TeacherController extends Controller
                                 QuestionService $questionService,
                                 CriteriaService $criteriaService,
                                 TeamService $teamService,
-                                UserService $userService
+                                UserService $userService,
+                                StudentService $studentService
     )
     {
         $this->teacherService = $teacherService;
@@ -37,6 +41,7 @@ class TeacherController extends Controller
         $this->criteriaService = $criteriaService;
         $this->teamService = $teamService;
         $this->userService = $userService;
+        $this->studentService = $studentService;
 
         view()->composer('layout_main', function ($view) {
             $view->with('user_name', $this->userService->getUserName());
@@ -66,7 +71,41 @@ class TeacherController extends Controller
 
     public function showCreateGamePage()
     {
-        return view('create_game');
+        $stages = $this->stageService->getAllStages();
+
+        $stagesCount = $this->stageService->getStagesCount();
+
+        $fields = $this->studentService->getAllFields();
+
+        return view('create_game.create_game',
+                    [
+                        'stages' => $stages,
+                        'stages_count' => $stagesCount,
+                        'fields' => $fields
+                    ]
+        );
+    }
+
+    public function showCreateTeamsPage(Request $request)
+    {
+        $gameName = $request->input('game_name');
+
+        $teamsAmount = $request->input('teams_number');
+
+        $startDate = $request->date('start_date');
+
+        $endDate = $request->date('end_date');
+
+        $fields = $request->input('fields');
+
+        $studentsFromField = $this->studentService->getStudentFromField();
+
+        return view('create_game.create_teams',
+                    [
+                        "teams_amount" => $teamsAmount,
+                        "students" => $studentsFromField
+                    ]
+        );
     }
 
     public function showStagePage($stage, $team) {

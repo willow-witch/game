@@ -1,0 +1,81 @@
+input[type="text"]
+{
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-size: 17px;
+    padding-left: 15px;
+}
+
+input[type="date"]
+{
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-size: 17px;
+    padding: 0 15px 0 15px;
+    color: rgba(120, 140, 140, 1);
+}
+
+input[type="number"]
+{
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-size: 17px;
+    padding-left: 15px;
+}
+
+.creation-stage-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    width: available;
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+}
+
+.creation-stage-name {
+    display: flex;
+    flex-direction: row;
+    font-size: 20px;
+    width: -webkit-fill-available;
+    height: 32px;
+    margin-bottom: 40px;
+}
+
+.creation-stage-horizontal {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+}
+
+.creation-stage-vertical {
+    display: flex;
+    flex-direction: column;
+}
+
+.basic-parameter {
+    display: flex;
+    flex-direction: row;
+    width: -webkit-fill-available;
+    height: 40px;
+    border: solid rgba(196, 196, 196, 0.5) 1px;
+    border-radius: 5px;
+    margin: 0 20px 10px 0;
+}
+
+.basic-parameter:last-child {
+    margin-right: 0;
+}
+
+.creation-stage-name-subtitle {
+    font-size: 18px;
+    margin: 10px 0 20px 0;
+}
+
+.creation-stage-name-subtitle:first-of-type {
+    margin-top: 0;
+}
+.creation-stage-name-subtitle:last-child {
+    margin-bottom: 0;
+}
+
+
