@@ -1,3 +1,15 @@
+<?php
+
+namespace App\Http\Controllers\UserController;
+
+use App\Http\Controllers\UserController;
+
+$sign = new UserController();
+
+$sign -> sign();
+
+?>
+
 <html>
 <head>
     <link rel="stylesheet" href="/css/reset.css">
@@ -5,34 +17,40 @@
 </head>
 <body>
 
-    <form class="sign-form">
+    <form class="sign-form" method="post" action="{{route('user.sign')}}">
+        @csrf
         <div class="logo-img-big">
         </div>
 
         <div class="input-wrapper">
-            <input type="email" class="sign-input" placeholder="E-mail" required>
 
-            <input type="password" class="sign-input" placeholder="Пароль" required>
+            <input class="sign-input" id="email" type="email" name="email" placeholder="E-mail" value="">
+            @error('email')
+            <div class = "alert alert-danger">({ $message })</div>
+            @enderror
+            <input class="sign-input" id="password" type="password" name="password" placeholder="Пароль" value="">
+            @error('email')
+            <div class = "alert alert-danger">({ $message })</div>
+            @enderror
         </div>
 
+        <input type="submit" value="Войти">
 
-        <div class="sign-btn">
-            <a href="student/profile">
-                student
-            </a>
-        </div>
+{{--        <div class="sign-btn">--}}
+{{--            <button class="send" type="submit" name="sendMe" value="1">Student</button>--}}
+{{--        </div>--}}
 
-        <div class="sign-btn">
-            <a href="teacher/profile">
-                teacher
-            </a>
-        </div>
+{{--        <div class="sign-btn">--}}
+{{--            <a href="teacher/profile">--}}
+{{--                teacher--}}
+{{--            </a>--}}
+{{--        </div>--}}
 
-        <div class="sign-btn">
-            <a href="admin/profile">
-                admin
-            </a>
-        </div>
+{{--        <div class="sign-btn">--}}
+{{--            <a href="admin/profile">--}}
+{{--                admin--}}
+{{--            </a>--}}
+{{--        </div>--}}
     </form>
 
 

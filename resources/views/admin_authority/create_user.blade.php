@@ -1,22 +1,18 @@
 @extends('layout_main')
 
 @section('content')
-<form class="sign-form">
-
+<form class="sign-form" method="post" action="registration">
+    @csrf
     <div class="input-wrapper">
-        <input type="email" class="sign-input" placeholder="E-mail" required>
+        <input type="email" class="sign-input" name="email" placeholder="E-mail" required>
 
-        <input type="password" class="sign-input" placeholder="Пароль" required>
+        <input type="password" class="sign-input" name="password" placeholder="Пароль" required>
 
-        <input type="number" class="sign-input" placeholder="Роль" required min="1" max="3">
+        <input type="number" class="sign-input" name="role" placeholder="Роль" required min="1" max="3">
     </div>
 
+    <input type="submit" value="Создать нового пользователя">
 
-    <div class="sign-btn">
-        <a href="student/profile">
-            Зарегистрироваться
-        </a>
-    </div>
 
 
 </form>
