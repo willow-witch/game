@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="/css/stage1_teacher_answers.css">
     <link rel="stylesheet" href="/css/stage1_student_criteria.css">
     <link rel="stylesheet" href="/css/stage1_teacher_evaluation.css">
+    <link rel="stylesheet" href="/css/create_game.css">
+    <link rel="stylesheet" href="/css/signpage.css">
 </head>
 <body>
 <div class="header-background">

@@ -4,6 +4,17 @@ input[type="text"]
     font-style: normal;
     font-size: 17px;
     padding-left: 15px;
+    border: solid rgba(196, 196, 196, 0.5) 1px;
+    border-radius: 5px;
+}
+
+textarea {
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-size: 17px;
+    padding-left: 15px;
+    border: solid rgba(196, 196, 196, 0.5) 1px;
+    border-radius: 5px;
 }
 
 textarea

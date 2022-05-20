@@ -16,8 +16,7 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string("email", 50);
-            $table->string("password", 50);
-            $table->string("hash", 10);
+            $table->string("password", 256);
             $table->bigInteger("role_id")->unsigned();
 
             $table->foreign('role_id')->references('id')->on('roles')->onUpdate('cascade')->onDelete('restrict');
