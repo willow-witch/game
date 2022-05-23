@@ -17,32 +17,16 @@ use App\Http\Controllers\AdminController;
 */
 
 
-//Route::get('/', [UserController::class, 'showWelcomePage']);
+Route::get('/', [UserController::class, 'showWelcomePage']);
 
 Route::get('sign', [UserController::class, 'showSignPage']);
 
 Route::get('/logout', [UserController::class, 'showLogoutPage']);
 
-Route::name('user.')->group(function () {
-    //Route::get('/profile', [StudentController::class, 'showMainPage']); //-> middleware( 'auth') -> name ('profile');
+Route::post('login', [UserController::class, 'login']);
 
-    Route::view('/profile', 'profile') -> middleware( 'auth') -> name ('profile'); //[StudentController::class, 'showMainPage']
-
-    Route::post('/sign', function (){
-        if(Auth::check()){
-            //$role = DB::table ('users')->where('.$_POST["email"].')->
-            echo ('маладец');
-            return redirect(route('admin/profile'));
-        }
-        echo ('aaaaaaaaa');
-        return view('sign');
-    })-> name ('sign');
-
-    //Route::post('/sign',[\app\Http\Controllers\UserController::class, 'sign']);
-
-    //Route::get('/logout',[]->name('logout'));
-
-
+Route::prefix('student')->group(function () {
+    Route::get('/profile', [StudentController::class, 'showMainPage']);
 
     Route::get('/stage/{stage}', [StudentController::class, 'showStagePage']);
 
@@ -70,7 +54,7 @@ Route::prefix('admin')->group(function () {
 
     Route::get('edit/stage/{stage}/criteria', [AdminController::class, 'showEditCriteriaPage']);
 
-    Route::post('/registration',[UserController::class, 'sign'])->name('registration');
+    Route::post('registration',[UserController::class, 'registerNewUser']);
 
 });
 

@@ -11,7 +11,7 @@
         <input type="number" class="sign-input" name="role" placeholder="Роль" required min="1" max="3">
     </div>
 
-    <input type="submit" value="Создать нового пользователя">
+    <input type="submit" class="sign-btn" value="Создать нового пользователя">
 
 
 

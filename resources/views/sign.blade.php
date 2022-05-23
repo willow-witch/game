@@ -17,7 +17,7 @@ $sign -> sign();
 </head>
 <body>
 
-    <form class="sign-form" method="post" action="{{route('user.sign')}}">
+    <form class="sign-form" method="post" action="login">
         @csrf
         <div class="logo-img-big">
         </div>
@@ -34,7 +34,7 @@ $sign -> sign();
             @enderror
         </div>
 
-        <input type="submit" value="Войти">
+        <input type="submit" class="sign-btn" value="Войти">
 
 {{--        <div class="sign-btn">--}}
 {{--            <button class="send" type="submit" name="sendMe" value="1">Student</button>--}}

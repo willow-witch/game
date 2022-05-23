@@ -1,8 +1,4 @@
 
-<?php
-    $i=0;
-?>
-
 @section('teams')
 
     <form>
