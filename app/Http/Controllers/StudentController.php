@@ -68,20 +68,25 @@ class StudentController extends Controller
     public function showStagePage($stage) {
 
         $criteria = $this->criteriaService->getCriteriaForStudent();
-        $questions = $this->questionService->getQuestionsForStudent();
+
         $stages = $this->stageService->getAllStages();
         $stagesCount = $this->stageService->getStagesCount();
 
         switch ($stage) {
             case 1:
+                $questions = $this->questionService->getQuestionsForStudentStage1();
+
                 return view('stages.stage1.student_stage1', [
                     'criteria' => $criteria,
                     'questions' => $questions,
                     'stage_id'=> 1
                 ]);
             case 2:
+                $questions = $this->questionService->getQuestionsForStudentStage2();
+
                 return view('stages.stage2.student_stage2', [
                     'stages' => $stages,
+                    'questions' => $questions,
                     'stage_id'=> 2,
                     'stages_count' => $stagesCount
                 ]);

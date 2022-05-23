@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\DB;
 
 class QuestionService
 {
-    public function getQuestionsForStudent(): array
+    public function getQuestionsForStudentStage1(): array
     {
         $questions = DB::table('stage1_questions')
             ->select(DB::raw(
@@ -33,5 +33,15 @@ class QuestionService
         }
 
         return $result;
+    }
+
+    public function getQuestionsForStudentStage2()
+    {
+        return [
+            "Описание товара",
+            "Миссия бренда",
+            "Отличие от конкурентов",
+            "Подкрепление отличий"
+        ];
     }
 }

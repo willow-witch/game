@@ -71,7 +71,7 @@ class UserController extends Controller
         // dd($request->all());
 
         //выведет студента
-        return app(StudentController::class)->showMainPage();
+        return redirect(\route('student.profile'));
 
         //выведет студента
         // return app(TeacherController::class)->showMainPage();

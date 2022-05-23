@@ -26,7 +26,7 @@ Route::get('/logout', [UserController::class, 'showLogoutPage']);
 Route::post('login', [UserController::class, 'login']);
 
 Route::prefix('student')->group(function () {
-    Route::get('/profile', [StudentController::class, 'showMainPage']);
+    Route::get('/profile', [StudentController::class, 'showMainPage'])->name('student.profile');
 
     Route::get('/stage/{stage}', [StudentController::class, 'showStagePage']);
 
