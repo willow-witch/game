@@ -1,17 +1,9 @@
 @extends('stages.stage')
 
+@include('stages.stage2.teacher_stage2_answers', ['team_name' => $team_name,'answers' => $answers])
+
 @section('stage_content')
 
-    <h1>
-        stage 2
-    </h1>
-
-@endsection
-
-@section('stage_criteria')
-
-    <h1>
-        criteria 2
-    </h1>
+    @yield('teacher_stage2_answers')
 
 @endsection

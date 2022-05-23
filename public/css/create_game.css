@@ -45,6 +45,7 @@ input[type="number"]
     display: flex;
     flex-direction: row;
     margin-bottom: 20px;
+    align-items: center;
 }
 
 .creation-stage-vertical {

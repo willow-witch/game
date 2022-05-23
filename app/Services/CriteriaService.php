@@ -4,7 +4,7 @@ namespace App\Services;
 
 class CriteriaService
 {
-    public function getCriteriaForStudent() : array
+    public function getCriteriaForStudentStage1() : array
     {
         return [
             "teachers" => [
@@ -49,7 +49,7 @@ class CriteriaService
         ];
     }
 
-    public function getCriteriaForTeacher() : array
+    public function getCriteriaForTeacherStage1() : array
     {
         return [
             [
@@ -72,4 +72,6 @@ class CriteriaService
             ]
         ];
     }
+
+
 }

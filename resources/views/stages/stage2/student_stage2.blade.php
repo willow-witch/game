@@ -1,7 +1,7 @@
 @extends('stages.stage')
 
 @include('stages.stage2.student_stage2_questions', ['questions' => $questions])
-{{--@include('stages.stage2.student_stage2_criteria', ['criteria' => $criteria])--}}
+@include('stages.stage2.student_stage2_criteria', ['criteria' => $criteria])
 
 @section('stage_content')
 

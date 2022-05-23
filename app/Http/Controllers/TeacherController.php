@@ -114,7 +114,7 @@ class TeacherController extends Controller
 
         $answers = $this->teamService->getAnswersForStage($stage);
 
-        $criteria = $this->criteriaService->getCriteriaForTeacher();
+        $criteria = $this->criteriaService->getCriteriaForTeacherStage1();
 
         switch ($stage) {
             case 1:
@@ -130,6 +130,8 @@ class TeacherController extends Controller
             case 2:
                 return view('stages.stage2.teacher_stage2', [
                     'team' => $team,
+                    "team_name" => $teamName,
+                    'answers' => $answers,
                     'stage_id' => 2
                 ]);
             case 3:

@@ -67,13 +67,14 @@ class StudentController extends Controller
 
     public function showStagePage($stage) {
 
-        $criteria = $this->criteriaService->getCriteriaForStudent();
+
         $stages = $this->stageService->getAllStages();
         $stagesCount = $this->stageService->getStagesCount();
 
         switch ($stage) {
             case 1:
                 $questions = $this->questionService->getQuestionsForStudentStage1();
+                $criteria = $this->criteriaService->getCriteriaForStudentStage1();
 
                 return view('stages.stage1.student_stage1', [
                     'criteria' => $criteria,
@@ -82,10 +83,12 @@ class StudentController extends Controller
                 ]);
             case 2:
                 $questions = $this->questionService->getQuestionsForStudentStage2();
+                $criteria = $this->criteriaService->getCriteriaForStudentStage1();
 
                 return view('stages.stage2.student_stage2', [
                     'stages' => $stages,
                     'questions' => $questions,
+                    'criteria' => $criteria,
                     'stage_id'=> 2,
                     'stages_count' => $stagesCount
                 ]);
