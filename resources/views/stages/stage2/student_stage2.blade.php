@@ -1,17 +1,16 @@
 @extends('stages.stage')
 
+@include('stages.stage2.student_stage2_questions', ['questions' => $questions])
+{{--@include('stages.stage2.student_stage2_criteria', ['criteria' => $criteria])--}}
+
 @section('stage_content')
 
-    <h1>
-        stage 2
-    </h1>
+    <div class="stage-background">
+        @yield('student_stage2_questions')
+    </div>
 
-@endsection
-
-@section('stage_criteria')
-
-    <h1>
-        criteria 2
-    </h1>
+    <div class="stage-criteria">
+        @yield('student_stage2_criteria')
+    </div>
 
 @endsection

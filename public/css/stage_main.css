@@ -47,6 +47,10 @@
     box-shadow: 1px 1px 3px 1px rgb(0 0 0 / 15%);
 }
 
+.stage-header-stage-number {
+    font-weight: normal;
+}
+
 .stage-header-stage-name {
     margin-top: auto;
     margin-bottom: auto;

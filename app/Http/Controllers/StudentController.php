@@ -68,7 +68,6 @@ class StudentController extends Controller
     public function showStagePage($stage) {
 
         $criteria = $this->criteriaService->getCriteriaForStudent();
-
         $stages = $this->stageService->getAllStages();
         $stagesCount = $this->stageService->getStagesCount();
 
