@@ -54,7 +54,7 @@ class CriteriaService
         return [
             [
                 "criteria_name" => "criteria1",
-                "type" => "free",
+                "type" => "radio",
                 "max_point" => "10",
                 "score" => "score1"
             ],
@@ -65,9 +65,9 @@ class CriteriaService
                 "score" => "score2"
             ],
             [
-                "criteria_name" => "criteria2",
-                "type" => "range",
-                "max_point" => "100",
+                "criteria_name" => "criteria3",
+                "type" => "radio",
+                "max_point" => "10",
                 "score" => "score2"
             ]
         ];

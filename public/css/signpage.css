@@ -16,7 +16,7 @@ input[type="password"]
     display: flex;
     flex-direction: column;
     width: 400px;
-    margin: 40px auto auto auto;
+    margin: 60px auto auto auto;
     height: fit-content;
 }
 
@@ -60,4 +60,20 @@ input[type="password"]
     display: flex;
     flex-direction: column;
     margin: 50px 0 50px 0;
+}
+
+.submit-button {
+    display: flex;
+    width: -webkit-fill-available;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(246, 165, 0, 1);
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-size: 17px;
+    border-radius: 25px;
+    color: white;
+    border: none;
+    padding: 15px 25px 15px 25px;
+    margin: -20px 15px 0px 15px;
 }

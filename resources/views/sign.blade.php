@@ -34,7 +34,7 @@ $sign -> sign();
             @enderror
         </div>
 
-        <input type="submit" class="sign-btn" value="Войти">
+        <input type="submit" class="submit-button" value="Войти">
 
 {{--        <div class="sign-btn">--}}
 {{--            <button class="send" type="submit" name="sendMe" value="1">Student</button>--}}
