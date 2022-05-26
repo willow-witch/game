@@ -21,15 +21,17 @@
                 @foreach($questions as $question)
                     <div class="question">
                         <div class="question-title">
-                            {{$question}}
+                            {{$question["question"]}}
                         </div>
+
+                        <textarea class="question-free-answers" wrap="soft" placeholder="{{$question["question_help"]}}" required></textarea>
+
 
                         <div class="question-test-answers">
                             <div class="question-test-answer">
                             </div>
                         </div>
 
-                        <textarea class="characteristics" required></textarea>
                     </div>
                 @endforeach
             </div>

@@ -30,18 +30,33 @@ class QuestionService
         {
             $value['answers'] = explode(',', $value['answers']);
             $result[] = $value;
-        }
 
+        }
         return $result;
     }
 
     public function getQuestionsForStudentStage2()
     {
-        return [
-            "Описание товара",
-            "Миссия бренда",
-            "Отличие от конкурентов",
-            "Подкрепление отличий"
-        ];
+//        return [
+//            "Описание товара",
+//            "Миссия бренда",
+//            "Отличие от конкурентов",
+//            "Подкрепление отличий"
+//        ];
+
+        $questions = DB::table('stage2_questions')
+            ->select(DB::raw(
+                'stage2_questions.question,
+                        stage2_questions.question_help,
+                        question_type.type'))
+            ->leftJoin('question_type', 'stage2_questions.type', 'question_type.id')
+            ->orderBy('stage2_questions.id')
+            ->orderBy('question_type.type')
+            ->get();
+
+            $questions = json_decode(json_encode($questions, true), true);
+
+            $result = $questions;
+            return $result;
     }
 }
