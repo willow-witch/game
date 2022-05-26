@@ -62,7 +62,7 @@ input[type="password"]
     margin: 50px 0 50px 0;
 }
 
-.submit-button {
+.submit-btn {
     display: flex;
     width: -webkit-fill-available;
     align-items: center;
