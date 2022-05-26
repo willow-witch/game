@@ -70,6 +70,11 @@ class UserController extends Controller
     {
         // dd($request->all());
 
+        // $email = $request->input('email');
+        //
+        // $id = DB::table('users')->where('id');
+        // $role = ;
+
         //выведет студента
         return redirect(\route('student.profile'));
 
