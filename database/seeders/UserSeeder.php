@@ -18,19 +18,44 @@ class UserSeeder extends Seeder
     public function run()
     {
         DB::table('users')->insert([
-            'email' => Str::random(10).'@gmail.com',
-            'password' => Hash::make('password'),
+            'email' => 'admin@gmail.com',
+            'password' => Hash::make('admin'),
             'role_id' => '1',
         ]);
+
+        DB::table('admins')->insert([
+            'id' => 1,
+            'first_name' => 'ФамилияАдмина',
+            'last_name' => 'ИмяАдмина',
+            'photo' => '/img/profilepics/queen.png'
+        ]);
+
         DB::table('users')->insert([
-            'email' => Str::random(10).'@gmail.com',
-            'password' => Hash::make('password'),
+            'email' => 'student@gmail.com',
+            'password' => Hash::make('student'),
             'role_id' => '2',
         ]);
+
+        DB::table('students')->insert([
+            'id' => 2,
+            'first_name' => 'ФамилияСтудента',
+            'last_name' => 'ИмяСтудента',
+            'photo' => '/img/profilepics/queen.png',
+            'year' => 1,
+            'field' => 'НаправлениеСтудента'
+        ]);
+
         DB::table('users')->insert([
-            'email' => Str::random(10).'@gmail.com',
-            'password' => Hash::make('password'),
+            'email' => 'teacher@gmail.com',
+            'password' => Hash::make('teacher'),
             'role_id' => '3',
+        ]);
+
+        DB::table('teachers')->insert([
+            'id' => 3,
+            'first_name' => 'ФамилияПреподавателя',
+            'last_name' => 'ИмяПреподавателя',
+            'photo' => '/img/profilepics/queen.png'
         ]);
     }
 
