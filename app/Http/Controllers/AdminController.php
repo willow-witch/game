@@ -63,7 +63,12 @@ class AdminController extends Controller
 
     public function showCreateUserPage()
     {
-        return view('admin_authority.create_user');
+        $roles = $this->userService->getRoles();
+
+        return view('admin_authority.create_user', [
+             'roles' => $roles
+         ]
+        );
     }
 
     public function showEditQuestionsPage($stage)

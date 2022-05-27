@@ -21,6 +21,13 @@ use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
+    protected UserService $userService;
+
+    public function __construct(UserService $userService)
+    {
+        $this->userService = $userService;
+    }
+
     public function showWelcomePage()
     {
         return view('welcome');
@@ -51,11 +58,43 @@ class UserController extends Controller
 
         //dd($request->all());
 
-        DB::table('users')->insert([
+        $roleId = $this->userService->getRoleIdFromRusRole($request->input('rus_role'));
+
+        $id = DB::table('users')->insertGetId([
            'email' => $request->input('email'),
            'password' => Hash::make($request->input('password')),
-           'role_id' => $request->input('role'),
+           'role_id' => $roleId
        ]);
+
+        switch ($roleId)
+        {
+            case 1:
+                DB::table('admins')->insert([
+                    'id' => $id,
+                    'first_name' => $request->input('firstname'),
+                    'last_name' => $request->input('lastname'),
+                    'photo' => '/img/profilepics/queen.png'
+                ]);
+                break;
+            case 2:
+                DB::table('students')->insert([
+                 'id' => $id,
+                 'first_name' => $request->input('firstname'),
+                 'last_name' => $request->input('lastname'),
+                 'photo' => '/img/profilepics/woman.png',
+                 'year' => $request->input('year'),
+                 'field' => $request->input('field')
+             ]);
+                break;
+            case 3:
+                DB::table('teachers')->insert([
+                 'id' => $id,
+                 'first_name' => $request->input('firstname'),
+                 'last_name' => $request->input('lastname'),
+                 'photo' => '/img/profilepics/queen.png'
+             ]);
+                break;
+        }
 
         //if (Auth::attempt($formField)){
         //    return redirect()->intended(route('teacher/profile'));

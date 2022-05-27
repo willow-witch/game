@@ -29,13 +29,16 @@ class DefaultSeeder extends Seeder
 
         DB::table('roles')->insert([
             [
-                'role' => 'admin'
+                'role' => 'admin',
+                'rus_role' =>'Администратор'
             ],
             [
-               'role' => 'student'
+               'role' => 'student',
+               'rus_role' =>'Студент'
             ],
             [
-               'role' => 'teacher'
+               'role' => 'teacher',
+               'rus_role' =>'Преподаватель'
             ]
         ]);
 
