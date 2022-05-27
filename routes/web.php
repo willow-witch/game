@@ -48,7 +48,7 @@ Route::prefix('teacher')->group(function () {
 Route::prefix('admin')->group(function () {
     Route::get('/profile', [AdminController::class, 'showMainPage']);
 
-    Route::get('create_user', [AdminController::class, 'showCreateUserPage']);
+    Route::get('create_user', [AdminController::class, 'showCreateUserPage'])->name('admin.create_user');
 
     Route::get('edit/stage/{stage}/questions', [AdminController::class, 'showEditQuestionsPage']);
 

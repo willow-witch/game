@@ -95,6 +95,7 @@ class UserController extends Controller
              ]);
                 break;
         }
+        return redirect(\route('admin.create_user'));
 
         //if (Auth::attempt($formField)){
         //    return redirect()->intended(route('teacher/profile'));
