@@ -18,7 +18,10 @@ class DatabaseSeeder extends Seeder
             DefaultSeeder::class,
             Stage1QuestionsSeeder::class,
             Stage2QuestionsSeeder::class,
-            UserSeeder::class
+            UserSeeder::class,
+            GroupsSeeder::class,
+            GamesSeeder::class,
+            Stage2AnswersSeeder::class
         ]);
     }
 }

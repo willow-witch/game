@@ -112,7 +112,7 @@ class TeacherController extends Controller
 
         $teamName = $this->teamService->getTeamName();
 
-        $answers = $this->teamService->getAnswersForStage($stage);
+        $answers = $this->teamService->getAnswersForStage($stage, $team);
 
         $criteria = $this->criteriaService->getCriteriaForTeacherStage1();
 

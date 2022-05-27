@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('stage2_answers_students', function (Blueprint $table) {
             $table->bigInteger("question_id")->unsigned()->nullable(false);
-            $table->bigInteger("answer_id")->unsigned()->nullable(false);
-            $table->bigInteger("game_id")->unsigned()->nullable(false);
+            $table->string('answer', 500);
+            $table->bigInteger('game_id')->unsigned()->nullable(false);
             $table->bigInteger("group_id")->unsigned()->nullable(false);
             $table->timestamp("answer_date");
             $table->boolean("active");

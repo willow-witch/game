@@ -29,11 +29,11 @@
                         </div>
 
                             <div class="teacher-question-test-answers">
-                                @foreach($question["answers"] as $answer)
+
                                     <div class="teacher-question-test-answer">
-                                        {{$answer}}
+                                        {{$question["answer"]}}
                                     </div>
-                                @endforeach
+
                             </div>
 
                     </div>
