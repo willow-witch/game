@@ -19,7 +19,7 @@ use App\Http\Controllers\AdminController;
 
 Route::get('/', [UserController::class, 'showWelcomePage']);
 
-Route::get('sign', [UserController::class, 'showSignPage']);
+Route::get('sign', [UserController::class, 'showSignPage'])->name('sign');
 
 Route::get('/logout', [UserController::class, 'showLogoutPage']);
 
@@ -36,7 +36,7 @@ Route::prefix('student')->group(function () {
 
 
 Route::prefix('teacher')->group(function () {
-    Route::get('/profile', [TeacherController::class, 'showMainPage']);
+    Route::get('/profile', [TeacherController::class, 'showMainPage'])->name('teacher.profile');;
 
     Route::get('/stage/{stage}/team/{team}', [TeacherController::class, 'showStagePage']);
 
@@ -46,7 +46,7 @@ Route::prefix('teacher')->group(function () {
 });
 
 Route::prefix('admin')->group(function () {
-    Route::get('/profile', [AdminController::class, 'showMainPage']);
+    Route::get('/profile', [AdminController::class, 'showMainPage'])->name('admin.profile');;
 
     Route::get('create_user', [AdminController::class, 'showCreateUserPage'])->name('admin.create_user');
 

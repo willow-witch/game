@@ -114,8 +114,17 @@ class UserController extends Controller
         // $id = DB::table('users')->where('id');
         // $role = ;
 
-        //выведет студента
-        return redirect(\route('student.profile'));
+        $userService = resolve(UserService::class);
+
+        $roleId = $userService->getRoleIdByEmail($request->input('email'));
+
+        return match ($roleId)
+        {
+            1 => redirect(\route('admin.profile')),
+            2 => redirect(\route('student.profile')),
+            3 => redirect(\route('teacher.profile')),
+            default => redirect(\route('sign')),
+        };
 
         //выведет студента
         // return app(TeacherController::class)->showMainPage();

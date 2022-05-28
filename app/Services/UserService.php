@@ -27,4 +27,10 @@ class UserService
         return DB::table('roles')->where('rus_role', 'like', $rusRole)
                                  ->value('id');
     }
+
+    public function getRoleIdByEmail($email)
+    {
+        return DB::table('users')->where('email', 'like', $email)
+                 ->value('role_id');
+    }
 }
