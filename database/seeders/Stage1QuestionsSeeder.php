@@ -33,52 +33,6 @@ class Stage1QuestionsSeeder extends Seeder
             ]
         );
 
-        DB::table('stage1_answers')->insert([
-          [
-              'answer' => 'Рисование',
-              'active' => 1
-          ],
-          [
-              'answer' => 'Плавание',
-              'active' => 1
-          ],
-          [
-              'answer' => 'Писательство',
-              'active' => 1
-          ],
-          [
-              'answer' => 'Гейминг',
-              'active' => 1
-          ],
-          [
-              'answer' => 'Катание на скейте',
-              'active' => 1
-          ]
-       ]);
-
-        DB::table('stage1_answers_questions')->insert([
-          [
-              'question_id' => 2,
-              'answer_id' => 1
-          ],
-          [
-              'question_id' => 2,
-              'answer_id' => 2
-          ],
-          [
-              'question_id' => 2,
-              'answer_id' => 3
-          ],
-          [
-              'question_id' => 2,
-              'answer_id' => 4
-          ],
-          [
-              'question_id' => 2,
-              'answer_id' => 5
-          ]
-      ]);
-
         DB::table('stage1_questions')->insert(
             [
                 'question' => 'Интроверт / Экстраверт',
@@ -87,28 +41,6 @@ class Stage1QuestionsSeeder extends Seeder
                 'active' => 1
             ]
         );
-
-        DB::table('stage1_answers')->insert([
-              [
-                  'answer' => 'Интроверт',
-                  'active' => 1
-              ],
-              [
-                  'answer' => 'Экстраверт',
-                  'active' => 1
-              ]
-          ]);
-
-        DB::table('stage1_answers_questions')->insert([
-              [
-                  'question_id' => 3,
-                  'answer_id' => 6
-              ],
-              [
-                  'question_id' => 3,
-                  'answer_id' => 7
-              ]
-          ]);
 
         DB::table('stage1_questions')->insert(
             [

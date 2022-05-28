@@ -12,32 +12,6 @@
                         <img src="/img/stage1pics/profile.png">
                     </div>
 
-                    <div class="teacher-characteristics">
-                        <div class="char-key">
-                            Имя
-                        </div>
-                        <div class="char-value">
-                            Имя
-                        </div>
-
-                    </div>
-                    <div class="teacher-characteristics">
-                        <div class="char-key">
-                            Пол
-                        </div>
-                        <div class="char-value">
-                            Пол
-                        </div>
-                    </div>
-                    <div class="teacher-characteristics">
-                        <div class="char-key">
-                            Возраст
-                        </div>
-                        <div class="char-value">
-                            Возраст
-                        </div>
-                    </div>
-
                 </div>
 
                 <div class="questions">

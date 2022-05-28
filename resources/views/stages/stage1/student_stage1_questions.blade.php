@@ -14,10 +14,6 @@
                     Добавить изображение
                 </div>
 
-{{--                <input type="text" class="characteristics" placeholder="Имя" required>--}}
-{{--                <input type="text" class="characteristics" placeholder="Пол" required>--}}
-{{--                <input type="text" class="characteristics" placeholder="Возраст" required>--}}
-
             </div>
 
             <div class="questions">

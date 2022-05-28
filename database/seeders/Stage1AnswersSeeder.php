@@ -64,5 +64,73 @@ class Stage1AnswersSeeder extends Seeder
             ]
         );
 
+        DB::table('stage1_answers')->insert([
+            [
+                'answer' => 'Рисование',
+                'active' => 1
+            ],
+            [
+                'answer' => 'Плавание',
+                'active' => 1
+            ],
+            [
+                'answer' => 'Писательство',
+                'active' => 1
+            ],
+            [
+                'answer' => 'Гейминг',
+                'active' => 1
+            ],
+            [
+                'answer' => 'Катание на скейте',
+                'active' => 1
+            ]
+        ]);
+
+        DB::table('stage1_answers')->insert([
+            [
+                'answer' => 'Интроверт',
+                'active' => 1
+            ],
+            [
+                'answer' => 'Экстраверт',
+                'active' => 1
+            ]
+        ]);
+
+        DB::table('stage1_answers_questions')->insert([
+              [
+                  'question_id' => 2,
+                  'answer_id' => 8
+              ],
+              [
+                  'question_id' => 2,
+                  'answer_id' => 9
+              ],
+              [
+                  'question_id' => 2,
+                  'answer_id' => 10
+              ],
+              [
+                  'question_id' => 2,
+                  'answer_id' => 11
+              ],
+              [
+                  'question_id' => 2,
+                  'answer_id' => 12
+              ]
+          ]);
+
+        DB::table('stage1_answers_questions')->insert([
+          [
+              'question_id' => 3,
+              'answer_id' => 13
+          ],
+          [
+              'question_id' => 3,
+              'answer_id' => 14
+          ]
+      ]);
+
     }
 }
