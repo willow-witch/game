@@ -7,13 +7,13 @@
         <img src="/img/profilepics/queen.png">
     </div>
 
-    @foreach($user_information as $item)
+    @foreach($user_information as $key => $value)
         <div class="user-profile-profile">
             <div>
-                {{$item["key"]}}
+                {{$key}}
             </div>
             <div>
-                {{$item["value"]}}
+                {{$value}}
             </div>
         </div>
     @endforeach

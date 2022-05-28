@@ -60,7 +60,7 @@ class TeacherController extends Controller
 
         $stages = $this->stageService->getTeamsForStages();
 
-        $userInformation = $this->teacherService->getUserInformation();
+        $userInformation = $this->teacherService->getUserInformation($userId);
 
         return view('main_page.main_teacher',
                     [

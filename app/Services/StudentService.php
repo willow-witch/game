@@ -2,32 +2,25 @@
 
 namespace App\Services;
 
+use Illuminate\Support\Facades\DB;
+
 class StudentService
 {
-    public function getUserInformation(): array
+    public function getUserInformation($userId)
     {
-        return [
-            [
-                "key" => "Фамилия",
-                "value" => "Иванова"
-            ],
-            [
-                "key" =>  "Имя",
-                "value" => "Валерия"
-            ],
-            [
-                "key" => "Отчество",
-                "value" => "Андреевна"
-            ],
-            [
-                "key" =>"Курс, Специальность",
-                "value" => "4 курс, МОиАИС"
-            ],
-            [
-                "key" => "e-mail",
-                "value" => "abc@gmsil.com"
-            ]
-        ];
+        $result = DB::table('users')
+                    ->select(DB::raw(
+                        'users.email as "e-mail",
+                        students.first_name as "Имя",
+                        students.last_name as "Фамилия",
+                        students.field as "Направление",
+                        students.year as "Курс"
+                        '))
+                    ->leftJoin('students', 'users.id', 'students.id')
+                    ->where('users.id', 'like', $userId)
+                    ->get();
+
+        return json_decode(json_encode($result, true), true)[0];
     }
 
     public function getAllFields()

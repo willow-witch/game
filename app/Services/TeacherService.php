@@ -2,31 +2,24 @@
 
 namespace App\Services;
 
+use Illuminate\Support\Facades\DB;
+
 class TeacherService
 {
-    public function getUserInformation()
+    public function getUserInformation($userId)
     {
-        return [
-            [
-                "key" => "Фамилия",
-                "value" => "Зонин"
-            ],
-            [
-                "key" =>  "Имя",
-                "value" => "Никита"
-            ],
-            [
-                "key" => "Отчество",
-                "value" => "Андреевич"
-            ],
-            [
-                "key" =>"Должность",
-                "value" => "Преподаватель"
-            ],
-            [
-                "key" => "e-mail",
-                "value" => "abc@gmsil.com"
-            ]
-        ];
+        $result = DB::table('users')
+                    ->select(DB::raw(
+                        'users.email as "e-mail",
+                        teachers.first_name as "Имя",
+                        teachers.last_name as "Фамилия",
+                        roles.rus_role as "Роль"
+                        '))
+                    ->leftJoin('teachers', 'users.id', 'teachers.id')
+                    ->leftJoin('roles', 'users.role_id', 'roles.id')
+                    ->where('users.id', 'like', $userId)
+                    ->get();
+
+        return json_decode(json_encode($result, true), true)[0];
     }
 }

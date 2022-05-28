@@ -6,15 +6,15 @@
         <img src="/img/profilepics/king.png"/>
     </div>
 
-    @foreach($user_information as $item)
-    <div class="user-profile-profile">
-        <div>
-            {{$item["key"]}}
+    @foreach($user_information as $key => $value)
+        <div class="user-profile-profile">
+            <div>
+                {{$key}}
+            </div>
+            <div>
+                {{$value}}
+            </div>
         </div>
-        <div>
-            {{$item["value"]}}
-        </div>
-    </div>
     @endforeach
     <div class="user-profile-btn"> Edit</div>
 @endsection

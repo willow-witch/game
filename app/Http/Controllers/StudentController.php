@@ -49,7 +49,7 @@ class StudentController extends Controller
     {
         $userId = session('user_id');
 
-        $userInformation = $this->studentService->getUserInformation();
+        $userInformation = $this->studentService->getUserInformation($userId);
         $stages = $this->stageService->getAllStages();
         $stagesCount = $this->stageService->getStagesCount();
         $games = $this->gameService->getGames();

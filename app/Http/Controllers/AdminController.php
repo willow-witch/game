@@ -48,7 +48,10 @@ class AdminController extends Controller
     {
         $userId = session('user_id');
 
-        $userInformation = $this->adminService->getUserInformation();
+        $userInformation = $this->adminService->getUserInformation($userId);
+
+        // dd($userInformation);
+
         $stages = $this->stageService->getAllStages();
         $stagesCount = $this->stageService->getStagesCount();
 
