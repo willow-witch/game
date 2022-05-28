@@ -12,16 +12,11 @@ use App\Services\UserService;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
-    // protected UserService $userService;
-
-    // public function __construct(UserService $userService)
-    // {
-    //     $this->userService = $userService;
-    // }
-
     public function showWelcomePage()
     {
         return view('welcome');
@@ -29,32 +24,19 @@ class UserController extends Controller
 
     public function showSignPage()
     {
-
-        // $this->userService->voidResponse();
-
         return view('sign');
     }
 
     public function showLogoutPage()
     {
+        Auth::logout();
+        Session::flush();
+
         return view('sign');
     }
 
     public function registerNewUser(Request $request)
     {
-        //$email = $request->input('email');
-        //$password = $request->input('password');
-        //echo "зарегистрировано";
-        //request ('localhost/teacher/profile');
-        //Route::get('/sign', function (){
-        //    return view('teacher/profile');
-        //dd($email,$password);
-        //echo "зарегистрировано";
-        //});
-        //$formField = $request -> only (['email', 'password']);
-
-        //dd($request->all());
-
         $userService = resolve(UserService::class);
 
         $roleId = $userService->getRoleIdFromRusRole($request->input('rus_role'));
@@ -95,42 +77,37 @@ class UserController extends Controller
                 break;
         }
         return redirect(\route('admin.create_user'));
-
-        //if (Auth::attempt($formField)){
-        //    return redirect()->intended(route('teacher/profile'));
-        //}
-
-        //return  redirect(route('user.sign'))->withErrors([
-        //   'email'=>'aaaaaaa'
-        //]);
     }
 
     public function login(Request $request)
     {
-        // dd($request->all());
+        $credentials = $request->validate([
+              'email' => ['required', 'email'],
+              'password' => ['required'],
+          ]);
 
-        // $email = $request->input('email');
-        //
-        // $id = DB::table('users')->where('id');
-        // $role = ;
+        if (Auth::attempt($credentials)) {
+            $request->session()->regenerate();
 
-        $userService = resolve(UserService::class);
+            $userService = resolve(UserService::class);
 
-        $roleId = $userService->getRoleIdByEmail($request->input('email'));
+            $roleId = $userService->getRoleIdByEmail($request->input('email'));
+            $userId = $userService->getUserIdByEmail($request->input('email'));
 
-        return match ($roleId)
-        {
-            1 => redirect(\route('admin.profile')),
-            2 => redirect(\route('student.profile')),
-            3 => redirect(\route('teacher.profile')),
-            default => redirect(\route('sign')),
-        };
+            session(["user_id" => $userId]);
 
-        //выведет студента
-        // return app(TeacherController::class)->showMainPage();
+            return match ($roleId)
+            {
+                1 => redirect(\route('admin.profile')),
+                2 => redirect(\route('student.profile')),
+                3 => redirect(\route('teacher.profile')),
+                default => redirect(\route('sign')),
+            };
+        }
 
-        //выведет студента
-        // return app(AdminController::class)->showMainPage();
+        return back()->withErrors([
+          'email' => 'The provided credentials do not match our records.',
+      ])->onlyInput('email');
     }
 
     public function sign()

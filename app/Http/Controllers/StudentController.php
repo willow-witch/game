@@ -47,6 +47,8 @@ class StudentController extends Controller
 
     public function showMainPage()
     {
+        $userId = session('user_id');
+
         $userInformation = $this->studentService->getUserInformation();
         $stages = $this->stageService->getAllStages();
         $stagesCount = $this->stageService->getStagesCount();

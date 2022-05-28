@@ -54,6 +54,8 @@ class TeacherController extends Controller
 
     public function showMainPage()
     {
+        $userId = session('user_id');
+
         $games = $this->gameService->getGames();
 
         $stages = $this->stageService->getTeamsForStages();

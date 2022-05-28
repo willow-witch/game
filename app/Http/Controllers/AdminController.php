@@ -46,6 +46,8 @@ class AdminController extends Controller
 
     public function showMainPage()
     {
+        $userId = session('user_id');
+
         $userInformation = $this->adminService->getUserInformation();
         $stages = $this->stageService->getAllStages();
         $stagesCount = $this->stageService->getStagesCount();
