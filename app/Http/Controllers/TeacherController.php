@@ -24,14 +24,14 @@ class TeacherController extends Controller
     protected UserService $userService;
     protected StudentService $studentService;
 
-    public function __construct(TeacherService $teacherService,
-                                StageService $stageService,
-                                GameService $gameService,
+    public function __construct(TeacherService  $teacherService,
+                                StageService    $stageService,
+                                GameService     $gameService,
                                 QuestionService $questionService,
                                 CriteriaService $criteriaService,
-                                TeamService $teamService,
-                                UserService $userService,
-                                StudentService $studentService
+                                TeamService     $teamService,
+                                UserService     $userService,
+                                StudentService  $studentService
     )
     {
         $this->teacherService = $teacherService;

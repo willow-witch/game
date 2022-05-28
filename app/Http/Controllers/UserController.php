@@ -3,30 +3,24 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\StudentController;
-use App\Http\Controllers\TeacherController;
-use App\Http\Controllers\AdminController;
-use App\Http\Middleware\Authenticate;
 use App\Services\CriteriaService;
 use App\Services\GameService;
 use App\Services\QuestionService;
 use App\Services\StageService;
 use App\Services\StudentService;
 use App\Services\UserService;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
-    protected UserService $userService;
+    // protected UserService $userService;
 
-    public function __construct(UserService $userService)
-    {
-        $this->userService = $userService;
-    }
+    // public function __construct(UserService $userService)
+    // {
+    //     $this->userService = $userService;
+    // }
 
     public function showWelcomePage()
     {
@@ -35,6 +29,9 @@ class UserController extends Controller
 
     public function showSignPage()
     {
+
+        // $this->userService->voidResponse();
+
         return view('sign');
     }
 
@@ -58,7 +55,9 @@ class UserController extends Controller
 
         //dd($request->all());
 
-        $roleId = $this->userService->getRoleIdFromRusRole($request->input('rus_role'));
+        $userService = resolve(UserService::class);
+
+        $roleId = $userService->getRoleIdFromRusRole($request->input('rus_role'));
 
         $id = DB::table('users')->insertGetId([
            'email' => $request->input('email'),

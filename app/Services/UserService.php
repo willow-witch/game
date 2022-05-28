@@ -7,6 +7,11 @@ use Illuminate\Support\Facades\DB;
 class UserService
 {
 
+    public function voidResponse(): void
+    {
+        return;
+    }
+
     public function getUserName(): string
     {
         return "Фамилия Имя";
