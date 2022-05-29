@@ -36,7 +36,7 @@ class AdminController extends Controller
         $this->userService = $userService;
 
         view()->composer('layout_main', function ($view) {
-            $view->with('user_name', $this->userService->getUserName());
+            $view->with('user_name', session('user_name'));
         });
 
         view()->composer('stages.stage', function ($view) {

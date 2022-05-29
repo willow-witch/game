@@ -47,7 +47,7 @@
                         <input hidden name="game_id" value="{{$game['game_id']}}">
                         <input hidden name="group_id" value="{{$game['group_id']}}">
                         <input hidden name="stage" value="{{$i}}">
-                        <input type="submit" value="{{$stages[$i-1]}}">
+                        <input type="submit" class="sbt-btn" value="{{$stages[$i-1]}}">
                     </form>
                 </li>
                 @endfor

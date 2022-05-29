@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AnswersController;
+use App\Http\Controllers\EvaluationController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -39,13 +40,15 @@ Route::prefix('student')->group(function () {
 
 
 Route::prefix('teacher')->group(function () {
-    Route::get('/profile', [TeacherController::class, 'showMainPage'])->name('teacher.profile');;
+    Route::get('/profile', [TeacherController::class, 'showMainPage'])->name('teacher.profile');
 
     Route::get('/stage/{stage}/team/{team}', [TeacherController::class, 'showStagePage']);
 
     Route::get('create_game', [TeacherController::class, 'showCreateGamePage']);
 
     Route::post('create_teams', [TeacherController::class, 'showCreateTeamsPage'])->name('create_teams');
+
+    Route::post('/stage/{stage}/team/evaluate', [EvaluationController::class, 'evaluate'])->name('evaluate');
 });
 
 Route::prefix('admin')->group(function () {

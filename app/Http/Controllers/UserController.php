@@ -32,7 +32,7 @@ class UserController extends Controller
         Auth::logout();
         Session::flush();
 
-        return view('sign');
+        return redirect(\route('sign'));
     }
 
     public function registerNewUser(Request $request)
@@ -94,7 +94,13 @@ class UserController extends Controller
             $roleId = $userService->getRoleIdByEmail($request->input('email'));
             $userId = $userService->getUserIdByEmail($request->input('email'));
 
-            session(["user_id" => $userId]);
+            $userName = $userService->getUserName($userId, $roleId);
+
+            session([
+                "user_id" => $userId,
+                "user_name" => $userName
+            ]);
+
 
             return match ($roleId)
             {

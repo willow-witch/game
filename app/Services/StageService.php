@@ -36,7 +36,7 @@ class StageService
                 ]
             ],
             [
-                "stage_name" => "Brand Equity",
+                "stage_name" => "Стадия 3",
                 "teams" => [
                     "team1",
                     "team2",
@@ -44,7 +44,7 @@ class StageService
                 ]
             ],
             [
-                "stage_name" => "Brand Communication",
+                "stage_name" => "Стадия 4",
                 "teams" => [
                     "team1",
                     "team2",
@@ -52,7 +52,7 @@ class StageService
                 ]
             ],
             [
-                "stage_name" => "Brand Loyalty",
+                "stage_name" => "Стадия 5",
                 "teams" => [
                     "team1",
                     "team2",

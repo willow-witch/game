@@ -25,8 +25,8 @@ class UserSeeder extends Seeder
 
         DB::table('admins')->insert([
             'id' => 1,
-            'first_name' => 'ФамилияАдмина',
-            'last_name' => 'ИмяАдмина',
+            'first_name' => 'ИмяАдмина',
+            'last_name' => 'ФамилияАдмина',
             'photo' => '/img/profilepics/queen.png'
         ]);
 
@@ -38,8 +38,8 @@ class UserSeeder extends Seeder
 
         DB::table('students')->insert([
             'id' => 2,
-            'first_name' => 'ФамилияСтудента',
-            'last_name' => 'ИмяСтудента',
+            'first_name' => 'ИмяСтудента',
+            'last_name' => 'ФамилияСтудента',
             'photo' => '/img/profilepics/queen.png',
             'year' => 1,
             'field' => 'НаправлениеСтудента'
@@ -54,14 +54,14 @@ class UserSeeder extends Seeder
         DB::table('students')->insert([
             'id' => 3,
             'first_name' => 'Валерия',
-            'last_name' => 'ИмяСтудента',
+            'last_name' => 'ФамилияСтудента',
             'photo' => '/img/profilepics/queen.png',
             'year' => 1,
             'field' => 'НаправлениеСтудента'
         ]);
 
         DB::table('users')->insert([
-            'email' => 'student1@gmail.com',
+            'email' => 'student3@gmail.com',
             'password' => Hash::make('student'),
             'role_id' => '2',
         ]);
@@ -69,7 +69,7 @@ class UserSeeder extends Seeder
         DB::table('students')->insert([
             'id' => 4,
             'first_name' => 'Варвара',
-            'last_name' => 'ИмяСтудента',
+            'last_name' => 'ФамилияСтудента',
             'photo' => '/img/profilepics/queen.png',
             'year' => 1,
             'field' => 'НаправлениеСтудента'
@@ -85,8 +85,8 @@ class UserSeeder extends Seeder
 
         DB::table('teachers')->insert([
             'id' => 5,
-            'first_name' => 'ФамилияПреподавателя',
-            'last_name' => 'ИмяПреподавателя',
+            'first_name' => 'ИмяПреподавателя',
+            'last_name' => 'ФамилияПреподавателя',
             'photo' => '/img/profilepics/queen.png'
         ]);
     }

@@ -2,6 +2,8 @@
 
 namespace App\Services;
 
+use Illuminate\Support\Facades\DB;
+
 class CriteriaService
 {
     public function getCriteriaForStudentStage1() : array
@@ -51,26 +53,15 @@ class CriteriaService
 
     public function getCriteriaForTeacherStage1() : array
     {
-        return [
-            [
-                "criteria_name" => "criteria1",
-                "type" => "radio",
-                "max_point" => "10",
-                "score" => "score1"
-            ],
-            [
-                "criteria_name" => "criteria2",
-                "type" => "radio",
-                "max_point" => "10",
-                "score" => "score2"
-            ],
-            [
-                "criteria_name" => "criteria3",
-                "type" => "radio",
-                "max_point" => "10",
-                "score" => "score2"
-            ]
-        ];
+        $result = DB::table('stage1_criteria')
+                         ->select(DB::raw(
+                             'stage1_criteria.criteria as "criteria_name",
+                              stage1_criteria.max_point'))
+                         ->get();
+
+        $result = json_decode(json_encode($result, true), true);
+
+        return $result;
     }
 
 

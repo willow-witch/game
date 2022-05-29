@@ -267,6 +267,20 @@
     color: white;
 }
 
+.sbt-btn {
+    display: flex;
+    width: -webkit-fill-available;
+    height: fit-content;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(246, 165, 0, 1);
+    font-family: 'Open Sans', sans-serif;
+    font-style: normal;
+    font-size: 16px;
+    color: white;
+    border: none;
+    text-shadow: 1px 1px 2px rgb(0 0 0 / 30%);
+}
 
 
 

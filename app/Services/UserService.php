@@ -12,8 +12,30 @@ class UserService
         return;
     }
 
-    public function getUserName(): string
+    public function getUserName($userId, $roleId): string
     {
+        switch ($roleId)
+        {
+            case 1:
+                return DB::table('admins')
+                            ->select(DB::raw(
+                            'concat(last_name," ",first_name) as "name"'))
+                            ->where('id', '=', $userId)
+                            ->value("name");
+            case 2:
+                return DB::table('students')
+                         ->select(DB::raw(
+                             'concat(last_name," ",first_name) as "name"'))
+                         ->where('id', '=', $userId)
+                         ->value("name");
+            case 3:
+                return DB::table('teachers')
+                         ->select(DB::raw(
+                             'concat(last_name," ",first_name) as "name"'))
+                         ->where('id', '=', $userId)
+                         ->value("name");
+        }
+
         return "Фамилия Имя";
     }
 
