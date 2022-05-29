@@ -10,41 +10,33 @@ class CriteriaService
     {
         return [
             "teachers" => [
-                "teacher1",
-                "teacher2",
-                "teacher3"
+                "Фамилия Имя",
+                "Фамилия Имя",
+                "Фамилия Имя"
             ],
             "criteria" => [
                 [
-                    "criteria_name" => "criteria1",
+                    "criteria_name" => "Качество анализа",
                     "points" => [
-                        "c1p1",
-                        "c1p2",
-                        "c1p3"
+                        "7",
+                        "7",
+                        "8"
                     ]
                 ],
                 [
-                    "criteria_name" => "criteria2",
+                    "criteria_name" => "Последовательность стратегии",
                     "points" => [
-                        "c2p1",
-                        "c1p2",
-                        "c2p3"
+                        "5",
+                        "6",
+                        "7"
                     ]
                 ],
                 [
-                    "criteria_name" => "criteria3",
+                    "criteria_name" => "Освоение концепции таргетинга",
                     "points" => [
-                        "c3p1",
-                        "c3p2",
-                        "c3p3"
-                    ]
-                ],
-                [
-                    "criteria_name" => "criteria4",
-                    "points" => [
-                        "c1p1",
-                        "c1p2",
-                        "c1p3"
+                        "9",
+                        "8",
+                        "7"
                     ]
                 ]
             ]
