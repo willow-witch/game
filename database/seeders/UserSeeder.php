@@ -31,7 +31,7 @@ class UserSeeder extends Seeder
         ]);
 
         DB::table('users')->insert([
-            'email' => 'student@gmail.com',
+            'email' => 'student1@gmail.com',
             'password' => Hash::make('student'),
             'role_id' => '2',
         ]);
@@ -46,13 +46,45 @@ class UserSeeder extends Seeder
         ]);
 
         DB::table('users')->insert([
+            'email' => 'student2@gmail.com',
+            'password' => Hash::make('student'),
+            'role_id' => '2',
+        ]);
+
+        DB::table('students')->insert([
+            'id' => 3,
+            'first_name' => 'Валерия',
+            'last_name' => 'ИмяСтудента',
+            'photo' => '/img/profilepics/queen.png',
+            'year' => 1,
+            'field' => 'НаправлениеСтудента'
+        ]);
+
+        DB::table('users')->insert([
+            'email' => 'student1@gmail.com',
+            'password' => Hash::make('student'),
+            'role_id' => '2',
+        ]);
+
+        DB::table('students')->insert([
+            'id' => 4,
+            'first_name' => 'Варвара',
+            'last_name' => 'ИмяСтудента',
+            'photo' => '/img/profilepics/queen.png',
+            'year' => 1,
+            'field' => 'НаправлениеСтудента'
+        ]);
+
+
+
+        DB::table('users')->insert([
             'email' => 'teacher@gmail.com',
             'password' => Hash::make('teacher'),
             'role_id' => '3',
         ]);
 
         DB::table('teachers')->insert([
-            'id' => 3,
+            'id' => 5,
             'first_name' => 'ФамилияПреподавателя',
             'last_name' => 'ИмяПреподавателя',
             'photo' => '/img/profilepics/queen.png'

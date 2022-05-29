@@ -4,7 +4,7 @@
         Портрет покупателя
     </div>
 
-    <form>
+    <form method="post" action="add_answers">
         <div class="questions-wrapper">
             <div class="left-column">
                 <div class="buyer-pic">
@@ -23,8 +23,9 @@
                         <div class="question-title">
                             {{$question["question"]}}
                         </div>
-
-                        <textarea class="question-free-answers" wrap="soft" placeholder="{{$question["question_help"]}}" required></textarea>
+                        @csrf
+                        <input class="question-free-answers" name="answer" wrap="soft" placeholder="{{$question["question_help"]}}">
+                       <!--<textarea name="group_id" value="{{}}"-->
 
 
                         <div class="question-test-answers">

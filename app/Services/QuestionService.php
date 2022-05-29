@@ -48,7 +48,8 @@ class QuestionService
             ->select(DB::raw(
                 'stage2_questions.question,
                         stage2_questions.question_help,
-                        question_type.type'))
+                        question_type.type,
+                        stage2_questions.id'))
             ->leftJoin('question_type', 'stage2_questions.type', 'question_type.id')
             ->orderBy('stage2_questions.id')
             ->orderBy('question_type.type')

@@ -42,9 +42,13 @@
                 @for($i=1; $i<=$stages_count; $i++)
 
                 <li class="user-games-games-progress-stage">
-                    <a href="stage/{{$i}}">
-                        {{$stages[$i-1]}}
-                    </a>
+                    <form method="post" action="stage/game">
+                        @csrf
+                        <input hidden name="game_id" value="{{$game['game_id']}}">
+                        <input hidden name="group_id" value="{{$game['group_id']}}">
+                        <input hidden name="stage" value="{{$i}}">
+                        <input type="submit" value="{{$stages[$i-1]}}">
+                    </form>
                 </li>
                 @endfor
 

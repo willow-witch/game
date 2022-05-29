@@ -11,6 +11,7 @@ use App\Services\QuestionService;
 use App\Services\CriteriaService;
 use App\Services\UserService;
 use App\Http\Requests\StudentProfileRequest;
+use Illuminate\Http\Request;
 
 class StudentController extends Controller
 {
@@ -52,7 +53,7 @@ class StudentController extends Controller
         $userInformation = $this->studentService->getUserInformation($userId);
         $stages = $this->stageService->getAllStages();
         $stagesCount = $this->stageService->getStagesCount();
-        $games = $this->gameService->getGames();
+        $games = $this->gameService->getGames($userId);
 
         return view('main_page.main_student', [
             'games' => $games,
@@ -67,7 +68,9 @@ class StudentController extends Controller
         return view('join_game');
     }
 
-    public function showStagePage($stage) {
+    public function showStagePage(Request $request) {
+
+        $stage = $request->input('stage');
 
 
         $stages = $this->stageService->getAllStages();
@@ -81,7 +84,9 @@ class StudentController extends Controller
                 return view('stages.stage1.student_stage1', [
                     'criteria' => $criteria,
                     'questions' => $questions,
-                    'stage_id'=> 1
+                    'stage_id'=> 1,
+                    //'group_id'=>$request->input('$group_id'),
+                    //'game_id'=>$request->input('$game_id')
                 ]);
             case 2:
                 $questions = $this->questionService->getQuestionsForStudentStage2();
@@ -92,7 +97,10 @@ class StudentController extends Controller
                     'questions' => $questions,
                     'criteria' => $criteria,
                     'stage_id'=> 2,
-                    'stages_count' => $stagesCount
+                    'stages_count' => $stagesCount,
+                    //'group_id'=>$request->input('$group_id'),
+                    //'game_id'=>$request->input('$game_id')
+
                 ]);
             case 3:
                 return view('stages.stage3.student_stage3', [

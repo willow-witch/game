@@ -22,6 +22,9 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             GroupsSeeder::class,
             GamesSeeder::class,
+            StudentGroupsSeeder::class,
+            GamesGroupsSeeder::class,
+            GamesStudentsSeeder::class,
             Stage1AnswersStudentsSeeder::class,
             Stage2AnswersSeeder::class
         ]);

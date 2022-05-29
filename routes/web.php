@@ -5,6 +5,7 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AnswersController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,9 +29,11 @@ Route::post('login', [UserController::class, 'login']);
 Route::prefix('student')->group(function () {
     Route::get('/profile', [StudentController::class, 'showMainPage'])->name('student.profile');
 
-    Route::get('/stage/{stage}', [StudentController::class, 'showStagePage']);
+    Route::match(['get', 'post'],'/stage/game', [StudentController::class, 'showStagePage']);
 
     Route::get('join_game', [StudentController::class, 'showJoinGamePage']);
+
+    Route::post('add_answers',[AnswersController::class, 'addAnswers']);
 });
 
 

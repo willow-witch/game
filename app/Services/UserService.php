@@ -22,6 +22,8 @@ class UserService
         return DB::table('roles')->pluck('rus_role');
     }
 
+
+
     public function getRoleIdFromRusRole($rusRole)
     {
         return DB::table('roles')->where('rus_role', 'like', $rusRole)

@@ -56,7 +56,7 @@ class TeacherController extends Controller
     {
         $userId = session('user_id');
 
-        $games = $this->gameService->getGames();
+        $games = $this->gameService->getGamesForTeacher();
 
         $stages = $this->stageService->getTeamsForStages();
 
