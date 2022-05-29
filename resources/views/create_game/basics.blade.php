@@ -22,7 +22,7 @@
                 Группы студентов
             </div>
 
-            <div class="question-test-answers" style="flex-direction: column">
+            <div class="question-test-answers" >
                 @foreach($fields as $field)
                     <label class="question-test-answer">
                         <input type="checkbox" name="field[]" value="{{$field}}">

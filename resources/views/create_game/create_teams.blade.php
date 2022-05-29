@@ -1,6 +1,6 @@
 @extends('layout_main')
 
-@include('create_game.teams')
+@include('create_game.teams', ['students' => $students])
 
 @section('content')
 

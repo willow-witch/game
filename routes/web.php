@@ -44,7 +44,7 @@ Route::prefix('teacher')->group(function () {
 
     Route::get('/stage/{stage}/team/{team}', [TeacherController::class, 'showStagePage']);
 
-    Route::get('create_game', [TeacherController::class, 'showCreateGamePage']);
+    Route::get('/create_game', [TeacherController::class, 'showCreateGamePage']);
 
     Route::post('create_teams', [TeacherController::class, 'showCreateTeamsPage'])->name('create_teams');
 

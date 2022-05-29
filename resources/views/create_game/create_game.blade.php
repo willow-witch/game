@@ -2,8 +2,6 @@
 
 @include('create_game.basics')
 @include('create_game.judges', ['stages' => $stages, 'stages_count' => $stages_count, 'fields' => $fields])
-@include('create_game.teams')
-
 
 @section('content')
 
