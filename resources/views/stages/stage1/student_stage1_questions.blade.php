@@ -3,7 +3,8 @@
         Портрет покупателя
     </div>
 
-    <form>
+    <form method="post" action="add_answers">
+        @csrf
         <div class="questions-wrapper">
             <div class="left-column">
                 <div class="buyer-pic">
@@ -26,14 +27,15 @@
                         @switch($question["type"])
 
                             @case("free")
-                            <textarea class="question-free-answers" wrap="soft" placeholder="{{$question["question"]}}" required></textarea>
+                            <textarea class="question-free-answers" wrap="soft" name="{{$question["question"]}}"
+                                      placeholder="{{$question["question"]}}" required></textarea>
                             @break
 
                             @case("test-multiple-options")
                             <div class="question-test-answers">
                                 @foreach($question["answers"] as $answer)
                                     <label class="question-test-answer">
-                                        <input type="checkbox" >
+                                        <input type="checkbox" name="{{$question["question"]}}[]" value="{{$answer}}">
                                         <span>
                                             {{$answer}}
                                         </span>
@@ -46,7 +48,7 @@
                             <div class="question-test-answers">
                                 @foreach($question["answers"] as $answer)
                                     <label class="question-test-answer">
-                                        <input type="radio" name="{{$question["question"]}}">
+                                        <input type="radio" name="{{$question["question"]}}" value="{{$answer}}">
                                         <span>
                                             {{$answer}}
                                         </span>

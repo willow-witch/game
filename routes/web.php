@@ -33,7 +33,7 @@ Route::prefix('student')->group(function () {
 
     Route::get('join_game', [StudentController::class, 'showJoinGamePage']);
 
-    Route::post('add_answers',[AnswersController::class, 'addAnswers']);
+    Route::post('/stage/add_answers',[AnswersController::class, 'addAnswers'])->name('add_answers');
 });
 
 

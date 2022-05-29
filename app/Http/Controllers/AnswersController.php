@@ -23,7 +23,7 @@ class AnswersController extends Controller
     public function addAnswers(Request $request)
     {
 
-        dd($request);
+        dd($request->all());
 
         return 1;
 
