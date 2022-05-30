@@ -85,12 +85,14 @@ class StudentController extends Controller
                     'criteria' => $criteria,
                     'questions' => $questions,
                     'stage_id'=> 1,
-                    //'group_id'=>$request->input('$group_id'),
-                    //'game_id'=>$request->input('$game_id')
+                    'group_id'=>$request->input('$group_id'),
+                    'game_id'=>$request->input('$game_id')
                 ]);
             case 2:
                 $questions = $this->questionService->getQuestionsForStudentStage2();
                 $criteria = $this->criteriaService->getCriteriaForStudentStage1();
+
+                //dd($request->all());
 
                 return view('stages.stage2.student_stage2', [
                     'stages' => $stages,
@@ -98,8 +100,8 @@ class StudentController extends Controller
                     'criteria' => $criteria,
                     'stage_id'=> 2,
                     'stages_count' => $stagesCount,
-                    //'group_id'=>$request->input('$group_id'),
-                    //'game_id'=>$request->input('$game_id')
+                    'group_id'=>$request->input('group_id'),
+                    'game_id'=>$request->input('game_id')
 
                 ]);
             case 3:

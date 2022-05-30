@@ -23,8 +23,12 @@
                         <div class="question-title">
                             {{$question["question"]}}
                         </div>
+
                         @csrf
-                        <input class="question-free-answers" name="answer" wrap="soft" placeholder="{{$question["question_help"]}}">
+                        <input class="question-free-answers" name="{{$question['id']}}" wrap="soft" placeholder="{{$question["question_help"]}}" required>
+                        <input hidden name="game_id" value="{{$game_id}}">
+                        <input hidden name="group_id" value="{{$group_id}}">
+                        <input hidden name="stage_id" value="{{$stage_id}}">
                        <!--<textarea name="group_id" value="{{}}"-->
 
 
