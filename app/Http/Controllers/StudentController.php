@@ -51,6 +51,7 @@ class StudentController extends Controller
         $userId = session('user_id');
 
         $userInformation = $this->studentService->getUserInformation($userId);
+        $userPhoto = $this->studentService->getUserPhotoById($userId);
         $stages = $this->stageService->getAllStages();
         $stagesCount = $this->stageService->getStagesCount();
         $games = $this->gameService->getGames($userId);
@@ -59,7 +60,8 @@ class StudentController extends Controller
             'games' => $games,
             'stages' => $stages,
             'stages_count' => $stagesCount,
-            'user_information' => $userInformation
+            'user_information' => $userInformation,
+            'user_photo' => $userPhoto
         ]);
     }
 

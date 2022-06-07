@@ -38,9 +38,9 @@ class UserSeeder extends Seeder
 
         DB::table('students')->insert([
             'id' => 2,
-            'first_name' => 'ИмяСтудента',
-            'last_name' => 'ФамилияСтудента',
-            'photo' => '/img/profilepics/queen.png',
+            'first_name' => 'Валерия',
+            'last_name' => 'Иванова',
+            'photo' => '/img/profilepics/student.png',
             'year' => 1,
             'field' => 'НаправлениеСтудента'
         ]);
@@ -53,9 +53,9 @@ class UserSeeder extends Seeder
 
         DB::table('students')->insert([
             'id' => 3,
-            'first_name' => 'Валерия',
-            'last_name' => 'ФамилияСтудента',
-            'photo' => '/img/profilepics/queen.png',
+            'first_name' => 'Владислав',
+            'last_name' => 'Терентьев',
+            'photo' => '/img/profilepics/student_boy.png',
             'year' => 1,
             'field' => 'НаправлениеСтудента'
         ]);
@@ -69,13 +69,11 @@ class UserSeeder extends Seeder
         DB::table('students')->insert([
             'id' => 4,
             'first_name' => 'Варвара',
-            'last_name' => 'ФамилияСтудента',
-            'photo' => '/img/profilepics/queen.png',
+            'last_name' => 'Палагутина',
+            'photo' => '/img/profilepics/student_girl.png',
             'year' => 1,
             'field' => 'НаправлениеСтудента'
         ]);
-
-
 
         DB::table('users')->insert([
             'email' => 'teacher@gmail.com',
@@ -85,9 +83,9 @@ class UserSeeder extends Seeder
 
         DB::table('teachers')->insert([
             'id' => 5,
-            'first_name' => 'ИмяПреподавателя',
-            'last_name' => 'ФамилияПреподавателя',
-            'photo' => '/img/profilepics/queen.png'
+            'first_name' => 'Никита',
+            'last_name' => 'Зонин',
+            'photo' => '/img/profilepics/teacher_man.png'
         ]);
     }
 

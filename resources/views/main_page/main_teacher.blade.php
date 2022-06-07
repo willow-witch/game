@@ -3,7 +3,7 @@
 @section('profile')
 
     <div class="user-profile-image">
-        <img src="/img/profilepics/king.png"/>
+        <img src="{{$user_photo}}"/>
     </div>
 
     @foreach($user_information as $key => $value)

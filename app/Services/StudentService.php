@@ -23,6 +23,15 @@ class StudentService
         return json_decode(json_encode($result, true), true)[0];
     }
 
+    public function getUserPhotoById($userId)
+    {
+        return DB::table('students')
+                    ->select(DB::raw(
+                     'students.photo as "photo"'))
+                    ->where('id', '=', $userId)
+                    ->value("photo");
+    }
+
     public function getGroupInformation($studentId, $gameId)
     {
         $result = DB::table('student_groups')

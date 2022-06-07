@@ -61,12 +61,14 @@ class TeacherController extends Controller
         $stages = $this->stageService->getTeamsForStages();
 
         $userInformation = $this->teacherService->getUserInformation($userId);
+        $userPhoto = $this->teacherService->getUserPhotoById($userId);
 
         return view('main_page.main_teacher',
                     [
                         'games' => $games,
                         'stages' => $stages,
-                        'user_information' => $userInformation
+                        'user_information' => $userInformation,
+                        'user_photo' => $userPhoto
                     ]
         );
     }

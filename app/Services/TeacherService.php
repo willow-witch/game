@@ -22,4 +22,13 @@ class TeacherService
 
         return json_decode(json_encode($result, true), true)[0];
     }
+
+    public function getUserPhotoById($userId)
+    {
+        return DB::table('teachers')
+                 ->select(DB::raw(
+                     'teachers.photo as "photo"'))
+                 ->where('id', '=', $userId)
+                 ->value("photo");
+    }
 }

@@ -22,4 +22,13 @@ class AdminService
 
         return json_decode(json_encode($result, true), true)[0];
     }
+
+    public function getUserPhotoById($userId)
+    {
+        return DB::table('admins')
+                 ->select(DB::raw(
+                     'admins.photo as "photo"'))
+                 ->where('id', '=', $userId)
+                 ->value("photo");
+    }
 }

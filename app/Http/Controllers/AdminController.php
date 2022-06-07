@@ -49,6 +49,7 @@ class AdminController extends Controller
         $userId = session('user_id');
 
         $userInformation = $this->adminService->getUserInformation($userId);
+        $userPhoto = $this->adminService->getUserPhotoById($userId);
 
         // dd($userInformation);
 
@@ -59,6 +60,7 @@ class AdminController extends Controller
 
         return view('main_page.main_admin', [
             'user_information' => $userInformation,
+            'photo' => $userPhoto,
             'games' => $games,
             'stages' => $stages,
             'stages_count' => $stagesCount
