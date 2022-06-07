@@ -16,42 +16,6 @@ class Stage1QuestionsSeeder extends Seeder
     public function run()
     {
         DB::table('stage1_questions')->insert(
-           [
-               'question' => 'Город',
-               'type' => 1,
-               'topic' => 'A',
-               'active' => 1
-           ]
-        );
-
-        DB::table('stage1_questions')->insert(
-            [
-                'question' => 'Хобби',
-                'type' => 2,
-                'topic' => 'C',
-                'active' => 1
-            ]
-        );
-
-        DB::table('stage1_questions')->insert(
-            [
-                'question' => 'Интроверт / Экстраверт',
-                'type' => 3,
-                'topic' => 'B',
-                'active' => 1
-            ]
-        );
-
-        DB::table('stage1_questions')->insert(
-            [
-                'question' => 'Имя',
-                'type' => 1,
-                'topic' => 'A',
-                'active' => 1
-            ]
-        );
-
-        DB::table('stage1_questions')->insert(
             [
                 'question' => 'Пол',
                 'type' => 1,
@@ -68,5 +32,44 @@ class Stage1QuestionsSeeder extends Seeder
                 'active' => 1
             ]
         );
+
+        DB::table('stage1_questions')->insert(
+            [
+                'question' => 'Семейное положение',
+                'type' => 3,
+                'topic' => 'B',
+                'active' => 1
+            ]
+        );
+
+        DB::table('stage1_questions')->insert(
+            [
+                'question' => 'Место жительства',
+                'type' => 3,
+                'topic' => 'B',
+                'active' => 1
+            ]
+        );
+
+        DB::table('stage1_questions')->insert(
+            [
+                'question' => 'Хобби',
+                'type' => 2,
+                'topic' => 'C',
+                'active' => 1
+            ]
+        );
+
+        DB::table('stage1_questions')->insert(
+            [
+                'question' => 'Ценности',
+                'type' => 2,
+                'topic' => 'C',
+                'active' => 1
+            ]
+        );
+
+
+
     }
 }

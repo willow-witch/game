@@ -36,8 +36,8 @@ class StudentService
     {
         $result = DB::table('student_groups')
             ->select(DB::raw(
-                'student_groups.group_id',
-                'groups.name'))
+                'student_groups.group_id,
+                groups.name'))
             ->leftJoin('groups', 'student_groups.group_id', 'groups.id')
             ->leftJoin('games_groups', 'student_groups.group_id', 'games_groups.group_id')
             ->where('student_groups.student_id', '=', $studentId)
