@@ -3,12 +3,17 @@
 namespace App\Services;
 
 use Illuminate\Support\Facades\DB;
+use App\Services\QuestionService;
 
 class TeamService
 {
-    public function getTeamName() : string
+    public function getTeamName($team) : string
     {
-        return "team1";
+        return DB::table('groups')
+                 ->select(DB::raw(
+                     'groups.name as "name"'))
+                 ->where('groups.id', '=', $team)
+                 ->value("name");
     }
 
     public function getAnswersForStage(int $stage, int $team = 0) : array
@@ -20,8 +25,6 @@ class TeamService
                     $team=0;
                 }
 
-
-
                 $questions = DB::table('stage1_answers_students')
                     ->select(DB::raw(
                         'stage1_questions.question,
@@ -32,6 +35,7 @@ class TeamService
                     ->leftJoin('stage1_answers', 'stage1_answers_students.answer_id', 'stage1_answers.id')
                     ->leftJoin('question_type', 'stage1_questions.type', 'question_type.id')
                     ->where('stage1_answers_students.group_id', '=', $team)
+                    ->where('stage1_questions.question', '!=', "Изображение")
                     ->groupBy('stage1_questions.id', 'stage1_questions.topic', 'question_type.type')
                     ->orderBy('stage1_questions.topic')
                     ->orderBy('question_type.type')
@@ -50,51 +54,6 @@ class TeamService
                 }
                 return $result;
 
-//                return [
-//                    [
-//                        "question" => "City",
-//                        "type" => "free",
-//                        "answers" => [
-//                            "City"
-//                        ]
-//                    ],
-//                    [
-//                        "question" => "Hobbies",
-//                        "type" => "test-multiple-options",
-//                        "answers" => [
-//                            "Skating",
-//                            "Swimming",
-//                            "Sketching",
-//                            "Writing",
-//                            "Gaming",
-//                            "Swimming",
-//                            "Sketching",
-//                            "Writing",
-//                            "Gaming"
-//                        ]
-//                    ],
-//                    [
-//                        "question" => "Personality",
-//                        "type" => "test-only-option",
-//                        "answers" => [
-//                            "Introvert"
-//                        ]
-//                    ],
-//                    [
-//                        "question" => "Personality",
-//                        "type" => "test-only-option",
-//                        "answers" => [
-//                            "Introvert"
-//                        ]
-//                    ],
-//                    [
-//                        "question" => "Personality",
-//                        "type" => "test-only-option",
-//                        "answers" => [
-//                            "Introvert"
-//                        ]
-//                    ]
-//                ];
             case 2:
 
                 if ($team == null){
@@ -116,8 +75,20 @@ class TeamService
                 $result = $answers;
 
                 return $result;
-
         }
+    }
 
+    public function getImageStage1($team, $game)
+    {
+        $imageQuestionId = app(QuestionService::class)->getImageQuestionStage1();
+
+        return DB::table('stage1_answers_students')
+                    ->select(DB::raw(
+                    'stage1_answers.answer as "path"'))
+                    ->leftJoin('stage1_answers', 'stage1_answers_students.answer_id', 'stage1_answers.id')
+                    ->where('stage1_answers_students.group_id', '=', $team)
+                    ->where('stage1_answers_students.game_id', '=', $game)
+                    ->where('stage1_answers_students.question_id', '=', $imageQuestionId)
+                    ->value("path");
     }
 }

@@ -42,6 +42,15 @@ class GameService
         return $result;
     }
 
+    public function getGameByTeam($team)
+    {
+        return DB::table('games_groups')
+            ->select(DB::raw(
+                'games_groups.game_id as "game"'))
+            ->where('games_groups.group_id', '=', $team)
+            ->value("game");
+    }
+
     public function getGamesForTeacher(): array
     {
         return [

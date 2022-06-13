@@ -4,6 +4,7 @@ namespace App\Services;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Services\QuestionService;
 
 class AnswerService
 {
@@ -17,7 +18,7 @@ class AnswerService
             $image = $request->file('image');
             $name = time().'.'.$image->getClientOriginalExtension();
             $path = $request->file('image')->storeAs('public/img/stage1pics', $name);
-            $path = substr($path, 6);
+            $path = '/storage' . substr($path, 6);
         }
         else {
             $path = "/img/stage1pics/user.png";
@@ -26,20 +27,21 @@ class AnswerService
         return $path;
     }
 
-    public function addImageStage1($image, $gameId, $groupId)
+    public function addAnswerStage1($answer) : int
     {
-        $questionId = DB::table('stage1_questions')
-          ->select(DB::raw(
-              'stage1_questions.id as "question_id"'))
-          ->where('question', '=', "Изображение")
-          ->value("question_id");
-
-        $answerId = DB::table('stage1_answers')->insertGetId(
+        return DB::table('stage1_answers')->insertGetId(
             [
-                'answer' => $image,
+                'answer' => $answer,
                 'active' => 1
             ]
         );
+    }
+
+    public function addImageStage1($image, $gameId, $groupId)
+    {
+        $questionId = app(QuestionService::class)->getImageQuestionStage1();
+
+        $answerId = $this->addAnswerStage1($image);
 
         DB::table('stage1_answers_students')->insert(
             [

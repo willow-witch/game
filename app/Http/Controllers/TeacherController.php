@@ -114,7 +114,7 @@ class TeacherController extends Controller
 
     public function showStagePage($stage, $team) {
 
-        $teamName = $this->teamService->getTeamName();
+        $teamName = $this->teamService->getTeamName($team);
 
         $answers = $this->teamService->getAnswersForStage($stage, $team);
 
@@ -122,13 +122,17 @@ class TeacherController extends Controller
 
         switch ($stage) {
             case 1:
+                $game = $this->gameService->getGameByTeam($team);
+                $image = $this->teamService->getImageStage1($team, $game);
+
                 return view('stages.stage1.teacher_stage1',
                     [
                         'team' => $team,
                         "team_name" => $teamName,
                         'answers' => $answers,
                         'criteria' => $criteria,
-                        'stage_id' => 1
+                        'stage_id' => 1,
+                        'image' => $image
                     ]
                 );
             case 2:

@@ -61,4 +61,13 @@ class QuestionService
             $result = $questions;
             return $result;
     }
+
+    public function getImageQuestionStage1()
+    {
+        return DB::table('stage1_questions')
+                 ->select(DB::raw(
+                     'stage1_questions.id as "question_id"'))
+                 ->where('question', '=', "Изображение")
+                 ->value("question_id");
+    }
 }
