@@ -15,29 +15,35 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
-
+use App\Services\AnswerService;
 
 
 class AnswersController extends Controller
 {
+    protected AnswerService $answerService;
+
+    public function __construct(AnswerService $answerService)
+    {
+        $this->answerService = $answerService;
+    }
+
     public function addAnswers(Request $request)
     {
-        //dd($request->all());
+        // dd($request->all());
         $stage_id = $request->input('stage_id');
         unset($request['stage_id']);
         $game_id = $request->input('game_id');
         unset($request['game_id']);
         $group_id = $request->input('group_id');
-        unset($request['group_id']);
-        unset($request['_token']);
+        unset($request['group_id'], $request['_token']);
 
-        //dd($request->all());
+        $image = $this->answerService->handleImage($request);
 
         switch ($stage_id)
         {
             case 1:
-                return 1;
-            break;
+                $this->answerService->addImageStage1($image, $game_id, $group_id);
+                return redirect(\route('student.profile'));
 
             case 2:
                foreach ($request -> all() as $key => $item) {
@@ -53,20 +59,16 @@ class AnswersController extends Controller
                         ]
                     );
                 }
-
-            break;
+                break;
 
             case 3:
-                return 1;
-            break;
+                return 3;
 
             case 4:
-                return 1;
-            break;
+                return 4;
 
             case 5:
-                return 1;
-            break;
+                return 5;
 
         }
         //

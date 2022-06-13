@@ -40,8 +40,6 @@ class GameService
         }
 
         return $result;
-
-
     }
 
     public function getGamesForTeacher(): array

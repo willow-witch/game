@@ -70,10 +70,9 @@ class StudentController extends Controller
         return view('join_game');
     }
 
-    public function showStagePage(Request $request) {
-
+    public function showStagePage(Request $request)
+    {
         $stage = $request->input('stage');
-
 
         $stages = $this->stageService->getAllStages();
         $stagesCount = $this->stageService->getStagesCount();
@@ -87,8 +86,8 @@ class StudentController extends Controller
                     'criteria' => $criteria,
                     'questions' => $questions,
                     'stage_id'=> 1,
-                    'group_id'=>$request->input('$group_id'),
-                    'game_id'=>$request->input('$game_id')
+                    'group_id'=>$request->input('group_id'),
+                    'game_id'=>$request->input('game_id')
                 ]);
             case 2:
                 $questions = $this->questionService->getQuestionsForStudentStage2();

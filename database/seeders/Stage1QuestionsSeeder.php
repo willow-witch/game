@@ -69,6 +69,15 @@ class Stage1QuestionsSeeder extends Seeder
             ]
         );
 
+        DB::table('stage1_questions')->insert(
+            [
+                'question' => 'Изображение',
+                'type' => 1,
+                'topic' => 'X',
+                'active' => 1
+            ]
+        );
+
 
 
     }

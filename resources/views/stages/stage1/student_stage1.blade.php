@@ -1,6 +1,13 @@
 @extends('stages.stage')
 
-@include('stages.stage1.student_stage1_questions', ['questions' => $questions])
+@include('stages.stage1.student_stage1_questions',
+[
+    'questions' => $questions,
+    'group_id'=> $group_id,
+    'game_id'=> $game_id
+]
+)
+
 @include('stages.stage1.student_stage1_criteria', ['criteria' => $criteria])
 
 
