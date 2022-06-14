@@ -51,6 +51,15 @@ class GameService
             ->value("game");
     }
 
+    public function getGameByStudent($studentId)
+    {
+        return DB::table('games_students')
+                 ->select(DB::raw(
+                     'games_students.game_id as "game"'))
+                 ->where('games_students.student_id', '=', $studentId)
+                 ->value("game");
+    }
+
     public function getGamesForTeacher(): array
     {
         return [

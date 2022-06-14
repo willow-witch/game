@@ -92,4 +92,15 @@ class TeamService
                     ->where('stage1_answers_students.question_id', '=', $imageQuestionId)
                     ->value("path");
     }
+
+    public function getTeam($studentId, $gameId)
+    {
+        return DB::table('games_groups')
+                 ->select(DB::raw(
+                     'games_groups.group_id as "group"'))
+                 ->leftJoin('student_groups', 'student_groups.group_id', 'games_groups.group_id')
+                 ->where('student_groups.student_id', '=', $studentId)
+                 ->where('games_groups.game_id', '=', $gameId)
+                 ->value("group");
+    }
 }

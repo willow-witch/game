@@ -80,7 +80,7 @@ class StudentController extends Controller
         switch ($stage) {
             case 1:
                 $questions = $this->questionService->getQuestionsForStudentStage1();
-                $criteria = $this->criteriaService->getCriteriaForStudentStage1();
+                $criteria = $this->criteriaService->getCriteriaForStudentStage1($request->input('game_id'));
 
                 return view('stages.stage1.student_stage1', [
                     'criteria' => $criteria,

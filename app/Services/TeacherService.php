@@ -31,4 +31,33 @@ class TeacherService
                  ->where('id', '=', $userId)
                  ->value("photo");
     }
+
+    public function getJudgesForGameStage($game, $stage)
+    {
+        return DB::table('judges')
+                 ->select(DB::raw(
+                     'concat(last_name," ",first_name) as "name"'))
+                 ->leftJoin('teachers', 'teachers.id', 'judges.teacher_id')
+                 ->where('judges.game_id', '=', $game)
+                 ->where('judges.stage_id', '=', $stage)
+                 ->pluck("name");
+    }
+
+    public function getAllTeachers()
+    {
+        return DB::table('teachers')
+                 ->select(DB::raw(
+                     'concat(last_name," ",first_name) as "name"'))
+                 ->pluck("name");
+    }
+
+    public function getTeacherId($name)
+    {
+        return DB::table('teachers')
+                 ->select(DB::raw(
+                     'concat(last_name," ",first_name) as "name",
+                     id as "teacher"'))
+                 ->having('name', 'like', $name)
+                 ->value("teacher");
+    }
 }
