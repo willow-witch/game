@@ -9,7 +9,7 @@
             <div class="questions-wrapper">
                 <div class="left-column">
                     <div class="buyer-pic">
-                        <img src="/img/stage1pics/profile.png">
+                        <img src="{{$image}}">
                     </div>
 
                 </div>
