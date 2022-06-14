@@ -36,13 +36,15 @@ class AnswersController extends Controller
         unset($request['game_id']);
         $group_id = $request->input('group_id');
         unset($request['group_id'], $request['_token']);
-
+        // dd($request->all());
         $image = $this->answerService->handleImage($request);
+        unset($request['image']);
 
         switch ($stage_id)
         {
             case 1:
                 $this->answerService->addImageStage1($image, $game_id, $group_id);
+                $this->answerService->handleTeamAnswers($request, $game_id, $group_id);
                 return redirect(\route('student.profile'));
 
             case 2:

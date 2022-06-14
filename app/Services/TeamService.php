@@ -16,7 +16,7 @@ class TeamService
                  ->value("name");
     }
 
-    public function getAnswersForStage(int $stage, int $team = 0) : array
+    public function getAnswersForStage(int $stage, int $team = 0, $game = 0) : array
     {
         switch ($stage){
             case 1:
@@ -35,6 +35,7 @@ class TeamService
                     ->leftJoin('stage1_answers', 'stage1_answers_students.answer_id', 'stage1_answers.id')
                     ->leftJoin('question_type', 'stage1_questions.type', 'question_type.id')
                     ->where('stage1_answers_students.group_id', '=', $team)
+                    ->where('stage1_answers_students.game_id', '=', $game)
                     ->where('stage1_questions.question', '!=', "Изображение")
                     ->groupBy('stage1_questions.id', 'stage1_questions.topic', 'question_type.type')
                     ->orderBy('stage1_questions.topic')

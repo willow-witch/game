@@ -4,6 +4,8 @@
     <form method="post" action="evaluate">
         @csrf
 
+        <input hidden name="group_id" value="{{$team}}">
+
         <div class="stage-criteria">
             <div class="stage-name">
                 Критерии оценивания - {{$team_name}}

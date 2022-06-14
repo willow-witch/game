@@ -56,5 +56,14 @@ class CriteriaService
         return $result;
     }
 
+    public function getCriteriaIdByName($name)
+    {
+        return DB::table('stage1_criteria')
+                 ->select(DB::raw(
+                     'stage1_criteria.id as "criteria_id"'))
+                 ->where('criteria', 'like', $name)
+                 ->value("criteria_id");
+    }
+
 
 }

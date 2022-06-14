@@ -70,4 +70,13 @@ class QuestionService
                  ->where('question', '=', "Изображение")
                  ->value("question_id");
     }
+
+    public function getQuestionIdByName($name)
+    {
+        return DB::table('stage1_questions')
+                 ->select(DB::raw(
+                     'stage1_questions.id as "question_id"'))
+                 ->where('question', 'like', $name)
+                 ->value("question_id");
+    }
 }

@@ -33,7 +33,7 @@
                         @switch($question["type"])
 
                             @case("free")
-                            <textarea class="question-free-answers" wrap="soft" name="{{$question["question"]}}"
+                            <textarea class="question-free-answers" wrap="soft" name="{{$question["question"]}}[]"
                                       placeholder="{{$question["question"]}}" required></textarea>
                             @break
 
@@ -54,7 +54,7 @@
                             <div class="question-test-answers">
                                 @foreach($question["answers"] as $answer)
                                     <label class="question-test-answer">
-                                        <input type="radio" name="{{$question["question"]}}" value="{{$answer}}">
+                                        <input type="radio" name="{{$question["question"]}}[]" value="{{$answer}}">
                                         <span>
                                             {{$answer}}
                                         </span>

@@ -2,18 +2,14 @@
 
 namespace App\Services;
 
+use App\Services\QuestionService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Services\QuestionService;
 
 class AnswerService
 {
     public function handleImage(Request $request) : string
     {
-        // $this->validate($request, [
-        //     'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        // ]);
-
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $name = time().'.'.$image->getClientOriginalExtension();
@@ -35,6 +31,50 @@ class AnswerService
                 'active' => 1
             ]
         );
+    }
+
+    public function getAnswerIdByName($name)
+    {
+        return DB::table('stage1_answers')
+                 ->select(DB::raw(
+                     'stage1_answers.id as "answer_id"'))
+                 ->where('answer', '=', $name)
+                 ->value("answer_id");
+    }
+
+    public function addTeamAnswer($questionId, $answerId, $gameId, $groupId)
+    {
+        DB::table('stage1_answers_students')->insert(
+            [
+                'question_id' => $questionId,
+                'answer_id'=> $answerId,
+                'game_id' => $gameId,
+                'group_id' => $groupId,
+                'answer_date'=>date('Y-m-d H:i:s'),
+                'active'=>1
+            ]
+        );
+    }
+
+    public function handleTeamAnswers(Request $request, $gameId, $groupId)
+    {
+        foreach ($request->all() as $key => $items)
+        {
+            $questionId = app(QuestionService::class)->getQuestionIdByName($key);
+            foreach ($items as $item)
+            {
+                if($this->getAnswerIdByName($item))
+                {
+                    $answerId = $this->getAnswerIdByName($item);
+                }
+                else
+                {
+                    $answerId = $this->addAnswerStage1($item);
+                }
+
+                $this->addTeamAnswer($questionId, $answerId, $gameId, $groupId);
+            }
+        }
     }
 
     public function addImageStage1($image, $gameId, $groupId)
