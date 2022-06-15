@@ -10,6 +10,7 @@ use App\Services\GameService;
 use App\Services\QuestionService;
 use App\Services\CriteriaService;
 use App\Services\UserService;
+use App\Services\TeamService;
 use App\Http\Requests\StudentProfileRequest;
 use Illuminate\Http\Request;
 
@@ -21,13 +22,15 @@ class StudentController extends Controller
     protected QuestionService $questionService;
     protected CriteriaService $criteriaService;
     protected UserService $userService;
+    protected TeamService $teamService;
 
     public function __construct(StudentService $studentService,
                                 StageService $stageService,
                                 GameService $gameService,
                                 QuestionService $questionService,
                                 CriteriaService $criteriaService,
-                                UserService $userService
+                                UserService $userService,
+                                TeamService $teamService
                                 )
     {
         $this->studentService = $studentService;
@@ -36,6 +39,7 @@ class StudentController extends Controller
         $this->questionService = $questionService;
         $this->criteriaService = $criteriaService;
         $this->userService = $userService;
+        $this->teamService = $teamService;
 
         view()->composer('layout_main', function ($view) {
             $view->with('user_name', session('user_name'));
@@ -77,18 +81,41 @@ class StudentController extends Controller
         $stages = $this->stageService->getAllStages();
         $stagesCount = $this->stageService->getStagesCount();
 
+        $team = $request->input('group_id');
+        $teamName = $this->teamService->getTeamName($team);
+        $game = $request->input('game_id');
+
         switch ($stage) {
             case 1:
-                $questions = $this->questionService->getQuestionsForStudentStage1();
                 $criteria = $this->criteriaService->getCriteriaForStudentStage1($request->input('game_id'));
+                $image = $this->teamService->getImageStage1($team, $game);
+
+                if($this->teamService->getImageStage1($team, $game))
+                {
+                    $answers = $this->teamService->getAnswersForStage($stage, $team, $game);
+
+                    return view('stages.stage1.student_stage1',
+                    [
+                        'team' => $team,
+                        "team_name" => $teamName,
+                        'answers' => $answers,
+                        'criteria' => $criteria,
+                        'stage_id' => 1,
+                        'image' => $image
+                    ]
+                    );
+                }
+
+                $questions = $this->questionService->getQuestionsForStudentStage1();
 
                 return view('stages.stage1.student_stage1', [
                     'criteria' => $criteria,
                     'questions' => $questions,
                     'stage_id'=> 1,
-                    'group_id'=>$request->input('group_id'),
-                    'game_id'=>$request->input('game_id')
+                    'group_id'=> $team,
+                    'game_id'=> $game
                 ]);
+
             case 2:
                 $questions = $this->questionService->getQuestionsForStudentStage2();
                 $criteria = $this->criteriaService->getCriteriaForStudentStage1();
