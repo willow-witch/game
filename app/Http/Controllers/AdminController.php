@@ -60,7 +60,7 @@ class AdminController extends Controller
 
         return view('main_page.main_admin', [
             'user_information' => $userInformation,
-            'photo' => $userPhoto,
+            'user_photo' => $userPhoto,
             'games' => $games,
             'stages' => $stages,
             'stages_count' => $stagesCount

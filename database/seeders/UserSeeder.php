@@ -87,6 +87,7 @@ class UserSeeder extends Seeder
             'last_name' => 'Зонин',
             'photo' => '/img/profilepics/teacher_man.png'
         ]);
+
     }
 
 }

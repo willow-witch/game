@@ -1,25 +1,33 @@
 @extends('stages.stage')
 
-@include('stages.stage1.student_stage1_questions',
-[
-    'questions' => $questions,
-    'group_id'=> $group_id,
-    'game_id'=> $game_id
-]
-)
+@if(!empty($questions))
+    @include('stages.stage1.student_stage1_questions',
+        [
+            'group_id'=> $group_id,
+            'game_id'=> $game_id
+        ]
+    )
+@else
+    @include('stages.stage1.teacher_stage1_answers')
+@endif
 
 @include('stages.stage1.student_stage1_criteria', ['criteria' => $criteria])
 
-
 @section('stage_content')
 
-    <div class="stage-background">
-        @yield('student_stage1_questions')
-    </div>
+    @if(!empty($questions))
+        <div class="stage-background">
+            @yield('student_stage1_questions')
+        </div>
+    @else
+        @yield('teacher_stage1_answers')
+    @endif
 
+    @if(!empty($criteria["criteria"]))
     <div class="stage-criteria">
         @yield('student_stage1_criteria')
     </div>
+    @endif
 
 @endsection
 
