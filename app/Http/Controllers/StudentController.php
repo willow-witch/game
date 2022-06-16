@@ -118,14 +118,14 @@ class StudentController extends Controller
 
             case 2:
                 $questions = $this->questionService->getQuestionsForStudentStage2();
-                $criteria = $this->criteriaService->getCriteriaForStudentStage1();
+                //$criteria = $this->criteriaService->getCriteriaForStudentStage1();
 
                 //dd($request->all());
 
                 return view('stages.stage2.student_stage2', [
                     'stages' => $stages,
                     'questions' => $questions,
-                    'criteria' => $criteria,
+                    //'criteria' => $criteria,
                     'stage_id'=> 2,
                     'stages_count' => $stagesCount,
                     'group_id'=>$request->input('group_id'),
