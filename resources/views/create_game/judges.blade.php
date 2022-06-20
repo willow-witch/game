@@ -1,16 +1,4 @@
 
-<?php
-
-    $teachers = [
-        "teacher 1",
-        "teacher 1",
-        "teacher 1",
-        "teacher 1",
-        "teacher 1"
-    ];
-
-    ?>
-
 @section('judges')
 
     <div class="creation-stage-wrapper">
@@ -27,7 +15,7 @@
             <div class="question-test-answers">
                 @foreach($teachers as $teacher)
                     <label class="question-test-answer">
-                        <input type="checkbox" >
+                        <input type="checkbox" name="judges{{$stage}}[]" value="{{$teacher}}">
                         <span>
                             {{$teacher}}
                         </span>

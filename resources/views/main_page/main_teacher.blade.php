@@ -24,32 +24,33 @@
         Игры
     </div>
 
-    @foreach($games as $game)
+    @foreach($content as $game)
     <div class="user-games-games">
         <div class="teacher-games-games-name">
             {{$game["game_name"]}}
         </div>
 
         <?php
-        $stages_count = count($stages);
+        $stages_count = count($game["stages"]);
         ?>
 
         @for($i=0; $i < $stages_count; $i++)
             <div class="teacher-stages-wrapper">
                 <div class="teacher-games-games-progress-list" href="javascript:void(0);" tabindex="1">
-                     {{$stages[$i]["stage_name"]}}
+                     {{$game["stages"][$i]["stage_name"]}}
                 </div>
 
                 <?php
-                $teams_count = count($stages[$i]["teams"]);
+                $teams_count = count($game["stages"][$i]["teams"]);
+                // dd($game["stages"][$i]["teams"]);
                 ?>
 
                 <ul class="teacher-games-games-progress">
 
                    @for($j=0; $j < $teams_count; $j++)
                     <li class="teacher-games-games-progress-stage-team">
-                       <a href="stage/{{$i+1}}/team/{{$j+1}}">
-                           {{$stages[$i]["teams"][$j]}}
+                       <a href="stage/{{$i+1}}/team/{{$game["stages"][$i]["teams"][$j]["group_id"]}}">
+                           {{$game["stages"][$i]["teams"][$j]["team_name"]}}
                        </a>
                     </li>
                    @endfor

@@ -32,6 +32,16 @@ class StudentService
                     ->value("photo");
     }
 
+    public function getStudentIdByName($studentName)
+    {
+        return DB::table('students')
+                 ->select(DB::raw(
+                     'id as "student_id",
+                     concat(last_name," ",first_name) as "name"'))
+                 ->having('name', 'like', $studentName)
+                 ->value("student_id");
+    }
+
     public function getGroupInformation($studentId, $gameId)
     {
         $result = DB::table('student_groups')
@@ -49,29 +59,17 @@ class StudentService
 
     public function getAllFields()
     {
-        return [
-            "field 1",
-            "field 2",
-            "field 3",
-            "field 4",
-            "field 5",
-            "field 6"
-        ];
+        return DB::table('students')
+                        ->distinct()
+                        ->pluck("field");
     }
 
-    public function getStudentFromField()
+    public function getStudentFromField($field)
     {
-        return [
-            "student 1",
-            "student 2",
-            "student 3",
-            "student 4",
-            "student 5",
-            "student 6",
-            "student 7",
-            "student 8",
-            "student 9",
-            "student 10"
-        ];
+        return DB::table('students')
+                 ->select(DB::raw(
+                     'concat(last_name," ",first_name) as "name"'))
+                 ->where('field', 'like', $field)
+                 ->pluck("name");
     }
 }

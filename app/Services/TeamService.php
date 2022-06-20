@@ -7,6 +7,26 @@ use App\Services\QuestionService;
 
 class TeamService
 {
+    public function createTeam($teamName, $startDate, $endDate, $participantsNumber):int
+    {
+        return DB::table('groups')->insertGetId(
+            [
+                'name'=> $teamName,
+                'start_date'=> $startDate,
+                'end_date'=> $endDate,
+                'participants_number' => $participantsNumber
+            ]
+        );
+    }
+
+    public function bindStudentToGroup($studentId, $teamId):void
+    {
+        DB::table('student_groups')->insert([
+              'student_id' => $studentId,
+              'group_id' => $teamId
+        ]);
+    }
+
     public function getTeamName($team) : string
     {
         return DB::table('groups')

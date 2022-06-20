@@ -17,7 +17,7 @@ class TeacherService
                         '))
                     ->leftJoin('teachers', 'users.id', 'teachers.id')
                     ->leftJoin('roles', 'users.role_id', 'roles.id')
-                    ->where('users.id', 'like', $userId)
+                    ->where('users.id', '=', $userId)
                     ->get();
 
         return json_decode(json_encode($result, true), true)[0];
@@ -43,6 +43,15 @@ class TeacherService
                  ->pluck("name");
     }
 
+    public function setJudgeForGameStage($gameId, $teacherId, $stageId)
+    {
+        DB::table('judges')->insert([
+            'game_id' => $gameId,
+            'teacher_id' => $teacherId,
+            'stage_id' => $stageId
+        ]);
+    }
+
     public function getAllTeachers()
     {
         return DB::table('teachers')
@@ -51,13 +60,13 @@ class TeacherService
                  ->pluck("name");
     }
 
-    public function getTeacherId($name)
+    public function getTeacherId($name):int
     {
         return DB::table('teachers')
                  ->select(DB::raw(
-                     'concat(last_name," ",first_name) as "name",
-                     id as "teacher"'))
+                     'id as "teacher_id",
+                     concat(last_name," ",first_name) as "name"'))
                  ->having('name', 'like', $name)
-                 ->value("teacher");
+                 ->value("teacher_id");
     }
 }

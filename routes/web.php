@@ -48,6 +48,8 @@ Route::prefix('teacher')->group(function () {
 
     Route::post('create_teams', [TeacherController::class, 'showCreateTeamsPage'])->name('create_teams');
 
+    Route::post('/create', [TeacherController::class, 'createGame'])->name('create');
+
     Route::post('/stage/{stage}/team/evaluate', [EvaluationController::class, 'evaluate'])->name('evaluate');
 });
 

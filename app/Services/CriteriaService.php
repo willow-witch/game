@@ -33,7 +33,7 @@ class CriteriaService
             ];
         }
 
-        // dd($result_criteria);
+
 
         return [
             "teachers" => $teachers,

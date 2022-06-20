@@ -5,7 +5,13 @@
 
 @section('stage_content')
 
+    @if(!empty($answers))
         @yield('teacher_stage1_answers')
+    @else
+        <div class="stage-background">
+            Команда {{$team_name}} еще не ответила на вопросы модуля таргетинга
+        </div>
+    @endif
 
         @yield('teacher_stage1_evaluation')
 

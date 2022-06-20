@@ -88,6 +88,7 @@ class StudentController extends Controller
         switch ($stage) {
             case 1:
                 $criteria = $this->criteriaService->getCriteriaForStudentStage1($request->input('game_id'));
+
                 $image = $this->teamService->getImageStage1($team, $game);
 
                 if($this->teamService->getImageStage1($team, $game))

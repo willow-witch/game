@@ -56,17 +56,27 @@ class TeacherController extends Controller
     {
         $userId = session('user_id');
 
-        $games = $this->gameService->getGamesForTeacher();
+        $games = $this->gameService->getGamesForTeacher($userId);
 
-        $stages = $this->stageService->getTeamsForStages();
+        $result = [];
+        foreach ($games as $game)
+        {
+            $result[] = [
+                "game_id" => $game["game_id"],
+                "status" => $game["status"],
+                "game_name" => $game["game_name"],
+                "stages" => $this->stageService->getTeamsForStages($userId, $game["game_id"])
+            ];
+        }
+
+        // dd($result);
 
         $userInformation = $this->teacherService->getUserInformation($userId);
         $userPhoto = $this->teacherService->getUserPhotoById($userId);
 
         return view('main_page.main_teacher',
                     [
-                        'games' => $games,
-                        'stages' => $stages,
+                        'content' => $result,
                         'user_information' => $userInformation,
                         'user_photo' => $userPhoto
                     ]
@@ -81,11 +91,14 @@ class TeacherController extends Controller
 
         $fields = $this->studentService->getAllFields();
 
+        $teachers = $this->teacherService->getAllTeachers();
+
         return view('create_game.create_game',
                     [
                         'stages' => $stages,
                         'stages_count' => $stagesCount,
-                        'fields' => $fields
+                        'fields' => $fields,
+                        'teachers' => $teachers
                     ]
         );
     }
@@ -95,21 +108,86 @@ class TeacherController extends Controller
         $gameName = $request->input('game_name');
 
         $teamsAmount = $request->input('teams_number');
-
         $startDate = $request->date('start_date');
-
         $endDate = $request->date('end_date');
 
-        $fields = $request->input('fields');
+        $judges = [];
+        foreach($request->all() as $key => $value) {
 
-        $studentsFromField = $this->studentService->getStudentFromField();
+            if (str_contains($key, "judges")) {
+                $judges[] = [
+                    $key => $value
+                ];
+            }
+        }
+        $judgesCount = count($judges);
+
+        $gameId = $this->gameService->createGame($startDate, $endDate, $teamsAmount);
+
+        for($i=1; $i <= $judgesCount; $i++)
+        {
+            $stageJudges = array_values($judges[$i-1]);
+
+            foreach ($stageJudges as $stageJudge)
+            {
+                $teacherId = $this->teacherService->getTeacherId($stageJudge[0]);
+
+                $this->teacherService->setJudgeForGameStage($gameId, $teacherId, $i);
+            }
+        }
+
+        $fields = implode($request->input('field'));
+        $studentsFromField = $this->studentService->getStudentFromField($fields);
 
         return view('create_game.create_teams',
                     [
                         "teams_amount" => $teamsAmount,
-                        "students" => $studentsFromField
+                        "students" => $studentsFromField,
+                        "start_date" => $startDate,
+                        "end_date" => $endDate,
+                        "game_id" => $gameId
                     ]
         );
+    }
+
+    public function createGame(Request $request)
+    {
+        $teamsAmount = $request->input('teams_amount');
+        $startDate = $request->date('start_date');
+        $endDate = $request->date('end_date');
+        $gameId = $request->input('game_id');
+        unset(
+            $request['_token'],
+            $request['teams_amount'],
+            $request['start_date'],
+            $request['end_date'],
+            $request['game_id']
+        );
+
+
+        $data = $request->all();
+        $requestLength = count($data)/2;
+
+        // dd($data);
+
+        for($i=0; $i<$requestLength; $i++)
+        {
+            $teamName = $data["team_name".$i+1];
+            $members = $data["students".$i+1];
+
+            $teamId = $this->teamService->createTeam($teamName, $startDate, $endDate, count($members));
+            $this->gameService->bindGroupToGame($teamId, $gameId);
+
+            foreach ($members as $member)
+            {
+                $studentId = $this->studentService->getStudentIdByName($member);
+
+                $this->gameService->bindStudentToGame($studentId, $gameId);
+                $this->teamService->bindStudentToGroup($studentId, $teamId);
+            }
+        }
+
+        return redirect(\route('teacher.profile'));
     }
 
     public function showStagePage($stage, $team) {

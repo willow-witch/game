@@ -56,12 +56,12 @@ class AdminController extends Controller
         $stages = $this->stageService->getAllStages();
         $stagesCount = $this->stageService->getStagesCount();
 
-        $games = $this->gameService->getGamesForTeacher();
+        // $games = $this->gameService->getGamesForTeacher();
 
         return view('main_page.main_admin', [
             'user_information' => $userInformation,
             'user_photo' => $userPhoto,
-            'games' => $games,
+            // 'games' => $games,
             'stages' => $stages,
             'stages_count' => $stagesCount
             ]
