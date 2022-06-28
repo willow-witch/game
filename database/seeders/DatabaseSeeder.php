@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
             StudentGroupsSeeder::class,
             GamesGroupsSeeder::class,
             GamesStudentsSeeder::class,
-            Stage1AnswersStudentsSeeder::class,
+            //Stage1AnswersStudentsSeeder::class,
             Stage2AnswersSeeder::class,
             Stage1CriteriaSeeder::class
         ]);
