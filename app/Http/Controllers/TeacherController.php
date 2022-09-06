@@ -214,11 +214,19 @@ class TeacherController extends Controller
                     ]
                 );
             case 2:
+                if(!empty($answers)){
+                    $image = array_pop($answers)['answer'];
+                }
+                else{
+                    $image = '';
+                }
+
                 return view('stages.stage2.teacher_stage2', [
                     'team' => $team,
                     "team_name" => $teamName,
                     'answers' => $answers,
-                    'stage_id' => 2
+                    'stage_id' => 2,
+                    'image' => $image
                 ]);
             case 3:
                 return view('stages.stage3.teacher_stage3', [
