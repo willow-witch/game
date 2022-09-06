@@ -37,31 +37,19 @@ class AnswersController extends Controller
         $group_id = $request->input('group_id');
         unset($request['group_id'], $request['_token']);
         // dd($request->all());
-        $image = $this->answerService->handleImage($request);
-        unset($request['image']);
+        $image = $this->answerService->handleImage($request, $stage_id);
 
         switch ($stage_id)
         {
             case 1:
                 $this->answerService->addImageStage1($image, $game_id, $group_id);
-                $this->answerService->handleTeamAnswers($request, $game_id, $group_id);
+                $this->answerService->handleTeamAnswersStage1($request, $game_id, $group_id);
                 return redirect(\route('student.profile'));
 
             case 2:
-               foreach ($request -> all() as $key => $item) {
-                    //var_dump($key);
-                    DB::table('stage2_answers_students')->insert(
-                        [
-                            'question_id' => $key,
-                            'answer'=> $item,
-                            'game_id' => $game_id,
-                            'group_id' => $group_id,
-                            'answer_date'=>date('Y-m-d H:i:s'),
-                            'active'=>1
-                        ]
-                    );
-                }
-                break;
+                $this->answerService->addImageStage2($image, $game_id, $group_id);
+                $this->answerService->handleTeamAnswersStage2($request->except('image'), $game_id, $group_id);
+                return redirect(\route('student.profile'));
 
             case 3:
                 return 3;

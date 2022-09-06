@@ -131,14 +131,15 @@ class StudentController extends Controller
                     'stages_count' => $stagesCount,
                     'group_id'=>$request->input('group_id'),
                     'game_id'=>$request->input('game_id')
-
                 ]);
+
             case 3:
                 return view('stages.stage3.student_stage3', [
                     'stages' => $stages,
                     'stage_id'=> 3,
                     'stages_count' => $stagesCount
                 ]);
+
             case 4:
                 return view('stages.stage4.student_stage4', [
                     'stages' => $stages,

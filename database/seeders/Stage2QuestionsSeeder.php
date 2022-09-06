@@ -95,5 +95,14 @@ class Stage2QuestionsSeeder extends Seeder
                 'active' => 1
             ]
         );
+
+        DB::table('stage2_questions')->insert(
+            [
+                'question' => 'Image',
+                'question_help'=>'',
+                'type' => 1,
+                'active' => 1
+            ]
+        );
     }
 }

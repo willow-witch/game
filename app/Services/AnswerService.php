@@ -8,18 +8,27 @@ use Illuminate\Support\Facades\DB;
 
 class AnswerService
 {
-    public function handleImage(Request $request) : string
+    public function handleImage(Request $request, int $stageId) : string
     {
+        switch ($stageId){
+            case 1:
+                $pathString = 'public/img/stage1pics';
+                break;
+            case 2:
+                $pathString = 'public/img/stage2pics';
+                break;
+        }
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $name = time().'.'.$image->getClientOriginalExtension();
-            $path = $request->file('image')->storeAs('public/img/stage1pics', $name);
+            $path = $request->file('image')->storeAs($pathString, $name);
             $path = '/storage' . substr($path, 6);
         }
         else {
             $path = "/img/stage1pics/user.png";
         }
 
+        // dd($path);
         return $path;
     }
 
@@ -56,7 +65,7 @@ class AnswerService
         );
     }
 
-    public function handleTeamAnswers(Request $request, $gameId, $groupId)
+    public function handleTeamAnswersStage1(Request $request, $gameId, $groupId)
     {
         foreach ($request->all() as $key => $items)
         {
@@ -77,6 +86,23 @@ class AnswerService
         }
     }
 
+    public function handleTeamAnswersStage2($request, $gameId, $groupId): void
+    {
+        foreach ($request as $key => $item) {
+            //var_dump($key);
+            DB::table('stage2_answers_students')->insert(
+                [
+                    'question_id' => $key,
+                    'answer'=> $item,
+                    'game_id' => $gameId,
+                    'group_id' => $groupId,
+                    'answer_date'=>date('Y-m-d H:i:s'),
+                    'active'=>1
+                ]
+            );
+        }
+    }
+
     public function addImageStage1($image, $gameId, $groupId)
     {
         $questionId = app(QuestionService::class)->getImageQuestionStage1();
@@ -94,4 +120,21 @@ class AnswerService
             ]
         );
     }
+
+    public function addImageStage2($image, $gameId, $groupId)
+    {
+        $questionId = app(QuestionService::class)->getImageQuestionStage2();
+
+        DB::table('stage2_answers_students')->insert(
+            [
+                'question_id' => $questionId,
+                'answer'=> $image,
+                'game_id' => $gameId,
+                'group_id' => $groupId,
+                'answer_date'=>date('Y-m-d H:i:s'),
+                'active'=>1
+            ]
+        );
+    }
+
 }
