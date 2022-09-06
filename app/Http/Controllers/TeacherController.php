@@ -197,10 +197,10 @@ class TeacherController extends Controller
         $game = $this->gameService->getGameByTeam($team);
         $answers = $this->teamService->getAnswersForStage($stage, $team, $game);
 
-        $criteria = $this->criteriaService->getCriteriaForTeacherStage1();
-
         switch ($stage) {
             case 1:
+                $evaluation = $this->criteriaService->getTeachersEvaluationStage1($game, $team);
+                $criteria = $this->criteriaService->getCriteriaForTeacherStage1();
                 $image = $this->teamService->getImageStage1($team, $game);
 
                 return view('stages.stage1.teacher_stage1',
@@ -209,6 +209,7 @@ class TeacherController extends Controller
                         "team_name" => $teamName,
                         'answers' => $answers,
                         'criteria' => $criteria,
+                        'evaluation' => $evaluation,
                         'stage_id' => 1,
                         'image' => $image
                     ]

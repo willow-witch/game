@@ -33,46 +33,45 @@ class CriteriaService
             ];
         }
 
-
-
         return [
             "teachers" => $teachers,
             "criteria" => $result_criteria
         ];
+    }
 
-        // return [
-        //     "teachers" => [
-        //         "Фамилия Имя",
-        //         "Фамилия Имя",
-        //         "Фамилия Имя"
-        //     ],
-        //     "criteria" => [
-        //         [
-        //             "criteria_name" => "Качество анализа",
-        //             "points" => [
-        //                 "7",
-        //                 "7",
-        //                 "8"
-        //             ]
-        //         ],
-        //         [
-        //             "criteria_name" => "Последовательность стратегии",
-        //             "points" => [
-        //                 "5",
-        //                 "6",
-        //                 "7"
-        //             ]
-        //         ],
-        //         [
-        //             "criteria_name" => "Освоение концепции таргетинга",
-        //             "points" => [
-        //                 "9",
-        //                 "8",
-        //                 "7"
-        //             ]
-        //         ]
-        //     ]
-        // ];
+    public function getTeachersEvaluationStage1($gameId, $teamId)
+    {
+        $teacherId = session('user_id');
+        $teacherName = app(UserService::class)->getUserName($teacherId, 3);
+
+        $result = DB::table('stage1_teachers_evaluation')
+                    ->select(DB::raw(
+                        'stage1_criteria.criteria as "criteria_name",
+                              stage1_teachers_evaluation.score'))
+                    ->leftJoin('stage1_criteria', 'stage1_criteria.id',
+                      'stage1_teachers_evaluation.criteria_id')
+                    ->where('stage1_teachers_evaluation.group_id','=', $teamId)
+                    ->get();
+
+        $result = json_decode(json_encode($result, true), true);
+        $result_criteria = [];
+
+        foreach ($result as $item)
+        {
+            $result_criteria[] = [
+                "criteria_name" => $item["criteria_name"],
+                "points" => [
+                    $item["score"]
+                ]
+            ];
+        }
+
+        return [
+            "teachers" => [
+                $teacherName
+            ],
+            "criteria" => $result_criteria
+        ];
     }
 
     public function getCriteriaForTeacherStage1() : array

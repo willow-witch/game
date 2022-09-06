@@ -42,7 +42,7 @@ class GameService
         return $result;
     }
 
-    public function getGameByTeam($team)
+    public function getGameByTeam($team) : int|null
     {
         return DB::table('games_groups')
             ->select(DB::raw(
