@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
@@ -111,9 +112,7 @@ class UserController extends Controller
             };
         }
 
-        return back()->withErrors([
-          'email' => 'The provided credentials do not match our records.',
-      ])->onlyInput('email');
+        return Redirect::back()->withErrors(['msg' => 'Неверный логин или пароль!']);
     }
 
     public function sign()

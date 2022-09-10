@@ -22,6 +22,10 @@ $sign -> sign();
         <div class="logo-img-big">
         </div>
 
+        @if($errors->any())
+            <div class="error-message">{{$errors->first()}}</div>
+        @endif
+
         <div class="input-wrapper">
 
             <input class="sign-input" id="email" type="email" name="email" placeholder="E-mail" value="">
