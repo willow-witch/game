@@ -84,7 +84,8 @@ class TeamService
                 $answers = DB::table('stage2_answers_students')
                     ->select(DB::raw(
                         'stage2_answers_students.answer,
-                        stage2_questions.question
+                        stage2_questions.question,
+                        stage2_answers_students.id
                         '))
                     ->leftJoin('stage2_questions', 'stage2_answers_students.question_id', 'stage2_questions.id')
                     ->where('stage2_answers_students.group_id', '=', $team)

@@ -223,6 +223,7 @@ class TeacherController extends Controller
                 }
 
                 return view('stages.stage2.teacher_stage2', [
+
                     'team' => $team,
                     "team_name" => $teamName,
                     'answers' => $answers,

@@ -10,7 +10,7 @@
             @csrf
 
             <input hidden name="group_id" value="{{$team}}">
-            <input hidden name="stage_id" value="{{$stage_id}}">
+{{--            <input hidden name="stage_id" value="{{$stage_id}}">--}}
 
             <div class="questions-wrapper">
             <div class="left-column">
@@ -29,7 +29,7 @@
                                 {{$question["question"]}}
                             </div>
 
-                            <input name = "{{$question['answer']}}" type="number" class="characteristics" min="1" max="10"
+                            <input name = "{{$question['id']}}" type="number" class="characteristics" min="1" max="10"
                                    style="width: 150px; background: rgba(246, 165, 0, 0.8); : black"
                                    value="1" required>
                         </div>

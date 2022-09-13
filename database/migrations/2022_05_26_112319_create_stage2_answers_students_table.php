@@ -14,6 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('stage2_answers_students', function (Blueprint $table) {
+            $table->id();
             $table->bigInteger("question_id")->unsigned()->nullable(false);
             $table->string('answer', 500);
             $table->bigInteger('game_id')->unsigned()->nullable(false);

@@ -73,8 +73,13 @@ class EvaluationController extends Controller
 
                 //var_dump($request);
 
+                echo ('<pre>');
                 foreach ($request->all() as $key => $item) {
 
+                    //echo ($item);
+
+                    var_dump($request->all());
+                    echo (' ');
                     DB::table('stage2_teachers_evaluation')->insert(
                         [
                             'teacher_id' => session('user_id'),
@@ -86,7 +91,7 @@ class EvaluationController extends Controller
                     );
                 }
 
-                return redirect(\route('teacher.profile'));
+                //return redirect(\route('teacher.profile'));
 
         }
     }
