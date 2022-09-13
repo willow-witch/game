@@ -5,6 +5,7 @@
         @csrf
 
         <input hidden name="group_id" value="{{$team}}">
+{{--        <input hidden name="stage_id" value="{{$stage_id}}">--}}
 
         <div class="stage-criteria">
             <div class="stage-name">

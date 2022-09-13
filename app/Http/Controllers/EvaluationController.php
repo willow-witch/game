@@ -14,27 +14,80 @@ class EvaluationController extends Controller
         $this->criteriaService = $criteriaService;
     }
 
-    public function evaluate(Request $request)
+//    public function evaluate(Request $request)  оригинал от Леры
+//    {
+//
+//        $group_id = $request->input('group_id');
+//        unset($request['group_id'], $request['_token']);
+//
+//        foreach ($request->all() as $key => $item)
+//        {
+//            $criteriaId = $this->criteriaService->getCriteriaIdByName($key);
+//
+//            DB::table('stage1_teachers_evaluation')->insert(
+//                [
+//                    'teacher_id' => session('user_id'),
+//                    'group_id' => $group_id,
+//                    'criteria_id'=> $criteriaId,
+//                    'score' => $item,
+//                    'evaluation_date'=>date('Y-m-d H:i:s'),
+//                    'active'=>1
+//                ]
+//            );
+//        }
+//
+//        return redirect(\route('teacher.profile'));
+//    }
+
+    public function evaluate(Request $request, $stage_id) // $stage_id
     {
-        $group_id = $request->input('group_id');
-        unset($request['group_id'], $request['_token']);
 
-        foreach ($request->all() as $key => $item)
-        {
-            $criteriaId = $this->criteriaService->getCriteriaIdByName($key);
+        switch ($stage_id) {
+            case 1:
+                $stage_id = $request->input('stage_id');
+                unset($request['stage_id'], $request['_token']);
 
-            DB::table('stage1_teachers_evaluation')->insert(
-                [
-                    'teacher_id' => session('user_id'),
-                    'group_id' => $group_id,
-                    'criteria_id'=> $criteriaId,
-                    'score' => $item,
-                    'evaluation_date'=>date('Y-m-d H:i:s'),
-                    'active'=>1
-                ]
-            );
+                $group_id = $request->input('group_id');
+                unset($request['group_id'], $request['_token']);
+
+                foreach ($request->all() as $key => $item) {
+                    $criteriaId = $this->criteriaService->getCriteriaIdByName($key);
+
+                    DB::table('stage1_teachers_evaluation')->insert(
+                        [
+                            'teacher_id' => session('user_id'),
+                            'group_id' => $group_id,
+                            'criteria_id' => $criteriaId,
+                            'score' => $item,
+                            'evaluation_date' => date('Y-m-d H:i:s'),
+                            'active' => 1
+                        ]
+                    );
+                }
+
+                return redirect(\route('teacher.profile'));
+
+            case 2:
+                $group_id = $request->input('group_id');
+                unset($request['group_id'], $request['_token']);
+
+                //var_dump($request);
+
+                foreach ($request->all() as $key => $item) {
+
+                    DB::table('stage2_teachers_evaluation')->insert(
+                        [
+                            'teacher_id' => session('user_id'),
+                            'group_id' => $group_id,
+                            'score' => $item,
+                            'evaluation_date' => date('Y-m-d H:i:s'),
+                            'active' => 1
+                        ]
+                    );
+                }
+
+                return redirect(\route('teacher.profile'));
+
         }
-
-        return redirect(\route('teacher.profile'));
     }
 }

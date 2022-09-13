@@ -6,7 +6,13 @@
             Ответы - {{$team_name}}
         </div>
 
-        <div class="questions-wrapper">
+        <form method="post" action="evaluate">
+            @csrf
+
+            <input hidden name="group_id" value="{{$team}}">
+            <input hidden name="stage_id" value="{{$stage_id}}">
+
+            <div class="questions-wrapper">
             <div class="left-column">
                 <div class="buyer-pic">
                     <img src="{{$image}}">
@@ -23,7 +29,7 @@
                                 {{$question["question"]}}
                             </div>
 
-                            <input type="number" class="characteristics" min="1" max="10"
+                            <input name = "{{$question['answer']}}" type="number" class="characteristics" min="1" max="10"
                                    style="width: 150px; background: rgba(246, 165, 0, 0.8); : black"
                                    value="1" required>
                         </div>
@@ -38,6 +44,8 @@
 
                     </div>
                 @endforeach
+
+                <input type="submit" class="submit-button" placeholder="Submit">
             </div>
         </div>
     </div>

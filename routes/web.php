@@ -51,6 +51,8 @@ Route::prefix('teacher')->group(function () {
     Route::post('/create', [TeacherController::class, 'createGame'])->name('create');
 
     Route::post('/stage/{stage}/team/evaluate', [EvaluationController::class, 'evaluate'])->name('evaluate');
+
+//    Route::post('/stage/{stage}/team/evaluateStage2', [EvaluationController::class, 'evaluateStage2'])->name('evaluateStage2');
 });
 
 Route::prefix('admin')->group(function () {
