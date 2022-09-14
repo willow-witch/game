@@ -22,6 +22,8 @@ class GameService
             ->get();
 
 
+        //dd($selectGames);
+
         $selectGames = json_decode(json_encode($selectGames, true), true);
 
         $result = [];
@@ -37,8 +39,9 @@ class GameService
                 'group_id'=> $info['group_id'],
                 'game_id'=> $info['game_id']
             ];
+            $index++;
         }
-
+        //dd($result);
         return $result;
     }
 
