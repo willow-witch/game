@@ -14,6 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('stage2_teachers_evaluation', function (Blueprint $table) {
+            $table->bigInteger("answer_id")->unsigned()->nullable(false);
             $table->bigInteger("teacher_id")->unsigned()->nullable(false);
             $table->bigInteger("group_id")->unsigned()->nullable(false);
             $table->tinyInteger("score");
@@ -22,6 +23,7 @@ return new class extends Migration
 
             $table->foreign('teacher_id')->references('id')->on('teachers')->onUpdate('cascade')->onDelete('restrict');
             $table->foreign('group_id')->references('id')->on('groups')->onUpdate('cascade')->onDelete('restrict');
+            $table->foreign('answer_id')->references('id')->on('stage2_answers_students')->onUpdate('cascade')->onDelete('restrict');
         });
     }
 

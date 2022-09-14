@@ -61,9 +61,6 @@ class AnswersController extends Controller
                 return 5;
 
         }
-        //
-
-        //DB
 
         return 1;
 

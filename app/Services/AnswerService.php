@@ -5,6 +5,7 @@ namespace App\Services;
 use App\Services\QuestionService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Services\TeacherService;
 
 class AnswerService
 {
@@ -135,6 +136,23 @@ class AnswerService
                 'active'=>1
             ]
         );
+    }
+
+    public function getTeachersEvaluationStage2($gameId, $teamId){
+        //$teacherId = session('user_id');
+        //$teacherName = app(UserService::class)->getUserName($teacherId, 3);
+
+        $result = DB::table('stage2_teachers_evaluation')
+            ->select(DB::raw(
+                'stage2_teachers_evaluation.score,
+                stage2_teachers_evaluation.answer_id'))
+            ->where ('stage2_teachers_evaluation.group_id', '=', $teamId)
+            ->get();
+
+        $result = json_decode(json_encode($result, true), true);
+
+        return $result;
+
     }
 
 }

@@ -12,6 +12,7 @@ use App\Services\TeamService;
 use App\Services\StageService;
 use App\Services\UserService;
 use App\Services\StudentService;
+use App\Services\AnswerService;
 
 class TeacherController extends Controller
 {
@@ -23,6 +24,7 @@ class TeacherController extends Controller
     protected TeamService $teamService;
     protected UserService $userService;
     protected StudentService $studentService;
+    protected AnswerService $answerService;
 
     public function __construct(TeacherService  $teacherService,
                                 StageService    $stageService,
@@ -31,7 +33,8 @@ class TeacherController extends Controller
                                 CriteriaService $criteriaService,
                                 TeamService     $teamService,
                                 UserService     $userService,
-                                StudentService  $studentService
+                                StudentService  $studentService,
+                                AnswerService   $answerService
     )
     {
         $this->teacherService = $teacherService;
@@ -42,6 +45,7 @@ class TeacherController extends Controller
         $this->teamService = $teamService;
         $this->userService = $userService;
         $this->studentService = $studentService;
+        $this->answerService = $answerService;
 
         view()->composer('layout_main', function ($view) {
             $view->with('user_name', session('user_name'));
@@ -222,14 +226,18 @@ class TeacherController extends Controller
                     $image = '';
                 }
 
+                $evaluation = $this->answerService->getTeachersEvaluationStage2($game, $team);
+
                 return view('stages.stage2.teacher_stage2', [
 
                     'team' => $team,
                     "team_name" => $teamName,
                     'answers' => $answers,
+                    'score' => $evaluation,
                     'stage_id' => 2,
                     'image' => $image
                 ]);
+
             case 3:
                 return view('stages.stage3.teacher_stage3', [
                     'team' => $team,

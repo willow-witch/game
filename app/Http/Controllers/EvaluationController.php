@@ -76,12 +76,13 @@ class EvaluationController extends Controller
                 //echo ('<pre>');
                 foreach ($request->all() as $key => $item) {
 
-                    //echo ($item);
+                    //echo ($key);
 
                     //var_dump($request->all());
                     //echo (' ');
                     DB::table('stage2_teachers_evaluation')->insert(
                         [
+                            'answer_id' => $key,
                             'teacher_id' => session('user_id'),
                             'group_id' => $group_id,
                             'score' => $item,

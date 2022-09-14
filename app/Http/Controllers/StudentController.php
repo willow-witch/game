@@ -13,6 +13,7 @@ use App\Services\UserService;
 use App\Services\TeamService;
 use App\Http\Requests\StudentProfileRequest;
 use Illuminate\Http\Request;
+use App\Services\AnswerService;
 
 class StudentController extends Controller
 {
@@ -23,6 +24,7 @@ class StudentController extends Controller
     protected CriteriaService $criteriaService;
     protected UserService $userService;
     protected TeamService $teamService;
+    protected AnswerService $answerService;
 
     public function __construct(StudentService $studentService,
                                 StageService $stageService,
@@ -30,7 +32,8 @@ class StudentController extends Controller
                                 QuestionService $questionService,
                                 CriteriaService $criteriaService,
                                 UserService $userService,
-                                TeamService $teamService
+                                TeamService $teamService,
+                                AnswerService   $answerService
                                 )
     {
         $this->studentService = $studentService;
@@ -40,6 +43,7 @@ class StudentController extends Controller
         $this->criteriaService = $criteriaService;
         $this->userService = $userService;
         $this->teamService = $teamService;
+        $this->answerService = $answerService;
 
         view()->composer('layout_main', function ($view) {
             $view->with('user_name', session('user_name'));
@@ -119,18 +123,28 @@ class StudentController extends Controller
 
             case 2:
                 $questions = $this->questionService->getQuestionsForStudentStage2();
-                //$criteria = $this->criteriaService->getCriteriaForStudentStage1();
+                $answers = $this->teamService->getAnswersForStage($stage, $team, $game);
+                $evaluation = $this->answerService->getTeachersEvaluationStage2($game, $team);
 
-                //dd($request->all());
+                if(!empty($answers)){
+                    $image = array_pop($answers)['answer'];
+                }
+                else{
+                    $image = '';
+                }
 
                 return view('stages.stage2.student_stage2', [
                     'stages' => $stages,
                     'questions' => $questions,
                     //'criteria' => $criteria,
                     'stage_id'=> 2,
+                    'answers' => $answers,
+                    'score' => $evaluation,
                     'stages_count' => $stagesCount,
                     'group_id'=>$request->input('group_id'),
-                    'game_id'=>$request->input('game_id')
+                    'game_id'=>$request->input('game_id'),
+                    'team_name' => $team,
+                    'image' => $image
                 ]);
 
             case 3:
