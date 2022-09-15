@@ -227,6 +227,7 @@ class TeacherController extends Controller
                 }
 
                 $evaluation = $this->answerService->getTeachersEvaluationStage2($game, $team);
+                $teacher = $this->answerService->getJudgesStage2($game);
 
                 return view('stages.stage2.teacher_stage2', [
 
@@ -235,7 +236,9 @@ class TeacherController extends Controller
                     'answers' => $answers,
                     'score' => $evaluation,
                     'stage_id' => 2,
-                    'image' => $image
+                    'image' => $image,
+                    'teacher' => $teacher
+
                 ]);
 
             case 3:

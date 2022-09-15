@@ -3,9 +3,9 @@
 namespace App\Services;
 
 use App\Services\QuestionService;
+use App\Services\TeacherService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Services\TeacherService;
 
 class AnswerService
 {
@@ -155,4 +155,21 @@ class AnswerService
 
     }
 
+    public function getJudgesStage2($gameId):array
+    {
+        $stage = 2;
+
+        if (empty(app(TeacherService::class)->getJudgesForGameStage($gameId, $stage)))
+        {
+            $teachers = app(TeacherService::class)->getJudgesForGameStage($gameId, $stage);
+        }
+        else
+        {
+            $teachers = app(TeacherService::class)->getAllTeachers();
+        }
+
+        return [
+            "teachers" => $teachers,
+        ];
+    }
 }

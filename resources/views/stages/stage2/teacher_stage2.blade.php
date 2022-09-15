@@ -3,13 +3,13 @@
 @include('stages.stage2.teacher_stage2_answers', ['team_name' => $team_name,
     'image' => $image,'answers' => $answers])
 @include('stages.stage2.teacher_stage2_evaluation', ['team_name' => $team_name,
-    'image' => $image,'answers' => $answers, 'score' => $score])
+    'image' => $image,'answers' => $answers, 'score' => $score, 'teacher' => $teacher])
 
 @section('stage_content')
 
     @if(empty($answers))
         <div class="stage-background">
-            Команда {{$team_name}} еще не ответила на вопросы модуля таргетинга
+            Команда {{$team_name}} еще не ответила на вопросы модуля позиционирования
         </div>
     @else
 

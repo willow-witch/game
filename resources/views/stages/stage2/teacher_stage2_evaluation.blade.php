@@ -40,6 +40,16 @@
                                     </div>
 
                             </div>
+                        <div class="teacher-question-test-answers">
+
+{{--                            <div class="teacher-question-test-answer">--}}
+{{--                                @foreach($question['teacher'] as $teacher)--}}
+{{--                                    {{$teacher}}--}}
+{{--                                @endforeach--}}
+{{--                            </div>--}}
+
+                        </div>
+
 
                     </div>
                 @endforeach
