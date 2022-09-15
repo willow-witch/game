@@ -124,18 +124,18 @@ class TeacherController extends Controller
                 ];
             }
         }
-        $judgesCount = count($judges);
+        $stagesCount = count($judges);
 
         $gameId = $this->gameService->createGame($startDate, $endDate, $teamsAmount);
 
-        for($i=1; $i <= $judgesCount; $i++)
+        for($i=1; $i <= $stagesCount; $i++)
         {
-            $stageJudges = array_values($judges[$i-1]);
+            $stageJudges = array_values($judges[$i-1])[0];
 
             foreach ($stageJudges as $stageJudge)
             {
-                $teacherId = $this->teacherService->getTeacherId($stageJudge[0]);
-
+                $teacherId = $this->teacherService->getTeacherId($stageJudge);
+                // dd($stageJudge);
                 $this->teacherService->setJudgeForGameStage($gameId, $teacherId, $i);
             }
         }

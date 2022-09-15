@@ -13,10 +13,6 @@
     <div class="stage-background">
         @yield('student_stage2_questions')
     </div>
-
-    <div class="stage-criteria">
-        @yield('student_stage2_criteria')
-    </div>
     @endif
 
 @endsection
